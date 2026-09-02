@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -257,358 +257,225 @@
 
       </div>
     </section>
+    <!-- Work Cases Grid with Clean Pagination & Admin Mode -->
+    <section class="py-16 bg-brand-slateBg relative" id="portfolioSection">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 space-y-8">
 
-    <!-- Work Cases Grid -->
-    <section class="py-16 bg-brand-slateBg">
-      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <!-- Admin Active Control Banner -->
+        <div id="adminBar" class="hidden p-4 sm:p-5 rounded-2xl bg-brand-navy text-white shadow-xl border border-brand-ice/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div>
+              <p class="font-extrabold text-sm sm:text-base text-white">관리자(대표님) 시공사례 관리 모드</p>
+              <p class="text-xs text-slate-300">새로운 시공 현장을 등록하거나 기존 사례를 수정/삭제할 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+            <button type="button" onclick="openCaseEditor()" class="px-5 py-2.5 rounded-xl bg-brand-ice hover:bg-brand-iceHover text-brand-navy font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>
+              새 시공사례 등록
+            </button>
+            <button type="button" onclick="logoutAdmin()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all">
+              로그아웃
+            </button>
+          </div>
+        </div>
 
-        <!-- Portfolio Cards Grid -->
+        <!-- Section Top Info Bar (Total Count & Admin Button) -->
+        <div class="flex items-center justify-between gap-4 pb-2 border-b border-slate-200/80">
+          <div class="flex items-center gap-2">
+            <span class="text-base sm:text-lg font-extrabold text-brand-navy">전체 시공 사례</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-brand-navy text-white text-xs font-bold font-mono" id="totalCountBadge">0</span>
+          </div>
+
+          <!-- Admin Mode Toggle Trigger -->
+          <div>
+            <button id="adminLoginBtn" type="button" onclick="openAdminLoginModal()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-500 hover:text-brand-navy hover:bg-white border border-slate-200 transition-all flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              <span>관리자 모드</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Portfolio Cards Grid Container -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7" id="galleryContainer">
-          
-          <!-- Case 1: 관공서 -->
-          <div class="work-card gov rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <!-- 사진 영역: 실제 현장 사진 연결 구역 -->
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <!-- 현장 사진 연결 시: <img src="images/portfolio_gov.jpg" alt="관공서 종합청사 시공" class="w-full h-full object-cover"> -->
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">공공행정타운 본관 종합 시공</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  관공서 · 공공기관
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
-                  시공 완료
-                </div>
-              </div>
+          <!-- Rendered via JavaScript -->
+        </div>
 
-              <!-- 카드 본문 -->
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>서울 OO구청 본청사 전층</span>
-                    <span>2026.04 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    종합행정청사 천장형 4Way & 매립덕트 58대 일괄 세척
-                  </h3>
-                </div>
-
-                <!-- 시공 스펙 요약 박스 -->
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">시스템 4Way 46대 + 매립덕트 12대</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 형태</span>
-                    <span class="font-bold text-brand-navy">주말 2일간 일괄 분해 세척</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">적용 공정</span>
-                    <span class="font-bold text-brand-navy">EPA 인증 살균 + 송풍팬 완전분해</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">제출 서류</span>
-                    <span class="font-bold text-emerald-600">전/후 사진보고서, 세금계산서, 성적서</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  민원 업무에 차질이 없도록 주말 비업무 시간 8인 전문 테크니션 팀이 투입되어 전층 완벽 보양 후 시공을 완료했습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 B2B 특수시공 1팀</span>
-            </div>
-          </div>
-
-          <!-- Case 2: 기업 B2B 오피스 -->
-          <div class="work-card corp rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">판교 IT 테크타워 사옥 시공</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  기업 · 오피스
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-brand-ice text-brand-navy text-xs font-bold">
-                  연간 정기 유지보수
-                </div>
-              </div>
-
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>경기 판교 유스페이스 사옥 전층</span>
-                    <span>2026.05 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    IT 기업 본사 4Way 32대 & 실외기 멀티 4대 정밀 케어
-                  </h3>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">시스템 4Way 32대 + 대형 실외기 4기</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 형태</span>
-                    <span class="font-bold text-brand-navy">사전 일정 조율 시공 (주말/야간 상담)</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">적용 공정</span>
-                    <span class="font-bold text-brand-navy">서버실 무정전 방수 보양 + 친환경 고압 세척</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">제출 서류</span>
-                    <span class="font-bold text-emerald-600">전자세금계산서, 기기별 점검표 납품</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  정밀 IT 기기 및 PC 장비가 밀집된 개발실 특성을 고려하여 3중 방수 보양 후 완벽한 야간 클리닝을 완료하였습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 B2B 특수시공 2팀</span>
-            </div>
-          </div>
-
-          <!-- Case 3: 의료기관 / 병원 -->
-          <div class="work-card commercial rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">강남 대형 아동병원 클리닉</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  상업 · 병원 · 학원
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
-                  시공 완료
-                </div>
-              </div>
-
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>서울 강남구 도곡동 메디컬센터</span>
-                    <span>2026.04 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균
-                  </h3>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">1Way 12대 + 4Way 6대</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 형태</span>
-                    <span class="font-bold text-brand-navy">진료 종료 후 사전 일정 조율 세척</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">적용 약품</span>
-                    <span class="font-bold text-brand-navy">미국 EPA 인증 무독성·무자극 세정제</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">특화 케어</span>
-                    <span class="font-bold text-emerald-600">진료실·대기실 친환경 정밀 고압 세척</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  면역력이 취약한 아동 환자들이 이용하는 시설 특성에 맞춰 잔여 화학 성분이 전혀 남지 않는 100% 친환경 공정으로 완료했습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 메디컬클린 전담팀</span>
-            </div>
-          </div>
-
-          <!-- Case 4: 대형 상업시설 / 프랜차이즈 -->
-          <div class="work-card commercial rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">홍대 3층 대형 베이커리 플래그십</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  상업 · 병원 · 학원
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
-                  시공 완료
-                </div>
-              </div>
-
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>서울 마포구 서교동</span>
-                    <span>2026.05 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    360 원형 카세트 8대 & 대형 스탠드 고압 탈지 케어
-                  </h3>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">360 원형 8대 + 영업용 38평 스탠드 2대</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">특수 공정</span>
-                    <span class="font-bold text-brand-navy">오븐 유증기 전용 약품 고압 탈지 세척</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">개선 효과</span>
-                    <span class="font-bold text-emerald-600">송풍 풍량 45% 증가 & 냉방 효율 회복</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  베이커리 조리 구역에서 발생하는 기름때와 유증기로 막힌 냉각핀을 특수 탈지 약품과 150bar 초고압 세척으로 완벽 복원했습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 상업클린 1팀</span>
-            </div>
-          </div>
-
-          <!-- Case 5: 프리미엄 주거단지 -->
-          <div class="work-card residence rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">한남동 고급 펜트하우스 레지던스</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  프리미엄 주거
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
-                  시공 완료
-                </div>
-              </div>
-
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>서울 용산구 한남동</span>
-                    <span>2026.05 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    고급 빌라 전실 매립덕트 8대 및 천장 1Way 정밀 케어
-                  </h3>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">매립덕트 8대 + 시스템 1Way 4대</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">보양 수준</span>
-                    <span class="font-bold text-brand-navy">최고급 원목 마루 & 대리석 벽면 특수 보양</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">공정 특성</span>
-                    <span class="font-bold text-emerald-600">점검구를 통한 드레인판 분해 및 열교환기 고압 세척</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  고급 마감재 손상을 철저히 방지하기 위해 가구 및 바닥 3중 방수 커버링 후 매립 덕트 내부까지 정밀 케어 완료했습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 하이엔드 주거팀</span>
-            </div>
-          </div>
-
-          <!-- Case 6: 공공 교육기관 / 대형 학원 -->
-          <div class="work-card gov rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all">
-            <div>
-              <div class="aspect-[16/10] bg-slate-100 relative overflow-hidden flex items-center justify-center">
-                <div class="text-center p-4 space-y-1.5 text-slate-400">
-                  <svg class="w-8 h-8 mx-auto opacity-40 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-                  <p class="text-sm font-bold text-slate-600">대치동 입시학원 본관 전층</p>
-                  <span class="text-xs px-2 py-0.5 rounded-full bg-slate-200 text-slate-600 font-semibold">현장 사진 등록 위치</span>
-                </div>
-                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold">
-                  관공서 · 공공기관
-                </div>
-                <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
-                  시공 완료
-                </div>
-              </div>
-
-              <div class="p-6 space-y-4">
-                <div>
-                  <div class="flex items-center justify-between text-sm text-slate-400 mb-1">
-                    <span>서울 강남구 대치동 본관</span>
-                    <span>2026.05 시공</span>
-                  </div>
-                  <h3 class="text-lg font-bold text-brand-navy leading-snug">
-                    강의실 및 독서실 천장 4Way 24대 하계 방학 대비 클리닝
-                  </h3>
-                </div>
-
-                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-100 space-y-2.5 text-sm sm:text-base">
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 규모</span>
-                    <span class="font-bold text-brand-navy">천장형 4Way 24대</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">시공 형태</span>
-                    <span class="font-bold text-brand-navy">휴원일 1일 일괄 집중 시공</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-500 font-medium">살균 인증</span>
-                    <span class="font-bold text-emerald-600">친환경 약품 고압 세척 및 최종 점검</span>
-                  </div>
-                </div>
-
-                <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
-                  학생들의 학습 집중도를 위해 악취의 근원인 드레인판 슬러지와 곰팡이를 완전 제거하고 전 강의실 공기질을 개선했습니다.
-                </p>
-              </div>
-            </div>
-
-            <div class="px-6 pb-6 pt-2">
-              <span class="text-xs sm:text-sm text-slate-400 block border-t border-slate-100 pt-3">담당: 에어랩 B2B 1팀</span>
-            </div>
-          </div>
-
+        <!-- Pagination UI Container -->
+        <div class="pt-8 flex items-center justify-center gap-1.5 sm:gap-2" id="paginationContainer">
+          <!-- Rendered via JavaScript -->
         </div>
 
       </div>
     </section>
+
+    <!-- 1. DETAIL MODAL (초깔끔 다중 사진 갤러리 & 상세 뷰) -->
+    <div id="caseDetailModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 transition-opacity duration-300">
+      <div class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 my-auto flex flex-col max-h-[92vh]">
+        
+        <!-- Header -->
+        <div class="p-5 sm:p-6 bg-brand-navy text-white flex items-center justify-between border-b border-slate-800 shrink-0">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-xs text-slate-300">
+              <span id="modalLocation" class="font-medium text-brand-ice">시공 위치</span>
+              <span>•</span>
+              <span id="modalDate" class="font-bold text-white">시공 일자</span>
+            </div>
+            <h2 id="modalTitle" class="text-lg sm:text-xl font-extrabold text-white leading-snug">
+              시공 사례 제목
+            </h2>
+          </div>
+          <button type="button" onclick="closeDetailModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all ml-4 shrink-0" aria-label="닫기">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Scrollable Modal Content -->
+        <div class="p-5 sm:p-8 overflow-y-auto space-y-6 flex-grow">
+          
+          <!-- Multi-Photo Gallery Viewer -->
+          <div class="space-y-3 bg-slate-950 rounded-2xl p-3 sm:p-4 text-white">
+            <div class="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center">
+              <img id="modalMainImage" src="" alt="시공 현장 상세 사진" class="w-full h-full object-contain" />
+              
+              <!-- Prev / Next Arrow Buttons -->
+              <button id="btnPrevPhoto" type="button" onclick="changeModalPhoto(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-sm transition-all" aria-label="이전 사진">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+              </button>
+              <button id="btnNextPhoto" type="button" onclick="changeModalPhoto(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-sm transition-all" aria-label="다음 사진">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+              </button>
+
+              <!-- Photo Counter Badge -->
+              <div class="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-mono font-bold text-white">
+                <span id="photoIndexNum">1</span> / <span id="photoTotalNum">1</span>
+              </div>
+            </div>
+
+            <!-- Thumbnail Strip -->
+            <div id="modalThumbStrip" class="flex items-center gap-2.5 overflow-x-auto py-1 scrollbar-thin">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Clean Single Spec Pill -->
+          <div id="modalScaleBox" class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200/80 flex items-center gap-2 text-sm sm:text-base">
+            <span class="text-xs font-bold px-2.5 py-1 rounded-lg bg-brand-navy text-white">시공 규모</span>
+            <span id="modalScale" class="font-bold text-brand-navy">시스템 4Way 46대 + 매립덕트 12대</span>
+          </div>
+
+          
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. ADMIN LOGIN MODAL -->
+    <div id="adminLoginModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="w-full max-w-sm bg-white rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-200 space-y-5">
+        <div class="text-center space-y-2">
+          <div class="w-12 h-12 rounded-2xl bg-brand-navy text-brand-ice mx-auto flex items-center justify-center font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-brand-navy">대표님 관리자 로그인</h3>
+          <p class="text-xs text-slate-500">시공 사례 등록 및 관리를 위해 비밀번호를 입력해 주세요.</p>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">관리자 비밀번호</label>
+            <input type="password" id="adminPasswordInput" placeholder="관리자 비밀번호를 입력하세요" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" onkeydown="if(event.key==='Enter') verifyAdminPassword()" />
+          </div>
+          <p id="adminLoginError" class="text-xs text-rose-600 font-bold hidden text-center">비밀번호가 일치하지 않습니다.</p>
+        </div>
+
+        <div class="flex gap-2">
+          <button type="button" onclick="closeAdminLoginModal()" class="w-1/2 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition-all">
+            취소
+          </button>
+          <button type="button" onclick="verifyAdminPassword()" class="w-1/2 py-3 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-md transition-all">
+            로그인
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. POST / EDIT MODAL (필요한 것만 있는 초깔끔 폼) -->
+    <div id="caseEditorModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+      <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 my-auto flex flex-col max-h-[92vh]">
+        
+        <div class="p-5 sm:p-6 bg-brand-navy text-white flex items-center justify-between border-b border-slate-800 shrink-0">
+          <h3 id="editorModalTitle" class="text-lg font-extrabold">새 시공사례 등록</h3>
+          <button type="button" onclick="closeCaseEditor()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <form id="caseForm" onsubmit="handleCaseSubmit(event)" class="p-5 sm:p-7 overflow-y-auto space-y-5 flex-grow">
+          <input type="hidden" id="editCaseId" value="" />
+
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">시공 사례 제목 *</label>
+            <input type="text" id="caseTitle" required placeholder="예: 판교 IT 테크타워 사옥 4Way 32대 및 실외기 정밀 케어" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-navy font-bold" />
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs font-bold text-slate-700 block mb-1">시공 위치 *</label>
+              <input type="text" id="caseLocation" required placeholder="예: 서울 강남구 도곡동 메디컬센터" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-navy" />
+            </div>
+            <div>
+              <label class="text-xs font-bold text-slate-700 block mb-1">시공 일자 *</label>
+              <input type="text" id="caseDate" required placeholder="예: 2026.05 시공" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-navy" />
+            </div>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-slate-700 block mb-1">시공 규모 (선택)</label>
+            <input type="text" id="caseScale" placeholder="예: 시스템 4Way 12대 + 스탠드 2대" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-navy" />
+          </div>
+
+          
+
+          <!-- Multi-Photo Upload Area -->
+          <div class="space-y-2 pt-2">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-700">현장 사진 등록 * (여러 장 선택 가능)</label>
+              <span class="text-xs text-slate-400">PNG, JPG 지원</span>
+            </div>
+
+            <!-- Upload Input Button -->
+            <div class="p-6 rounded-2xl border-2 border-dashed border-slate-300 hover:border-brand-navy bg-slate-50 text-center cursor-pointer transition-colors relative">
+              <input type="file" id="photoFileInput" multiple accept="image/*" onchange="handleMultiplePhotos(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" />
+              <div class="space-y-2 pointer-events-none">
+                <svg class="w-8 h-8 text-slate-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <p class="text-sm font-bold text-brand-navy">사진 파일들을 클릭하여 선택하세요</p>
+                <p class="text-xs text-slate-500">스마트폰 앨범 또는 PC에서 여러 장을 한 번에 선택할 수 있습니다.</p>
+              </div>
+            </div>
+
+            <!-- Photo Preview Strip -->
+            <div id="editorPhotoList" class="grid grid-cols-3 sm:grid-cols-4 gap-3 pt-2">
+              <!-- Rendered preview thumbnails -->
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 flex items-center justify-end gap-3">
+            <button type="button" onclick="closeCaseEditor()" class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition-all">
+              취소
+            </button>
+            <button type="submit" class="px-7 py-3 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-md transition-all">
+              저장 및 게시하기
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
 
     <!-- B2B / 기관 고객 맞춤 신뢰 보증 안내 섹션 -->
     <section class="py-16 bg-white border-t border-slate-200/80">
@@ -660,13 +527,13 @@
           </div>
         </div>
 
-        <!-- B2B 견적 박스 -->
+                <!-- B2B 견적 박스 (비대면 사진 및 기종 정보 기반 신속 견적) -->
         <div class="p-8 sm:p-10 rounded-3xl bg-brand-navy text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-card">
           <div class="space-y-2 max-w-2xl">
             <span class="text-sm font-bold px-3 py-1 rounded-full bg-white/20 text-brand-ice">B2B & 관공서 대량 견적</span>
-            <h3 class="text-2xl font-extrabold text-white">현장 무상 실사 및 맞춤 견적서 발송</h3>
+            <h3 class="text-2xl font-extrabold text-white">사진 및 기종 정보 기반 빠른 맞춤 견적서 발송</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              대량 기종(5대 이상) 시공 및 연간 정기 유지보수 협약은 전담 엔지니어가 사전 방문하여 최적의 단가와 일정을 제안해 드립니다.
+              에어컨 기종과 대수, 현장 사진만 남겨주시면 대량 시공(5대 이상) 및 정기 유지보수 견적서를 신속하고 정확하게 발행해 드립니다.
             </p>
           </div>
           <div class="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -733,10 +600,10 @@
       </a>
 
       <!-- 4. 전화 상담 -->
-      <a href="tel:010-0000-0000" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="엔지니어 직통 전화">
+      <a href="tel:010-0000-0000" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
-            엔지니어 직통 (1588-0000)
+            전화 상담 (1588-0000)
           </div>
         </div>
 
@@ -798,19 +665,565 @@
       </div>
     </div>
   </footer>
-  <!-- JAVASCRIPT -->
-  <script>);
-      btn.classList.add('active');
+          <!-- JAVASCRIPT: Pure Photo & Spec Portfolio Engine -->
+  <script>
+    // 1. Initial Default Portfolio Data (Pure Photos & Minimal Meta)
+    const DEFAULT_PORTFOLIO = [
+      {
+        id: "case-1",
+        title: "종합행정청사 천장형 4Way & 매립덕트 58대 일괄 세척",
+        location: "서울 OO구청 본청사",
+        date: "2026.04 시공",
+        scale: "시스템 4Way 46대 + 매립덕트 12대",
+        photos: [
+          "images/equip_shroud.jpg",
+          "images/hero_wash_bg.jpg",
+          "images/compare_fin_after.jpg",
+          "images/compare_part_after.jpg"
+        ]
+      },
+      {
+        id: "case-2",
+        title: "IT 기업 본사 4Way 32대 & 실외기 멀티 4대 정밀 케어",
+        location: "경기 판교 유스페이스 사옥",
+        date: "2026.05 시공",
+        scale: "시스템 4Way 32대 + 대형 실외기 4기",
+        photos: [
+          "images/hero_wash_bg.jpg",
+          "images/equip_washer.jpg",
+          "images/compare_part_after.jpg",
+          "images/equip_shroud.jpg"
+        ]
+      },
+      {
+        id: "case-3",
+        title: "소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균",
+        location: "서울 강남구 도곡동 메디컬센터",
+        date: "2026.04 시공",
+        scale: "1Way 12대 + 4Way 6대",
+        photos: [
+          "images/equip_evap.jpg",
+          "images/compare_fin_after.jpg",
+          "images/equip_shroud.jpg"
+        ]
+      },
+      {
+        id: "case-4",
+        title: "홍대 3층 대형 베이커리 플래그십 360 원형 & 스탠드 탈지 케어",
+        location: "서울 마포구 서교동",
+        date: "2026.05 시공",
+        scale: "360 원형 8대 + 영업용 38평 스탠드 2대",
+        photos: [
+          "images/compare_part_before.jpg",
+          "images/compare_part_after.jpg",
+          "images/hero_wash_bg.jpg"
+        ]
+      },
+      {
+        id: "case-5",
+        title: "한남동 고급 펜트하우스 1Way 7대 프리미엄 전층 케어",
+        location: "서울 용산구 한남동",
+        date: "2026.04 시공",
+        scale: "천장형 1Way 7대",
+        photos: [
+          "images/compare_fin_before.jpg",
+          "images/compare_fin_after.jpg",
+          "images/hero_ambient.jpg"
+        ]
+      },
+      {
+        id: "case-6",
+        title: "대형 피트니스 & 필라테스 센터 4Way 14대 땀냄새·곰팡이 멸균",
+        location: "서울 서초구 반포동",
+        date: "2026.05 시공",
+        scale: "천장형 4Way 14대 + 샤워실 환기라인",
+        photos: [
+          "images/equip_shroud.jpg",
+          "images/compare_part_after.jpg",
+          "images/equip_evap.jpg"
+        ]
+      }
+    ];
 
-      const cards = document.querySelectorAll('.work-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.classList.contains(category)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
+    // 2. Data Management (LocalStorage)
+    function getPortfolioData() {
+      const stored = localStorage.getItem('airlab_portfolio_cases');
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch(e) {
+          console.error(e);
         }
+      }
+      localStorage.setItem('airlab_portfolio_cases', JSON.stringify(DEFAULT_PORTFOLIO));
+      return DEFAULT_PORTFOLIO;
+    }
+
+    function savePortfolioData(data) {
+      localStorage.setItem('airlab_portfolio_cases', JSON.stringify(data));
+      renderPortfolio();
+    }
+
+    // 3. Admin State Management
+    const ADMIN_PW = 'airlab0426';
+
+    function isAdmin() {
+      return sessionStorage.getItem('airlab_admin_logged') === 'true';
+    }
+
+    function updateAdminUI() {
+      const bar = document.getElementById('adminBar');
+      const btn = document.getElementById('adminLoginBtn');
+      if (isAdmin()) {
+        if (bar) bar.classList.remove('hidden');
+        if (btn) btn.classList.add('hidden');
+      } else {
+        if (bar) bar.classList.add('hidden');
+        if (btn) btn.classList.remove('hidden');
+      }
+    }
+
+    function openAdminLoginModal() {
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('adminLoginError').classList.add('hidden');
+      document.getElementById('adminLoginModal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('adminPasswordInput').focus(), 100);
+    }
+
+    function closeAdminLoginModal() {
+      document.getElementById('adminLoginModal').classList.add('hidden');
+    }
+
+    function verifyAdminPassword() {
+      const pw = document.getElementById('adminPasswordInput').value;
+      if (pw === ADMIN_PW) {
+        sessionStorage.setItem('airlab_admin_logged', 'true');
+        closeAdminLoginModal();
+        updateAdminUI();
+        renderPortfolio();
+        alert('관리자 모드로 로그인되었습니다. 시공사례를 자유롭게 등록/수정/삭제하실 수 있습니다.');
+      } else {
+        document.getElementById('adminLoginError').classList.remove('hidden');
+      }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('airlab_admin_logged');
+      updateAdminUI();
+      renderPortfolio();
+      alert('관리자 모드에서 로그아웃되었습니다.');
+    }
+
+    // 4. Pagination & Clean Rendering Engine
+    const ITEMS_PER_PAGE = 6;
+    let currentPage = 1;
+
+    function renderPortfolio() {
+      const list = getPortfolioData();
+      const container = document.getElementById('galleryContainer');
+      const countBadge = document.getElementById('totalCountBadge');
+      if (countBadge) countBadge.textContent = list.length;
+
+      if (!container) return;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400 space-y-3">
+            <svg class="w-12 h-12 mx-auto text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            <p class="text-base font-bold text-slate-600">등록된 시공 사례가 없습니다.</p>
+          </div>
+        `;
+        renderPagination(0);
+        return;
+      }
+
+      const totalPages = Math.ceil(list.length / ITEMS_PER_PAGE);
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const paginatedItems = list.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+      const adminLogged = isAdmin();
+
+      container.innerHTML = paginatedItems.map(item => {
+        const hasPhotos = item.photos && item.photos.length > 0;
+        const coverPhoto = hasPhotos ? item.photos[0] : '';
+        const photoCount = hasPhotos ? item.photos.length : 0;
+
+        return `
+          <div class="work-card rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-soft hover:shadow-card flex flex-col justify-between transition-all duration-300 group cursor-pointer" onclick="openCaseDetail('${item.id}')">
+            
+            <div>
+              <!-- Photo Cover Area -->
+              <div class="aspect-[16/10] bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                ${hasPhotos ? `
+                  <img src="${coverPhoto}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                ` : `
+                  <div class="text-center p-4 text-slate-500 space-y-1">
+                    <svg class="w-8 h-8 mx-auto opacity-40 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span class="text-xs font-semibold text-slate-400">등록된 사진 없음</span>
+                  </div>
+                `}
+
+                <!-- Photo Count Pill (Bottom-Right) -->
+                ${photoCount > 1 ? `
+                  <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[11px] font-bold flex items-center gap-1 shadow-md">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>사진 ${photoCount}장</span>
+                  </div>
+                ` : ''}
+
+                <!-- Hover Overlay Hint -->
+                <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <span class="px-4 py-2 rounded-full bg-white/95 text-brand-navy text-xs font-extrabold shadow-lg backdrop-blur-sm">
+                    사진 & 상세 보기 🔍
+                  </span>
+                </div>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-6 space-y-3">
+                <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+                  <span class="font-medium text-slate-500">${item.location}</span>
+                  <span class="font-bold text-brand-navy">${item.date}</span>
+                </div>
+                <h3 class="text-lg font-bold text-brand-navy leading-snug group-hover:text-brand-ice transition-colors">
+                  ${item.title}
+                </h3>
+
+                ${item.scale ? `
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-brand-slateBg border border-slate-200/80 text-xs font-bold text-brand-navy">
+                    <span class="text-slate-400">규모:</span>
+                    <span>${item.scale}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+
+            <!-- Footer & Admin Action Buttons -->
+            <div class="px-6 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-brand-ice group-hover:translate-x-1 transition-transform inline-flex items-center">
+                사진 상세 보기 →
+              </span>
+
+              ${adminLogged ? `
+                <div class="flex items-center gap-1.5" onclick="event.stopPropagation()">
+                  <button type="button" onclick="editCase('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-brand-navy hover:text-white text-slate-700 text-xs font-bold transition-all">
+                    수정
+                  </button>
+                  <button type="button" onclick="deleteCase('${item.id}')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-bold transition-all">
+                    삭제
+                  </button>
+                </div>
+              ` : ''}
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      renderPagination(totalPages);
+    }
+
+    // Render Pagination Controls
+    function renderPagination(totalPages) {
+      const pContainer = document.getElementById('paginationContainer');
+      if (!pContainer) return;
+
+      if (totalPages <= 1) {
+        pContainer.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+
+      if (currentPage > 1) {
+        html += `
+          <button type="button" onclick="goToPage(${currentPage - 1})" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold border border-slate-200/90 shadow-sm transition-all flex items-center gap-1">
+            이전
+          </button>
+        `;
+      }
+
+      for (let p = 1; p <= totalPages; p++) {
+        if (p === currentPage) {
+          html += `
+            <button type="button" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0070F3] text-white text-xs sm:text-sm font-bold shadow-md flex items-center justify-center transition-all">
+              ${p}
+            </button>
+          `;
+        } else {
+          html += `
+            <button type="button" onclick="goToPage(${p})" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold border border-slate-200/90 shadow-sm flex items-center justify-center transition-all">
+              ${p}
+            </button>
+          `;
+        }
+      }
+
+      if (currentPage < totalPages) {
+        html += `
+          <button type="button" onclick="goToPage(${currentPage + 1})" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold border border-slate-200/90 shadow-sm transition-all flex items-center gap-1">
+            다음
+          </button>
+        `;
+      }
+
+      pContainer.innerHTML = html;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderPortfolio();
+      const section = document.getElementById('portfolioSection');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // 5. Multi-Photo Detail Modal Logic
+    let currentModalPhotos = [];
+    let currentModalPhotoIdx = 0;
+
+    function openCaseDetail(id) {
+      const list = getPortfolioData();
+      const item = list.find(c => c.id === id);
+      if (!item) return;
+
+      document.getElementById('modalLocation').textContent = item.location || '';
+      document.getElementById('modalDate').textContent = item.date || '';
+      document.getElementById('modalTitle').textContent = item.title || '';
+
+      const scaleBox = document.getElementById('modalScaleBox');
+      if (item.scale) {
+        scaleBox.classList.remove('hidden');
+        document.getElementById('modalScale').textContent = item.scale;
+      } else {
+        scaleBox.classList.add('hidden');
+      }
+
+      currentModalPhotos = (item.photos && item.photos.length > 0) ? item.photos : [];
+      currentModalPhotoIdx = 0;
+      updateModalPhoto();
+
+      document.getElementById('caseDetailModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateModalPhoto() {
+      const total = currentModalPhotos.length;
+      const mainImg = document.getElementById('modalMainImage');
+      const btnPrev = document.getElementById('btnPrevPhoto');
+      const btnNext = document.getElementById('btnNextPhoto');
+      const strip = document.getElementById('modalThumbStrip');
+
+      if (total === 0) {
+        mainImg.src = '';
+        document.getElementById('photoIndexNum').textContent = '0';
+        document.getElementById('photoTotalNum').textContent = '0';
+        btnPrev.classList.add('hidden');
+        btnNext.classList.add('hidden');
+        strip.innerHTML = '<p class="text-xs text-slate-400 py-2">등록된 사진이 없습니다.</p>';
+        return;
+      }
+
+      if (currentModalPhotoIdx < 0) currentModalPhotoIdx = total - 1;
+      if (currentModalPhotoIdx >= total) currentModalPhotoIdx = 0;
+
+      mainImg.src = currentModalPhotos[currentModalPhotoIdx];
+      document.getElementById('photoIndexNum').textContent = currentModalPhotoIdx + 1;
+      document.getElementById('photoTotalNum').textContent = total;
+
+      if (total <= 1) {
+        btnPrev.classList.add('hidden');
+        btnNext.classList.add('hidden');
+      } else {
+        btnPrev.classList.remove('hidden');
+        btnNext.classList.remove('hidden');
+      }
+
+      strip.innerHTML = currentModalPhotos.map((p, idx) => `
+        <button type="button" onclick="setModalPhotoIndex(${idx})" class="w-16 h-12 rounded-lg overflow-hidden shrink-0 border-2 transition-all ${idx === currentModalPhotoIdx ? 'border-brand-ice scale-105 shadow-md' : 'border-white/20 opacity-60 hover:opacity-100'}">
+          <img src="${p}" alt="썸네일" class="w-full h-full object-cover" />
+        </button>
+      `).join('');
+    }
+
+    function setModalPhotoIndex(idx) {
+      currentModalPhotoIdx = idx;
+      updateModalPhoto();
+    }
+
+    function changeModalPhoto(delta) {
+      currentModalPhotoIdx += delta;
+      updateModalPhoto();
+    }
+
+    function closeDetailModal() {
+      document.getElementById('caseDetailModal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // 6. Post / Edit Case Logic
+    let uploadedPhotos = [];
+
+    function openCaseEditor(editItem = null) {
+      const modal = document.getElementById('caseEditorModal');
+      const form = document.getElementById('caseForm');
+      form.reset();
+
+      if (editItem) {
+        document.getElementById('editorModalTitle').textContent = '시공사례 수정';
+        document.getElementById('editCaseId').value = editItem.id;
+        document.getElementById('caseTitle').value = editItem.title;
+        document.getElementById('caseLocation').value = editItem.location;
+        document.getElementById('caseDate').value = editItem.date;
+        document.getElementById('caseScale').value = editItem.scale || '';
+        uploadedPhotos = editItem.photos ? [...editItem.photos] : [];
+      } else {
+        document.getElementById('editorModalTitle').textContent = '새 시공사례 등록';
+        document.getElementById('editCaseId').value = '';
+        uploadedPhotos = [];
+      }
+
+      renderEditorPhotoList();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseEditor() {
+      document.getElementById('caseEditorModal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function handleMultiplePhotos(e) {
+      const files = e.target.files;
+      if (!files || files.length === 0) return;
+
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const MAX_WIDTH = 1200;
+            const scaleSize = Math.min(1, MAX_WIDTH / img.width);
+            canvas.width = img.width * scaleSize;
+            canvas.height = img.height * scaleSize;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            const compressed = canvas.toDataURL('image/jpeg', 0.85);
+            uploadedPhotos.push(compressed);
+            renderEditorPhotoList();
+          };
+          img.src = evt.target.result;
+        };
+        reader.readAsDataURL(file);
       });
     }
+
+    function renderEditorPhotoList() {
+      const list = document.getElementById('editorPhotoList');
+      if (uploadedPhotos.length === 0) {
+        list.innerHTML = '<p class="text-xs text-slate-400 col-span-full py-2">등록된 사진이 없습니다. 위에서 사진을 추가하세요.</p>';
+        return;
+      }
+
+      list.innerHTML = uploadedPhotos.map((p, idx) => `
+        <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border border-slate-200 group">
+          <img src="${p}" alt="업로드 사진" class="w-full h-full object-cover" />
+          <button type="button" onclick="removeEditorPhoto(${idx})" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-bold shadow-md hover:bg-rose-700 transition-all">
+            ✕
+          </button>
+          <span class="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/70 text-[10px] text-white font-mono">
+            ${idx === 0 ? '대표' : idx + 1}
+          </span>
+        </div>
+      `).join('');
+    }
+
+    function removeEditorPhoto(idx) {
+      uploadedPhotos.splice(idx, 1);
+      renderEditorPhotoList();
+    }
+
+    function handleCaseSubmit(e) {
+      e.preventDefault();
+      const list = getPortfolioData();
+      const editId = document.getElementById('editCaseId').value;
+
+      if (uploadedPhotos.length === 0) {
+        alert('현장 사진을 최소 1장 이상 등록해 주세요.');
+        return;
+      }
+
+      const caseData = {
+        id: editId || 'case-' + Date.now(),
+        title: document.getElementById('caseTitle').value,
+        location: document.getElementById('caseLocation').value,
+        date: document.getElementById('caseDate').value,
+        scale: document.getElementById('caseScale').value,
+        photos: [...uploadedPhotos]
+      };
+
+      if (editId) {
+        const idx = list.findIndex(c => c.id === editId);
+        if (idx !== -1) list[idx] = caseData;
+      } else {
+        list.unshift(caseData);
+        currentPage = 1;
+      }
+
+      savePortfolioData(list);
+      closeCaseEditor();
+      alert(editId ? '시공사례가 성공적으로 수정되었습니다!' : '새 시공사례가 성공적으로 등록되었습니다!');
+    }
+
+    function editCase(id) {
+      const list = getPortfolioData();
+      const item = list.find(c => c.id === id);
+      if (item) openCaseEditor(item);
+    }
+
+    function deleteCase(id) {
+      if (!confirm('정말로 이 시공사례를 삭제하시겠습니까?')) return;
+      let list = getPortfolioData();
+      list = list.filter(c => c.id !== id);
+      savePortfolioData(list);
+      alert('시공사례가 삭제되었습니다.');
+    }
+
+    // Keyboard Escape Key Listener for Modals
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDetailModal();
+        closeCaseEditor();
+        closeAdminLoginModal();
+      }
+      if (e.key === 'ArrowLeft' && !document.getElementById('caseDetailModal').classList.contains('hidden')) {
+        changeModalPhoto(-1);
+      }
+      if (e.key === 'ArrowRight' && !document.getElementById('caseDetailModal').classList.contains('hidden')) {
+        changeModalPhoto(1);
+      }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Clean old format cache if necessary
+      const stored = localStorage.getItem('airlab_portfolio_cases');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed.length > 0 && parsed[0].content !== undefined) {
+            localStorage.removeItem('airlab_portfolio_cases'); // Refresh to clean format
+          }
+        } catch(e) {}
+      }
+      updateAdminUI();
+      renderPortfolio();
+    });
 
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -826,6 +1239,5 @@
       });
     }
   </script>
-
 </body>
 </html>
