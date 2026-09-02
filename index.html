@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AirLab 에어랩 — 프리미엄 에어컨 분해 세척 전문</title>
+  <meta name="description" content="공기의 질을 연구합니다. 프리미엄 에어컨 분해 세척 에어랩. 가정집부터 상가·기업까지, 에어컨 전문 엔지니어가 제공하는 정교하고 투명한 케어." />
+  <meta property="og:title" content="AirLab 에어랩 — 프리미엄 에어컨 분해 세척" />
+  <meta property="og:description" content="100% 완전 분해 세척 · 친환경 세제 사용 · 60일 무상 A/S 보증. 에어컨 전문 엔지니어의 정밀 케어." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0F2B48',
+              navyDark: '#0A1E33',
+              navyLight: '#183D65',
+              ice: '#00B4D8',
+              iceHover: '#0096C7',
+              iceLight: '#E0F7FA',
+              iceSoft: '#F0F9FF',
+              slateBg: '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '16px',
+            '3xl': '24px',
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(15, 43, 72, 0.06)',
+            'card': '0 10px 30px -4px rgba(15, 43, 72, 0.08)',
+            'card-hover': '0 20px 35px -4px rgba(15, 43, 72, 0.14)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <style>
+    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; }
+    .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); }
+    @keyframes float-gentle { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    .animate-float { animation: float-gentle 4s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased selection:bg-brand-ice selection:text-white flex flex-col min-h-screen">
+
+  <!-- 1. NAVIGATION BAR -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 glass-header border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-2xl bg-brand-navy flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform duration-200">
+          <span class="text-brand-ice">A</span>L
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl font-extrabold tracking-tight text-brand-navy leading-none">AirLab</span>
+            <span class="text-sm font-bold text-brand-ice leading-none">에어랩</span>
+          </div>
+          <span class="text-[11px] font-medium tracking-wider text-slate-400 mt-1 uppercase">프리미엄 에어컨 케어</span>
+        </div>
+      </a>
+
+      <!-- Quick Nav Links -->
+      <nav class="hidden md:flex items-center gap-7 text-[15px] font-medium text-slate-600">
+        <a href="index.html" class="text-brand-navy font-bold border-b-2 border-brand-navy py-2">홈</a>
+        <a href="about.html" class="hover:text-brand-navy transition-colors py-2">회사 소개</a>
+        <a href="service.html" class="hover:text-brand-navy transition-colors py-2">서비스 단가</a>
+        <a href="work.html" class="hover:text-brand-navy transition-colors py-2">작업 현황</a>
+        <a href="faq.html" class="hover:text-brand-navy transition-colors py-2">FAQ</a>
+        <a href="contact.html" class="hover:text-brand-navy transition-colors py-2">견적 문의</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-navy hover:bg-brand-navyLight active:scale-95 transition-all shadow-soft hover:shadow-card">
+          온라인 견적 신청
+          <svg class="w-4 h-4 ml-1.5 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" type="button" class="md:hidden p-2.5 rounded-2xl text-slate-600 hover:text-brand-navy hover:bg-slate-100 transition-colors" aria-label="메뉴 열기">
+        <svg id="menuOpenIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="menuCloseIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-b border-slate-100 bg-white/95 backdrop-blur-xl px-6 py-6 space-y-4 shadow-xl">
+      <div class="flex flex-col space-y-3 text-base font-medium text-slate-700">
+        <a href="index.html" class="py-2 border-b border-slate-100 font-bold text-brand-navy">홈</a>
+        <a href="about.html" class="py-2 border-b border-slate-100">회사 소개</a>
+        <a href="service.html" class="py-2 border-b border-slate-100">서비스 단가</a>
+        <a href="work.html" class="py-2 border-b border-slate-100">작업 현황</a>
+        <a href="faq.html" class="py-2 border-b border-slate-100">FAQ</a>
+        <a href="contact.html" class="py-2 border-b border-slate-100">견적 문의</a>
+      </div>
+      <div class="pt-2">
+        <a href="contact.html" class="block w-full text-center py-3.5 px-4 rounded-2xl text-sm font-bold text-white bg-brand-navy shadow-md">
+          온라인 견적 신청하기
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow">
+    
+    <!-- 2. HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-slate-50/80 via-white to-white">
+      <div class="absolute top-20 right-10 w-96 h-96 bg-brand-iceLight/50 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 left-10 w-80 h-80 bg-brand-iceSoft rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Left Hero Text & CTA -->
+          <div class="lg:col-span-7 space-y-8 text-left">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-iceSoft border border-brand-ice/20 text-brand-navy text-xs sm:text-sm font-semibold tracking-wide">
+              <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
+              공기의 질을 연구하는 정밀 클리닝 랩
+            </div>
+
+            <div class="space-y-3">
+              <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-brand-navy tracking-tight leading-[1.2]">
+                공기의 질을 연구합니다.<br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-navy via-brand-navyLight to-brand-ice">
+                  프리미엄 에어컨 분해 세척
+                </span> 에어랩
+              </h1>
+              <p class="text-slate-600 text-base sm:text-lg lg:text-xl font-normal leading-relaxed pt-2 max-w-2xl">
+                가정집부터 상가·기업까지, <span class="text-brand-navy font-bold">에어컨 전문 엔지니어</span>가 제공하는 정교하고 투명한 케어로 가장 쾌적한 숨결을 되찾아드립니다.
+              </p>
+            </div>
+
+            <!-- Key Badges -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
+                <div class="w-5 h-5 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <span>100% 완전 분해 세척</span>
+              </div>
+
+              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
+                <div class="w-5 h-5 rounded-lg bg-sky-50 text-brand-ice flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <span>친환경 세제 사용</span>
+              </div>
+
+              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
+                <div class="w-5 h-5 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                </div>
+                <span>60일 무상 A/S 보증</span>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-bold text-white bg-brand-navy hover:bg-brand-navyLight hover:shadow-card-hover active:scale-[0.98] transition-all duration-200 group">
+                <span>1분 맞춤 견적 문의</span>
+                <svg class="w-5 h-5 ml-2 text-brand-ice group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+
+              <a href="service.html" class="inline-flex items-center justify-center px-7 py-4 rounded-2xl text-base font-semibold text-brand-navy bg-slate-100 hover:bg-slate-200 active:scale-[0.98] transition-all duration-200 border border-slate-200/80">
+                <span>서비스 단가 확인</span>
+                <svg class="w-4 h-4 ml-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Tech Graphic Mockup -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative mx-auto max-w-md">
+              
+              <div class="rounded-3xl bg-brand-navy p-7 text-white shadow-2xl relative overflow-hidden border border-slate-700/50">
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-ice/20 rounded-full blur-2xl"></div>
+                
+                <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <span class="text-xs uppercase tracking-widest text-slate-300 font-bold">AirLab Care Index</span>
+                  </div>
+                  <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-brand-ice/20 text-brand-ice font-semibold">PREMIUM</span>
+                </div>
+
+                <div class="py-6 space-y-4">
+                  <div class="flex items-end justify-between">
+                    <div>
+                      <p class="text-xs text-slate-400 font-medium">유해 곰팡이 & 세균 박멸률</p>
+                      <p class="text-4xl font-extrabold text-white mt-1">99.9<span class="text-xl font-normal text-brand-ice">%</span></p>
+                    </div>
+                    <span class="px-3 py-1 rounded-xl bg-brand-ice/20 text-brand-ice text-xs font-bold">친환경 고압 살균</span>
+                  </div>
+
+                  <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-brand-ice to-cyan-300 h-full w-[99.9%] rounded-full"></div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3 pt-2 text-xs">
+                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                      <p class="text-slate-400">시공 엔지니어</p>
+                      <p class="text-sm font-bold text-slate-100 mt-0.5">에어컨 전문 테크니션</p>
+                    </div>
+                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                      <p class="text-slate-400">안심 보증</p>
+                      <p class="text-sm font-bold text-slate-100 mt-0.5">60일 무상 A/S</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                  <span>정규 분해 교육 이수 완료</span>
+                  <span class="text-brand-ice font-semibold">서울·수도권 전지역</span>
+                </div>
+
+              </div>
+
+              <!-- Floating Mini Card 1 -->
+              <div class="hidden sm:flex items-center gap-3 absolute -top-5 -right-5 p-4 rounded-2xl bg-white shadow-card border border-slate-100 animate-float">
+                <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-brand-ice">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[11px] text-slate-500 font-medium">누적 시공</p>
+                  <p class="text-sm font-extrabold text-brand-navy">1,200건+ 돌파</p>
+                </div>
+              </div>
+
+              <!-- Floating Mini Card 2 -->
+              <div class="hidden sm:flex items-center gap-3 absolute -bottom-5 -left-5 p-4 rounded-2xl bg-white shadow-card border border-slate-100">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[11px] text-slate-500 font-medium">고객 만족도</p>
+                  <p class="text-sm font-extrabold text-brand-navy">4.9 / 5.0</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BRAND HIGHLIGHTS -->
+    <section class="py-20 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <span class="text-brand-ice font-bold text-sm tracking-wider uppercase">Why AirLab</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+            겉만 닦는 청소와<br class="hidden sm:block" />에어랩의 정밀 분해 세척은 다릅니다
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            에어컨의 냉각 핀과 송풍팬 뒤편은 곰팡이와 유해 세균의 온상입니다. 에어랩은 모든 핵심 부품을 완벽 분해하여 숨은 오염원까지 100% 제거합니다.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          
+          <div class="p-8 rounded-3xl bg-brand-slateBg border border-slate-200/80 shadow-soft hover:shadow-card transition-all group">
+            <div class="w-14 h-14 rounded-2xl bg-white text-brand-navy flex items-center justify-center shadow-soft mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-7 h-7 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-brand-navy mb-3">에어컨 전문 엔지니어 시공</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              하청이나 비전문 아르바이트가 아닌, 기계 구조 및 냉동공학 매뉴얼을 이수한 전문 테크니션이 직접 방문하여 책임 시공합니다.
+            </p>
+            <a href="about.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+              회사 및 엔지니어 소개 →
+            </a>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-brand-slateBg border border-slate-200/80 shadow-soft hover:shadow-card transition-all group">
+            <div class="w-14 h-14 rounded-2xl bg-white text-brand-navy flex items-center justify-center shadow-soft mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-7 h-7 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-brand-navy mb-3">투명한 정찰제 단가</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              현장 방문 후 임의로 추가금을 요구하는 불투명한 관행을 배제하고, 사전 단가표에 따른 명확하고 거품 없는 맞춤 견적을 제시합니다.
+            </p>
+            <a href="service.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+              정찰제 가격표 확인하기 →
+            </a>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-brand-slateBg border border-slate-200/80 shadow-soft hover:shadow-card transition-all group">
+            <div class="w-14 h-14 rounded-2xl bg-white text-brand-navy flex items-center justify-center shadow-soft mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-7 h-7 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-brand-navy mb-3">업계 최장 60일 A/S</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              시공 후에도 안심하고 사용하실 수 있도록 세척 관련 이슈 발생 시 60일 동안 무상 재방문 및 완벽한 사후 처리를 보증합니다.
+            </p>
+            <a href="faq.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+              A/S 보증 정책 보기 →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. CORE SERVICES PREVIEW -->
+    <section class="py-20 bg-brand-slateBg border-t border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+          <div>
+            <span class="text-brand-ice font-bold text-sm tracking-wider uppercase">Services</span>
+            <h2 class="text-3xl font-extrabold text-brand-navy tracking-tight mt-1">
+              에어랩 프리미엄 서비스
+            </h2>
+          </div>
+          <a href="service.html" class="inline-flex items-center text-sm font-bold text-brand-navy hover:text-brand-ice transition-colors">
+            전체 단가표 및 상세 보기
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">인기 기종</span>
+            <h3 class="text-xl font-bold text-brand-navy">시스템 에어컨</h3>
+            <p class="text-xs text-brand-ice font-bold">80,000원 ~</p>
+            <p class="text-slate-600 text-sm leading-relaxed">1Way / 4Way 천장형 카세트. PCB 방수 보양 후 열교환기 및 드레인판 고압 살균.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">가정용 추천</span>
+            <h3 class="text-xl font-bold text-brand-navy">스탠드 에어컨</h3>
+            <p class="text-xs text-brand-ice font-bold">110,000원 ~</p>
+            <p class="text-slate-600 text-sm leading-relaxed">송풍팬, 모터, 필터, 후면 열교환기 완전 분해로 곰팡이와 쉰내 완벽 제거.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">원룸 / 안방</span>
+            <h3 class="text-xl font-bold text-brand-navy">벽걸이 에어컨</h3>
+            <p class="text-xs text-brand-ice font-bold">70,000원 ~</p>
+            <p class="text-slate-600 text-sm leading-relaxed">전용 방수 가대 설치로 벽지 오염 없이 송풍 블로우팬 분해 및 고압 약품 살균.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">호텔 / 고급주거</span>
+            <h3 class="text-xl font-bold text-brand-navy">매립덕트 에어컨</h3>
+            <p class="text-xs text-brand-ice font-bold">160,000원 ~</p>
+            <p class="text-slate-600 text-sm leading-relaxed">천장 내부 매립형 덕트. 점검구를 통한 정밀 내시경 진단 및 고압 분사 세정.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">식당 / 매장 / 카페</span>
+            <h3 class="text-xl font-bold text-brand-navy">업소용 대형 스탠드</h3>
+            <p class="text-xs text-brand-ice font-bold">160,000원 ~</p>
+            <p class="text-slate-600 text-sm leading-relaxed">상업 공간 전용 강력 탈지 세정 및 집중 살균 클리닝으로 냉방 효율 회복.</p>
+          </div>
+
+          <div class="p-8 rounded-3xl bg-brand-navy text-white shadow-card space-y-3">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white/20 text-brand-ice">기업 / B2B</span>
+            <h3 class="text-xl font-bold text-white">기타 / 대량 문의</h3>
+            <p class="text-xs text-brand-ice font-bold">볼륨 추가 할인</p>
+            <p class="text-slate-300 text-sm leading-relaxed">5대 이상 복수 기종 및 사업장 정기 케어 시 추가 할인 및 세금계산서 발행 지원.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. 6-STEP PRECISION PROCESS -->
+    <section class="py-20 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <span class="text-brand-ice font-bold text-sm tracking-wider uppercase">Precision Process</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+            에어랩 6단계 정밀 세척 프로세스
+          </h2>
+          <p class="text-slate-600 text-base leading-relaxed">
+            한 단계도 건너뛰지 않는 체계적이고 표준화된 클리닝 매뉴얼을 준수합니다.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">01</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 1</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">작동 점검 및 상태 진단</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">세척 전 송풍·냉방 상태, 풍량, 토출 온도, 이상 소음 및 고장 여부를 사전 점검합니다.</p>
+          </div>
+
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">02</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 2</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">완전 분해 및 보양</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">전면 패널, 드레인판, 송풍팬을 100% 분해하고 주변 벽지·가구에 방수 보양을 설치합니다.</p>
+          </div>
+
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">03</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 3</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">친환경 약품 도포</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">미국 EPA 인증 친환경 전용 세정제를 도포하여 부품 손상 없이 찌든 때를 불려냅니다.</p>
+          </div>
+
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">04</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 4</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">고압 살균 세척</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">초고압 세척기로 냉각핀 깊숙이 박힌 곰팡이와 세제를 맑은 물이 나올 때까지 헹굼합니다.</p>
+          </div>
+
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">05</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 5</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">재조립 및 시운전</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">건조된 부품을 완벽하게 재조립 후 송풍 및 냉방 모드로 정상 작동을 함께 확인합니다.</p>
+          </div>
+
+          <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">06</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 6</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">사후 관리 & 60일 보증</h3>
+            <p class="text-slate-600 text-xs leading-relaxed">전/후 비교 확인 및 올바른 송풍 건조 습관 안내와 60일 무상 A/S 보증서를 발급합니다.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. WORK PORTFOLIO TEASER -->
+    <section class="py-20 bg-brand-slateBg border-t border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+          <div>
+            <span class="text-brand-ice font-bold text-sm tracking-wider uppercase">Field Portfolio</span>
+            <h2 class="text-3xl font-extrabold text-brand-navy tracking-tight mt-1">
+              주요 시공 사례 & 작업 현황
+            </h2>
+          </div>
+          <a href="work.html" class="inline-flex items-center text-sm font-bold text-brand-navy hover:text-brand-ice transition-colors">
+            전체 작업 현황 포트폴리오 보기
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">관공서 · 공공청사</span>
+              <span class="text-[11px] text-emerald-600 font-bold">시공 완료</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">서울 OO구청 본청사 전층 58대</h3>
+            <p class="text-xs text-slate-500">천장형 4Way 46대 + 매립덕트 12대. 주말 비업무 시간 완벽 보양 및 공정 사진보고서·세금계산서 정식 납품.</p>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>시스템 4Way / 매립덕트</span>
+              <span class="font-medium text-brand-navy">2026.04 시공</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">기업 B2B 오피스</span>
+              <span class="text-[11px] text-brand-ice font-bold">정기 유지보수</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">판교 IT 테크타워 사옥 32대</h3>
+            <p class="text-xs text-slate-500">서버실 및 개발실 무정전 3중 방수 보양 후 야간 무소음 시공. 시스템 4Way 32대 및 대형 실외기 4기 완료.</p>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>천장형 4Way / 실외기멀티</span>
+              <span class="font-medium text-brand-navy">2026.05 시공</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">의료기관 클리닉</span>
+              <span class="text-[11px] text-emerald-600 font-bold">시공 완료</span>
+            </div>
+            <h3 class="text-base font-bold text-brand-navy">강남 아동병원 메디컬센터 18대</h3>
+            <p class="text-xs text-slate-500">EPA 인증 100% 무독성·친환경 약품 정밀 세척 및 진료실 전 구역 피톤치드 훈증 멸균 케어 완료.</p>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <span>1Way 12대 / 4Way 6대</span>
+              <span class="font-medium text-brand-navy">2026.04 시공</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CTA SECTION -->
+    <section class="py-20 bg-brand-navy text-white text-center">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8 space-y-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          지금 바로 1분 무료 견적을 신청하세요
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+          담당 엔지니어가 접수 후 30분 이내에 정확한 맞춤 견적서와 방문 가능 일정을 회신해 드립니다.
+        </p>
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="contact.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-ice hover:bg-brand-iceHover text-brand-navy font-bold text-base shadow-card transition-all">
+            온라인 무료 견적 신청하기
+          </a>
+          <a href="tel:010-0000-0000" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-base transition-all">
+            엔지니어 전화 상담 (1588-0000)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FLOATING QUICK WIDGET (우측 고정 플로팅 위젯) -->
+  <aside class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3" aria-label="빠른 상담 위젯">
+    
+    <!-- Expandable Quick Actions Panel -->
+    <div id="floatingPanel" class="hidden flex-col gap-2.5 p-3.5 rounded-3xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl transition-all w-56 animate-float">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100 px-1">
+        <span class="text-xs font-extrabold text-brand-navy">에어랩 빠른 상담</span>
+        <span class="inline-flex items-center gap-1 text-[10px] text-emerald-600 font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          실시간 접수중
+        </span>
+      </div>
+      
+      <a href="contact.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-brand-navy hover:bg-brand-navyLight text-white text-xs font-bold transition-all shadow-sm">
+        <svg class="w-4 h-4 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <span>1분 실시간 견적 문의</span>
+      </a>
+
+      <a href="#" onclick="alert('에어랩 카카오톡 1:1 상담 채널로 연결됩니다.'); return false;" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-[#FEE500] hover:bg-[#FADA0A] text-[#3C1E1E] text-xs font-bold transition-all">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.708 4.8 4.27 6.054l-.865 3.208c-.078.29.24.526.495.368l3.864-2.4c.404.053.818.085 1.236.085 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+        <span>카카오톡 1:1 채팅</span>
+      </a>
+
+      <a href="tel:010-0000-0000" class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-brand-navy text-xs font-bold transition-all">
+        <svg class="w-4 h-4 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+        <span>엔지니어 직통 전화</span>
+      </a>
+    </div>
+
+    <!-- Toggle / Main Floating Trigger Button -->
+    <div class="flex items-center gap-2">
+      <!-- Scroll To Top Button -->
+      <button type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-11 h-11 rounded-full bg-white text-slate-600 hover:text-brand-navy border border-slate-200 shadow-md flex items-center justify-center hover:bg-slate-50 active:scale-95 transition-all" aria-label="맨 위로 이동">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+      </button>
+
+      <!-- Main Widget Button -->
+      <button type="button" id="floatingToggleBtn" class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-xs sm:text-sm shadow-card-hover active:scale-95 transition-all">
+        <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
+        <span>간편 상담 / 견적</span>
+        <svg id="widgetArrow" class="w-4 h-4 text-brand-ice transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- 8. FOOTER -->
+  <footer class="bg-brand-navy text-slate-400 py-16 border-t border-slate-800 text-sm mt-auto">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 space-y-10">
+      
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-white/10 flex items-center justify-center text-white font-bold text-base">
+            <span class="text-brand-ice">A</span>L
+          </div>
+          <div>
+            <span class="text-lg font-extrabold tracking-tight text-white">AirLab</span>
+            <span class="text-xs text-slate-400 ml-2 font-medium">프리미엄 에어컨 분해 세척 에어랩</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-6 text-xs text-slate-400 font-medium">
+          <a href="index.html" class="hover:text-white transition-colors">홈</a>
+          <a href="about.html" class="hover:text-white transition-colors">회사 소개</a>
+          <a href="service.html" class="hover:text-white transition-colors">서비스 단가</a>
+          <a href="work.html" class="hover:text-white transition-colors">작업 현황</a>
+          <a href="faq.html" class="hover:text-white transition-colors">FAQ</a>
+          <a href="contact.html" class="hover:text-white transition-colors">견적 문의</a>
+        </div>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 text-xs leading-relaxed">
+        
+        <div class="space-y-1.5">
+          <p class="text-slate-300 font-semibold">상호명: 에어랩 (AirLab) | 대표: 에어랩 마스터 엔지니어링팀</p>
+          <p>대표번호: <span class="text-slate-300 font-medium">1588-0000 / 010-0000-0000</span> | 이메일: <span class="text-slate-300 font-medium">contact@airlab.kr</span></p>
+          <p>사업자등록번호: 123-45-67890 | 통신판매업신고: 제2026-서울강남-00000호</p>
+          <p>주소: 서울특별시 강남구 테헤란로 152 에어랩 테크센터 8층</p>
+        </div>
+
+        <div class="md:text-right space-y-2">
+          <p class="text-slate-400">운영시간: 평일 09:00 - 19:00 (주말 및 공휴일 사전 예약 시공 가능)</p>
+          <p class="text-slate-500">Copyright © 2026 에어랩 (AirLab). All rights reserved.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpenIcon = document.getElementById('menuOpenIcon');
+    const menuCloseIcon = document.getElementById('menuCloseIcon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuOpenIcon.classList.add('hidden');
+        menuCloseIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      }
+    });
+
+    // 2. Sticky Navbar Shadow Effect on Scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
+      }
+    });
+
+    // 3. Floating Widget Toggle
+    const floatingBtn = document.getElementById('floatingToggleBtn');
+    const floatingPanel = document.getElementById('floatingPanel');
+    const widgetArrow = document.getElementById('widgetArrow');
+    floatingBtn.addEventListener('click', () => {
+      const isHidden = floatingPanel.classList.contains('hidden');
+      floatingPanel.classList.toggle('hidden', !isHidden);
+      widgetArrow.classList.toggle('rotate-180', isHidden);
+    });
+  </script>
+
+</body>
+</html>
