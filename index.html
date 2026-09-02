@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
   <title>AirLab 에어랩 — 프리미엄 에어컨 분해 세척 전문</title>
   <meta name="description" content="공기의 질을 연구합니다. 프리미엄 에어컨 분해 세척 에어랩. 가정집부터 상가·기업까지, 에어컨 전문 엔지니어가 제공하는 정교하고 투명한 케어." />
   <meta property="og:title" content="AirLab 에어랩 — 프리미엄 에어컨 분해 세척" />
@@ -59,22 +60,20 @@
   <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 glass-header border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-2xl bg-brand-navy flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform duration-200">
-          <span class="text-brand-ice">A</span>L
-        </div>
+            <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group">
+        <img src="images/logo.png" alt="AirLab 로고" class="w-10 h-10 sm:w-11 sm:h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
         <div class="flex flex-col">
           <div class="flex items-center gap-1.5">
-            <span class="text-xl font-extrabold tracking-tight text-brand-navy leading-none">AirLab</span>
+            <span class="text-xl sm:text-2xl font-black tracking-tight text-brand-navy leading-none">AirLab</span>
             <span class="text-sm font-bold text-brand-ice leading-none">에어랩</span>
           </div>
-          <span class="text-[11px] font-medium tracking-wider text-slate-400 mt-1 uppercase">프리미엄 에어컨 케어</span>
+          <span class="text-[11px] font-semibold tracking-wider text-slate-400 mt-0.5 uppercase">프리미엄 에어컨 케어</span>
         </div>
       </a>
 
       <!-- Quick Nav Links -->
-      <nav class="hidden md:flex items-center gap-7 text-[15px] font-medium text-slate-600">
+      <nav class="hidden md:flex items-center gap-7 text-base font-semibold text-slate-700">
         <a href="index.html" class="text-brand-navy font-bold border-b-2 border-brand-navy py-2">홈</a>
         <a href="about.html" class="hover:text-brand-navy transition-colors py-2">회사 소개</a>
         <a href="service.html" class="hover:text-brand-navy transition-colors py-2">서비스 단가</a>
@@ -126,152 +125,61 @@
   <!-- MAIN CONTENT -->
   <main class="flex-grow">
     
-    <!-- 2. HERO SECTION -->
-    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-gradient-to-b from-slate-50/80 via-white to-white">
-      <div class="absolute top-20 right-10 w-96 h-96 bg-brand-iceLight/50 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-10 left-10 w-80 h-80 bg-brand-iceSoft rounded-full blur-2xl pointer-events-none"></div>
+                        <!-- 2. FULL PHOTO HERO SECTION (실사 배경 100% 선명 노출 버전) -->
+    <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 overflow-hidden min-h-[660px] flex items-center justify-center text-center">
+      
+      <!-- 100% Clear High-Pressure Wash Photo (색상 오버레이 제거) -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img src="images/hero_wash_bg.jpg" alt="에어랩 고압 세척 현장 실사" class="w-full h-full object-cover object-center" />
+        <!-- Subtle Natural Shadow only for text contrast -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/20 to-black/65 pointer-events-none"></div>
+      </div>
 
-      <div class="max-w-7xl mx-auto px-5 sm:px-8 relative z-10">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          <!-- Left Hero Text & CTA -->
-          <div class="lg:col-span-7 space-y-8 text-left">
-            
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-iceSoft border border-brand-ice/20 text-brand-navy text-xs sm:text-sm font-semibold tracking-wide">
-              <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
-              공기의 질을 연구하는 정밀 클리닝 랩
-            </div>
-
-            <div class="space-y-3">
-              <h1 class="text-3xl sm:text-5xl lg:text-[52px] font-extrabold text-brand-navy tracking-tight leading-[1.2]">
-                공기의 질을 연구합니다.<br />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-navy via-brand-navyLight to-brand-ice">
-                  프리미엄 에어컨 분해 세척
-                </span> 에어랩
-              </h1>
-              <p class="text-slate-600 text-base sm:text-lg lg:text-xl font-normal leading-relaxed pt-2 max-w-2xl">
-                가정집부터 상가·기업까지, <span class="text-brand-navy font-bold">에어컨 전문 엔지니어</span>가 제공하는 정교하고 투명한 케어로 가장 쾌적한 숨결을 되찾아드립니다.
-              </p>
-            </div>
-
-            <!-- Key Badges -->
-            <div class="flex flex-wrap items-center gap-3 pt-1">
-              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
-                <div class="w-5 h-5 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                </div>
-                <span>100% 완전 분해 세척</span>
-              </div>
-
-              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
-                <div class="w-5 h-5 rounded-lg bg-sky-50 text-brand-ice flex items-center justify-center">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                </div>
-                <span>친환경 세제 사용</span>
-              </div>
-
-              <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft text-slate-700 text-xs sm:text-sm font-semibold">
-                <div class="w-5 h-5 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                </div>
-                <span>영업배상책임보험 가입</span>
-              </div>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-bold text-white bg-brand-navy hover:bg-brand-navyLight hover:shadow-card-hover active:scale-[0.98] transition-all duration-200 group">
-                <span>1분 맞춤 견적 문의</span>
-                <svg class="w-5 h-5 ml-2 text-brand-ice group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </a>
-
-              <a href="service.html" class="inline-flex items-center justify-center px-7 py-4 rounded-2xl text-base font-semibold text-brand-navy bg-slate-100 hover:bg-slate-200 active:scale-[0.98] transition-all duration-200 border border-slate-200/80">
-                <span>서비스 단가 확인</span>
-                <svg class="w-4 h-4 ml-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-              </a>
-            </div>
-
-          </div>
-
-          <!-- Right Tech Graphic Mockup -->
-          <div class="lg:col-span-5 relative">
-            <div class="relative mx-auto max-w-md">
-              
-              <div class="rounded-3xl bg-brand-navy p-7 text-white shadow-2xl relative overflow-hidden border border-slate-700/50">
-                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-ice/20 rounded-full blur-2xl"></div>
-                
-                <div class="flex items-center justify-between pb-6 border-b border-white/10">
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
-                    <span class="text-xs uppercase tracking-widest text-slate-300 font-bold">AirLab Care Index</span>
-                  </div>
-                  <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-brand-ice/20 text-brand-ice font-semibold">PREMIUM</span>
-                </div>
-
-                <div class="py-6 space-y-4">
-                  <div class="flex items-end justify-between">
-                    <div>
-                      <p class="text-xs text-slate-400 font-medium">유해 곰팡이 & 세균 박멸률</p>
-                      <p class="text-4xl font-extrabold text-white mt-1">99.9<span class="text-xl font-normal text-brand-ice">%</span></p>
-                    </div>
-                    <span class="px-3 py-1 rounded-xl bg-brand-ice/20 text-brand-ice text-xs font-bold">친환경 고압 살균</span>
-                  </div>
-
-                  <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                    <div class="bg-gradient-to-r from-brand-ice to-cyan-300 h-full w-[99.9%] rounded-full"></div>
-                  </div>
-
-                  <div class="grid grid-cols-2 gap-3 pt-2 text-xs">
-                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
-                      <p class="text-slate-400">시공 엔지니어</p>
-                      <p class="text-sm font-bold text-slate-100 mt-0.5">에어컨 전문 테크니션</p>
-                    </div>
-                    <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10">
-                      <p class="text-slate-400">책임 보험</p>
-                      <p class="text-sm font-bold text-slate-100 mt-0.5">영업배상책임 3억</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
-                  <span>정규 분해 교육 이수 완료</span>
-                  <span class="text-brand-ice font-semibold">서울·수도권 전지역</span>
-                </div>
-
-              </div>
-
-              <!-- Floating Mini Card 1 -->
-              <div class="hidden sm:flex items-center gap-3 absolute -top-5 -right-5 p-4 rounded-2xl bg-white shadow-card border border-slate-100 animate-float">
-                <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-brand-ice">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[11px] text-slate-500 font-medium">누적 시공</p>
-                  <p class="text-sm font-extrabold text-brand-navy">1,200건+ 돌파</p>
-                </div>
-              </div>
-
-              <!-- Floating Mini Card 2 -->
-              <div class="hidden sm:flex items-center gap-3 absolute -bottom-5 -left-5 p-4 rounded-2xl bg-white shadow-card border border-slate-100">
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[11px] text-slate-500 font-medium">고객 만족도</p>
-                  <p class="text-sm font-extrabold text-brand-navy">4.9 / 5.0</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 relative z-10 space-y-7">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-navy/80 backdrop-blur-md border border-white/30 text-brand-ice text-sm sm:text-base font-extrabold tracking-wide shadow-lg">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-ice animate-pulse"></span>
+          공기의 질을 연구하는 프리미엄 클리닝 랩
         </div>
+
+        <div class="space-y-4">
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.25] [text-shadow:_0_4px_16px_rgba(0,0,0,0.95)]">
+            맑은 공기. 처음처럼 상쾌한 바람<br />
+            <span class="text-brand-ice">
+              프리미엄 에어컨 분해 세척 에어랩
+            </span>
+          </h1>
+          <p class="text-white text-base sm:text-xl lg:text-2xl font-bold leading-relaxed max-w-3xl mx-auto [text-shadow:_0_2px_10px_rgba(0,0,0,0.95)]">
+            "전문 엔지니어가 직접 방문하여 정교하고 투명한 기술로 에어컨을 세척해드립니다!"
+          </p>
+        </div>
+
+        <!-- 3 Badges with Frosted Glass -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-brand-navy/85 backdrop-blur-md border border-white/25 text-white text-sm sm:text-base font-bold shadow-xl">
+            <span class="text-emerald-400 font-black">✔</span>
+            <span>100% 완전 분해 세척</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-brand-navy/85 backdrop-blur-md border border-white/25 text-white text-sm sm:text-base font-bold shadow-xl">
+            <span class="text-brand-ice font-black">✔</span>
+            <span>친환경 약품 & 고압 세척</span>
+          </div>
+          <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-brand-navy/85 backdrop-blur-md border border-white/25 text-white text-sm sm:text-base font-bold shadow-xl">
+            <span class="text-sky-300 font-black">✔</span>
+            <span>영업배상책임 3억 가입</span>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <a href="contact.html" class="w-full sm:w-auto px-9 py-4 rounded-2xl text-base sm:text-lg font-black text-brand-navy bg-brand-ice hover:bg-brand-iceHover shadow-[0_4px_20px_rgba(0,0,0,0.5)] active:scale-95 transition-all">
+            실시간 맞춤 견적 문의 →
+          </a>
+          <a href="service.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl text-base sm:text-lg font-bold text-white bg-brand-navy/80 hover:bg-brand-navy backdrop-blur-md border border-white/30 shadow-[0_4px_20px_rgba(0,0,0,0.5)] active:scale-95 transition-all">
+            서비스 단가 확인
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -298,10 +206,10 @@
               </svg>
             </div>
             <h3 class="text-xl font-bold text-brand-navy mb-3">에어컨 전문 엔지니어 시공</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            <p class="text-slate-600 text-base leading-relaxed mb-4">
               하청이나 비전문 아르바이트가 아닌, 기계 구조 및 냉동공학 매뉴얼을 이수한 전문 테크니션이 직접 방문하여 책임 시공합니다.
             </p>
-            <a href="about.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+            <a href="about.html" class="inline-flex items-center text-sm font-bold text-brand-navy hover:text-brand-ice transition-colors">
               회사 및 엔지니어 소개 →
             </a>
           </div>
@@ -313,10 +221,10 @@
               </svg>
             </div>
             <h3 class="text-xl font-bold text-brand-navy mb-3">투명한 정찰제 단가</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            <p class="text-slate-600 text-base leading-relaxed mb-4">
               현장 방문 후 임의로 추가금을 요구하는 불투명한 관행을 배제하고, 사전 단가표에 따른 명확하고 거품 없는 맞춤 견적을 제시합니다.
             </p>
-            <a href="service.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+            <a href="service.html" class="inline-flex items-center text-sm font-bold text-brand-navy hover:text-brand-ice transition-colors">
               정찰제 가격표 확인하기 →
             </a>
           </div>
@@ -328,12 +236,106 @@
               </svg>
             </div>
             <h3 class="text-xl font-bold text-brand-navy mb-3">책임 시공 & 안심 사후 관리</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            <p class="text-slate-600 text-base leading-relaxed mb-4">
               시공 후 작업 관련 문제에 대해 2주간 신속한 무상 A/S를 지원하며, 3억원 영업배상책임보험 가입으로 시설물과 기기를 철저히 보호합니다.
             </p>
-            <a href="about.html" class="inline-flex items-center text-xs font-bold text-brand-navy hover:text-brand-ice transition-colors">
+            <a href="about.html" class="inline-flex items-center text-sm font-bold text-brand-navy hover:text-brand-ice transition-colors">
               안심 시공 정책 보기 →
             </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REAL BEFORE & AFTER COMPARISON SECTION -->
+    <section class="py-20 bg-slate-50/80 border-t border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold tracking-wide shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
+            AirLab Real Before & After
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+            눈으로 확인하는 에어랩의 압도적 세척 차이
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            보이지 않는 냉각핀 깊숙한 찌든 때부터 악취의 주원인인 드레인판 곰팡이까지, 완전 분해와 친환경 약품 고압 세척으로 신품급 청결도를 복원합니다.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          
+          <!-- Compare Card 1: 핀 (열교환기 / 에바) -->
+          <div class="rounded-3xl bg-white border border-slate-200/90 shadow-card p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-brand-iceSoft text-brand-navy font-bold flex items-center justify-center text-sm">01</span>
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-brand-navy">천장형 에어컨 냉각핀 (열교환기)</h3>
+                  <p class="text-xs sm:text-sm text-slate-500">먼지·곰팡이 찌든 때 ➔ 알루미늄 본연의 은빛 광택 복원</p>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold">냉방효율 20%↑</span>
+            </div>
+
+            <!-- Side by Side Photos -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <!-- Before -->
+              <div class="space-y-2">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm group">
+                  <img src="images/compare_fin_before.jpg" alt="냉각핀 세척 전 곰팡이 오염" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-rose-600/90 text-white font-black text-xs shadow-md">BEFORE (세척 전)</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium text-center">알루미늄 핀 사이 곰팡이·먼지 흡착</p>
+              </div>
+
+              <!-- After -->
+              <div class="space-y-2">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border-2 border-brand-ice shadow-md group">
+                  <img src="images/compare_fin_after.jpg" alt="냉각핀 친환경 고압 세척 후" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white font-black text-xs shadow-md">AFTER (세척 후)</span>
+                </div>
+                <p class="text-xs text-brand-navy font-bold text-center">에바브라이트 + 고압 세척 100% 관통</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compare Card 2: 드레인판(물받이) 및 송풍팬 -->
+          <div class="rounded-3xl bg-white border border-slate-200/90 shadow-card p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+              <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-xl bg-brand-iceSoft text-brand-navy font-bold flex items-center justify-center text-sm">02</span>
+                <div>
+                  <h3 class="text-lg sm:text-xl font-extrabold text-brand-navy">드레인판(물받이) & 송풍팬 부품</h3>
+                  <p class="text-xs sm:text-sm text-slate-500">결로 썩은 냄새 및 곰팡이 슬러지 ➔ 100% 멸균 살균 세척</p>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-sky-50 text-brand-ice font-bold text-xs">악취 원인 100% 박멸</span>
+            </div>
+
+            <!-- Side by Side Photos -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <!-- Before -->
+              <div class="space-y-2">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm group">
+                  <img src="images/compare_part_before.jpg" alt="드레인판 및 송풍팬 세척 전 오염" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-rose-600/90 text-white font-black text-xs shadow-md">BEFORE (세척 전)</span>
+                </div>
+                <p class="text-xs text-slate-500 font-medium text-center">드레인판 물때 슬러지 & 쉰내 유발</p>
+              </div>
+
+              <!-- After -->
+              <div class="space-y-2">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border-2 border-brand-ice shadow-md group">
+                  <img src="images/compare_part_after.jpg" alt="드레인판 및 송풍팬 분해 고압 세척 후" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white font-black text-xs shadow-md">AFTER (세척 후)</span>
+                </div>
+                <p class="text-xs text-brand-navy font-bold text-center">완전 분해 살균 세척으로 백색 광택 복원</p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -360,45 +362,45 @@
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">인기 기종</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">인기 기종</span>
             <h3 class="text-xl font-bold text-brand-navy">시스템 에어컨</h3>
             <p class="text-xs text-brand-ice font-bold">100,000원 ~</p>
-            <p class="text-slate-600 text-sm leading-relaxed">1Way / 2Way / 4Way / 360 원형. 전면 패널 및 드레인판 분해 후 내부 열교환기·송풍팬 고압 세척.</p>
+            <p class="text-slate-600 text-base leading-relaxed">1Way / 2Way / 4Way / 360 원형. 전면 패널 및 드레인판 분해 후 내부 열교환기·송풍팬 고압 세척.</p>
           </div>
 
           <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">가정용 추천</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">가정용 추천</span>
             <h3 class="text-xl font-bold text-brand-navy">스탠드 에어컨</h3>
             <p class="text-xs text-brand-ice font-bold">140,000원 ~</p>
-            <p class="text-slate-600 text-sm leading-relaxed">가정용 및 영업용 스탠드. 전면 커버 분해 후 내부 열교환기 및 송풍팬 오염물 고압 세척.</p>
+            <p class="text-slate-600 text-base leading-relaxed">가정용 및 영업용 스탠드. 전면 커버 분해 후 내부 열교환기 및 송풍팬 오염물 고압 세척.</p>
           </div>
 
           <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">원룸 / 안방</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">원룸 / 안방</span>
             <h3 class="text-xl font-bold text-brand-navy">벽걸이 에어컨</h3>
             <p class="text-xs text-brand-ice font-bold">80,000원 ~</p>
-            <p class="text-slate-600 text-sm leading-relaxed">가정용·원룸 벽걸이. 전용 방수 가대 설치로 벽지 오염 없이 전면 커버 분해 및 열교환기 고압 세척.</p>
+            <p class="text-slate-600 text-base leading-relaxed">가정용·원룸 벽걸이. 전용 방수 가대 설치로 벽지 오염 없이 전면 커버 분해 및 열교환기 고압 세척.</p>
           </div>
 
           <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">호텔 / 고급주거</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">호텔 / 고급주거</span>
             <h3 class="text-xl font-bold text-brand-navy">매립덕트 에어컨</h3>
             <p class="text-xs text-brand-ice font-bold">280,000원 ~</p>
-            <p class="text-slate-600 text-sm leading-relaxed">천장 매립형 덕트. 점검구를 통한 드레인판 분해 및 내부 열교환기 고압 세척.</p>
+            <p class="text-slate-600 text-base leading-relaxed">천장 매립형 덕트. 점검구를 통한 드레인판 분해 및 내부 열교환기 고압 세척.</p>
           </div>
 
           <div class="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">식당 / 매장 / 카페</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600">식당 / 매장 / 카페</span>
             <h3 class="text-xl font-bold text-brand-navy">업소용 대형 스탠드</h3>
             <p class="text-xs text-brand-ice font-bold">160,000원 ~</p>
-            <p class="text-slate-600 text-sm leading-relaxed">식당, 카페, 매장 등 대형 스탠드. 내부 열교환기 찌든 때 및 오염물 집중 고압 세척.</p>
+            <p class="text-slate-600 text-base leading-relaxed">식당, 카페, 매장 등 대형 스탠드. 내부 열교환기 찌든 때 및 오염물 집중 고압 세척.</p>
           </div>
 
           <div class="p-8 rounded-3xl bg-brand-navy text-white shadow-card space-y-3">
-            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-white/20 text-brand-ice">기업 / B2B</span>
+            <span class="text-sm font-bold px-3 py-1 rounded-full bg-white/20 text-brand-ice">기업 / B2B</span>
             <h3 class="text-xl font-bold text-white">기타 / 대량 문의</h3>
             <p class="text-xs text-brand-ice font-bold">볼륨 추가 할인</p>
-            <p class="text-slate-300 text-sm leading-relaxed">5대 이상 복수 시공 및 정기 유지보수 협약 시 대당 추가 할인 및 전자세금계산서 발행 지원.</p>
+            <p class="text-slate-300 text-base leading-relaxed">5대 이상 복수 시공 및 정기 유지보수 협약 시 대당 추가 할인 및 전자세금계산서 발행 지원.</p>
           </div>
         </div>
       </div>
@@ -422,55 +424,55 @@
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">01</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 1</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 1</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">작동 점검 및 상태 진단</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">세척 전 송풍·냉방 상태, 풍량, 토출 온도, 이상 소음 및 고장 여부를 사전 점검합니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">작동 점검 및 상태 진단</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">세척 전 송풍·냉방 상태, 풍량, 토출 온도, 이상 소음 및 고장 여부를 사전 점검합니다.</p>
           </div>
 
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">02</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 2</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 2</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">완전 분해 및 보양</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">전면 패널, 필터, 드레인판 등 기종별 주요 부품을 분해하고 주변 벽지·가구에 방수 보양을 설치합니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">완전 분해 및 보양</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">전면 패널, 필터, 드레인판 등 기종별 주요 부품을 분해하고 주변 벽지·가구에 방수 보양을 설치합니다.</p>
           </div>
 
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">03</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 3</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 3</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">친환경 약품 도포</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">미국 EPA 인증 친환경 전용 세정제를 도포하여 부품 손상 없이 찌든 때를 불려냅니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">친환경 약품 도포</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">미국 EPA 인증 친환경 전용 세정제를 도포하여 부품 손상 없이 찌든 때를 불려냅니다.</p>
           </div>
 
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">04</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 4</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 4</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">고압 살균 세척</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">초고압 세척기로 냉각핀 깊숙이 박힌 곰팡이와 세제를 맑은 물이 나올 때까지 헹굼합니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">고압 살균 세척</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">초고압 세척기로 냉각핀 깊숙이 박힌 곰팡이와 세제를 맑은 물이 나올 때까지 헹굼합니다.</p>
           </div>
 
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">05</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 5</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 5</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">재조립 및 시운전</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">건조된 부품을 완벽하게 재조립 후 송풍 및 냉방 모드로 정상 작동을 함께 확인합니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">재조립 및 시운전</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">건조된 부품을 완벽하게 재조립 후 송풍 및 냉방 모드로 정상 작동을 함께 확인합니다.</p>
           </div>
 
           <div class="p-7 rounded-3xl bg-brand-slateBg border border-slate-200/80 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-3xl font-extrabold text-brand-navy/30 font-mono">06</span>
-              <span class="text-xs font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 6</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-xl bg-white text-brand-navy border border-slate-200">STEP 6</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">사후 관리 & 최종 점검</h3>
-            <p class="text-slate-600 text-xs leading-relaxed">전/후 비교 확인 및 올바른 송풍 건조 습관 안내와 시공 후 정상 작동을 함께 최종 점검합니다.</p>
+            <h3 class="text-lg font-bold text-brand-navy">사후 관리 & 최종 점검</h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">전/후 비교 확인 및 올바른 송풍 건조 습관 안내와 시공 후 정상 작동을 함께 최종 점검합니다.</p>
           </div>
         </div>
 
@@ -496,12 +498,12 @@
         <div class="grid md:grid-cols-3 gap-6">
           <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">관공서 · 공공청사</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">관공서 · 공공청사</span>
               <span class="text-[11px] text-emerald-600 font-bold">시공 완료</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">서울 OO구청 본청사 전층 58대</h3>
+            <h3 class="text-lg font-bold text-brand-navy">서울 OO구청 본청사 전층 58대</h3>
             <p class="text-xs text-slate-500">천장형 4Way 46대 + 매립덕트 12대. 주말 비업무 시간 완벽 보양 및 공정 사진보고서·세금계산서 정식 납품.</p>
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-sm text-slate-400">
               <span>시스템 4Way / 매립덕트</span>
               <span class="font-medium text-brand-navy">2026.04 시공</span>
             </div>
@@ -509,12 +511,12 @@
 
           <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">기업 B2B 오피스</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">기업 B2B 오피스</span>
               <span class="text-[11px] text-brand-ice font-bold">정기 유지보수</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">판교 IT 테크타워 사옥 32대</h3>
+            <h3 class="text-lg font-bold text-brand-navy">판교 IT 테크타워 사옥 32대</h3>
             <p class="text-xs text-slate-500">서버실 및 개발실 무정전 3중 방수 보양 후 사전 일정 조율 시공 (주말/야간 상담). 시스템 4Way 32대 및 대형 실외기 4기 완료.</p>
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-sm text-slate-400">
               <span>천장형 4Way / 실외기멀티</span>
               <span class="font-medium text-brand-navy">2026.05 시공</span>
             </div>
@@ -522,12 +524,12 @@
 
           <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">의료기관 클리닉</span>
+              <span class="text-sm font-bold px-3 py-1 rounded-full bg-brand-iceSoft text-brand-navy">의료기관 클리닉</span>
               <span class="text-[11px] text-emerald-600 font-bold">시공 완료</span>
             </div>
-            <h3 class="text-base font-bold text-brand-navy">강남 아동병원 메디컬센터 18대</h3>
+            <h3 class="text-lg font-bold text-brand-navy">강남 아동병원 메디컬센터 18대</h3>
             <p class="text-xs text-slate-500">EPA 인증 100% 무독성·친환경 약품 정밀 세척 및 진료실 전 구역 친환경 훈증 멸균 케어 완료.</p>
-            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-sm text-slate-400">
               <span>1Way 12대 / 4Way 6대</span>
               <span class="font-medium text-brand-navy">2026.04 시공</span>
             </div>
@@ -540,10 +542,10 @@
     <section class="py-20 bg-brand-navy text-white text-center">
       <div class="max-w-4xl mx-auto px-5 sm:px-8 space-y-6">
         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-          지금 바로 1분 무료 견적을 신청하세요
+          지금 바로 무료 맞춤 견적을 신청하세요
         </h2>
         <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
-          담당 엔지니어가 접수 후 30분 이내에 정확한 맞춤 견적서와 방문 가능 일정을 회신해 드립니다.
+          담당 엔지니어가 접수 내용을 확인하여 빠르고 정확하게 맞춤 견적과 방문 일정을 안내해 드립니다.
         </p>
         <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a href="contact.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-ice hover:bg-brand-iceHover text-brand-navy font-bold text-base shadow-card transition-all">
@@ -563,25 +565,25 @@
     <div class="w-[62px] sm:w-[66px] rounded-[36px] bg-brand-navy/95 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(15,43,72,0.3)] py-3.5 px-1.5 flex flex-col items-center gap-3 text-white transition-all">
       
       <!-- 1. 1분 견적 (메인 시그니처 뱃지) -->
-      <a href="contact.html" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="1분 실시간 견적 문의">
+      <a href="contact.html" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="실시간 맞춤 견적 문의">
         <!-- Hover Left Tooltip -->
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80 flex items-center gap-1.5">
+          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
-            1분 실시간 무료 견적
+            실시간 맞춤 견적 문의
           </div>
         </div>
         
         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-ice to-cyan-300 text-brand-navy flex items-center justify-center shadow-[0_0_18px_rgba(0,180,216,0.45)] group-hover:scale-110 transition-transform">
           <svg class="w-5 h-5 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
         </div>
-        <span class="text-[9px] font-extrabold text-brand-ice tracking-tighter mt-1">1분견적</span>
+        <span class="text-[9px] font-extrabold text-brand-ice tracking-tighter mt-1">맞춤견적</span>
       </a>
 
-      <!-- 2. 카카오톡 상담 -->
+            <!-- 2. 카카오톡 상담 -->
       <a href="#" onclick="alert('에어랩 카카오톡 1:1 상담 채널로 연결됩니다.'); return false;" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="카카오톡 1:1 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
+          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
             카카오톡 1:1 실시간 상담
           </div>
         </div>
@@ -592,10 +594,24 @@
         <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">카카오톡</span>
       </a>
 
-      <!-- 3. 전화 상담 -->
+      <!-- 3. 공식 블로그 -->
+      <a href="#" onclick="alert('에어랩 공식 네이버 블로그로 이동합니다.'); return false;" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="공식 블로그">
+        <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
+          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
+            에어랩 공식 블로그
+          </div>
+        </div>
+
+        <div class="w-10 h-10 rounded-full bg-[#03C75A] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform font-black text-xs tracking-tighter">
+          blog
+        </div>
+        <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">블로그</span>
+      </a>
+
+      <!-- 4. 전화 상담 -->
       <a href="tel:010-0000-0000" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="엔지니어 직통 전화">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
+          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
             엔지니어 직통 (1588-0000)
           </div>
         </div>
@@ -604,20 +620,6 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
         </div>
         <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">전화상담</span>
-      </a>
-
-      <!-- 4. 작업 현황 포트폴리오 -->
-      <a href="work.html" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="시공 포트폴리오">
-        <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
-            실제 시공 포트폴리오
-          </div>
-        </div>
-
-        <div class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-ice hover:text-brand-navy text-slate-300 flex items-center justify-center border border-white/15 group-hover:scale-110 transition-all">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        </div>
-        <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">시공사례</span>
       </a>
 
       <div class="w-5 border-b border-white/15 my-0.5"></div>
@@ -642,17 +644,15 @@
       
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-slate-800">
         
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-2xl bg-white/10 flex items-center justify-center text-white font-bold text-base">
-            <span class="text-brand-ice">A</span>L
-          </div>
+                <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="AirLab 로고" class="w-10 h-10 object-contain brightness-110" />
           <div>
             <span class="text-lg font-extrabold tracking-tight text-white">AirLab</span>
-            <span class="text-xs text-slate-400 ml-2 font-medium">프리미엄 에어컨 분해 세척 에어랩</span>
+            <span class="text-sm text-slate-400 ml-2 font-medium">프리미엄 에어컨 분해 세척 에어랩</span>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-6 text-xs text-slate-400 font-medium">
+        <div class="flex flex-wrap gap-6 text-sm text-slate-400 font-medium">
           <a href="index.html" class="hover:text-white transition-colors">홈</a>
           <a href="about.html" class="hover:text-white transition-colors">회사 소개</a>
           <a href="service.html" class="hover:text-white transition-colors">서비스 단가</a>
