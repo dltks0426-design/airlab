@@ -135,96 +135,349 @@
         </p>
       </div>
     </section>
-
     <!-- FAQ Accordion List -->
-    <section class="py-16 bg-brand-slateBg">
+    <section class="py-16 sm:py-20 bg-brand-slateBg">
       <div class="max-w-4xl mx-auto px-5 sm:px-8">
         
-        <div class="space-y-4">
+        <div class="space-y-5" id="faqAccordionContainer">
           
           <!-- Q1 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q1. 에어컨 분해 세척 소요 시간은 얼마나 걸리나요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">현장 방문 시 추가 금액이 발생하나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              기종과 내부 오염 정도에 따라 차이가 있습니다.<br />
-              • <strong>벽걸이 에어컨</strong>: 약 50분 ~ 1시간 10분 내외<br />
-              • <strong>스탠드 에어컨 (가정용)</strong>: 약 1시간 20분 ~ 1시간 40분 내외<br />
-              • <strong>시스템 에어컨 (1Way / 4Way)</strong>: 대당 약 1시간 ~ 1시간 30분 내외<br />
-              • <strong>매립덕트 / 업소용 대형</strong>: 대당 약 1시간 40분 ~ 2시간 내외<br />
-              에어랩은 서두르지 않고, 열교환기 핀 깊숙이 박힌 오염물과 곰팡이가 완전히 제거될 때까지 정밀 고압 세척을 원칙으로 합니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-4">
+              <div class="p-4 sm:p-5 rounded-2xl bg-brand-slateBg border border-slate-200/80 space-y-2">
+                <p class="font-bold text-brand-navy">1. 벽걸이 송풍팬 분해 시</p>
+                <p class="text-slate-700">송풍팬 분해 시 <strong>20,000원의 비용</strong>이 발생되고 있습니다.<br /><span class="text-sm text-slate-500">※ 송풍팬 분해가 불가능한 제품이 있으므로 현장 기사님과 조율하시면 됩니다.</span></p>
+              </div>
+              <div class="p-4 sm:p-5 rounded-2xl bg-brand-slateBg border border-slate-200/80 space-y-2">
+                <p class="font-bold text-brand-navy">2. 3미터 이상 고소 작업 시</p>
+                <p class="text-slate-700"><strong>위험작업비 (30,000원)</strong>가 청구됩니다.<br /><span class="text-sm text-slate-500">※ 기사님들의 위험 작업에 대한 수당으로 청구됩니다.</span></p>
+              </div>
+              <div class="p-4 sm:p-5 rounded-2xl bg-brand-slateBg border border-slate-200/80 space-y-2">
+                <p class="font-bold text-brand-navy">3. 특수 모델 추가 금액</p>
+                <p class="text-slate-700"><strong>LG 듀얼에어컨, LG 오브제, 삼성 갤러리, 삼성 무풍 3구</strong> 모델은 추가금액 <strong>20,000원</strong>이 발생됩니다.</p>
+              </div>
             </div>
           </div>
 
           <!-- Q2 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q2. 세척 후 A/S 보증 기간 및 사후 관리 절차는 어떻게 되나요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">구매 후 일정 조율은 어떻게 하나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              에어랩은 시공 완료 후 <strong class="text-brand-navy">2주간 세척 관련 이상에 대해 100% 무상 A/S</strong>를 지원합니다.<br />에어컨 세척 관련 문제는 재가동 후 1~2주 이내에 대부분 확인되며, 2주 이후 발생하는 이상 증상은 기기 자체의 부품 노후화나 기계적 결함일 가능성이 높아 제조사 공식 서비스센터 점검을 권장해 드립니다. 또한 만일의 현장 사고에 대비해 <strong class="text-brand-navy">3억원 영업배상책임보험</strong>에 가입되어 있어 안심하고 맡기실 수 있습니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5">
+              접수 확인 후 <strong class="text-brand-navy underline underline-offset-4 decoration-brand-ice">영업일 기준 1~2일 내로</strong> 일정 조율 안내 연락을 드립니다.
             </div>
           </div>
 
           <!-- Q3 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q3. 세척 시 사용하는 약품은 인체나 아기, 반려동물에게 안전한가요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">작업이 불가능한 경우가 있나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              네, 100% 안전합니다. 에어랩은 미국 환경청(EPA) 인증 및 국내 환경부 화학제품 안전 기준을 통과한 <strong class="text-brand-navy">친환경 전용 핀 세정제</strong>만을 취급합니다.<br />
-              금속 핀을 부식시키거나 유해 가스를 배출하지 않으며, 전용 세정제 도포 후 고압 세척으로 깨끗하게 씻어내므로 갓난아기나 반려동물이 있는 가정에서도 시공 직후 안심하고 가동하실 수 있습니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p><strong>1.</strong> 에어컨이 심하게 노후화되었을 때는 기사님 판단으로 세척이 어려울 수 있습니다.</p>
+              <p><strong>2.</strong> 층고가 너무 높거나 작업 장소가 협소한 경우에 기사님 판단으로 세척이 어려울 수 있습니다.</p>
             </div>
           </div>
 
           <!-- Q4 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q4. 세척 전 고객이 미리 준비해야 할 사항이 있나요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 청소 시 어떤 약품을 사용하나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              에어컨 주변 약 1m 반경의 가구나 짐만 살짝 치워주시면 충분합니다.<br />
-              엔지니어가 방문하여 벽지, 침대, 바닥 등 주변 일체에 <strong>특수 방수 마스킹 비닐 보양</strong>을 완벽히 진행한 후 작업을 시작하므로 오염 물질이나 물이 튈 염려가 전혀 없습니다. 화장실 또는 베란다에서 부품 세척을 진행하며, 작업 후 화장실 뒷정리까지 깨끗이 완료합니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>에어컨 실내외기 냉각핀 전용 세정제인 <strong class="text-brand-navy font-extrabold text-lg sm:text-xl">에바브라이트 (Evap-Brite)</strong>를 사용합니다.</p>
+              <p>냉각핀을 손상시키는 산성 약품 대신 알루미늄 핀 부식을 막아주는 전용 약품으로 오염을 분해하며, 세척 후 <strong>고압 맑은 물 세척</strong>으로 약품 잔여물 없이 깨끗하게 헹궈냅니다.</p>
             </div>
           </div>
 
           <!-- Q5 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q5. 주말, 공휴일 또는 야간 시공도 가능한가요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 중에 청소가 안 되는 경우가 있나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              네, 주말(토·일)은 상시 예약 및 시공이 가능합니다.<br />공휴일이나 야간(비업무 시간) 시공의 경우 현장 상황 및 일정 확인을 위해 사전 상담 및 조율이 필요합니다. 견적 문의 시 원하시는 일정을 남겨주시면 담당 엔지니어가 맞춤 조율해 드립니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p><strong>1. 액자형 에어컨, 미켈란젤로, 제로원, 제로투, 립스틱, 블라인드</strong> 등 연식이 오래되고 부품 수급이 어려운 에어컨은 청소를 권장하지 않습니다.</p>
+              <p><strong>2. 붙박이장 안에 있는 에어컨, 복층형 오피스텔에 있는 천정형 에어컨</strong> 등 층고가 높은 에어컨은 청소가 안 될 수 있습니다.</p>
             </div>
           </div>
 
           <!-- Q6 -->
-          <div class="faq-item rounded-3xl bg-white border border-slate-200/80 shadow-soft overflow-hidden transition-all">
-            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
-              <span class="text-base sm:text-lg font-bold text-brand-navy">Q6. 결제 방법과 증빙 서류(세금계산서, 현금영수증) 발행이 가능한가요?</span>
-              <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-200 icon-box">
-                <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 청소 후 직접 확인도 했는데 왜 냄새가 날까요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
               </div>
             </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
-              네, 시공 완료 후 고객님께서 시운전 결과를 직접 확인하신 뒤 결제가 진행됩니다.<br />
-              신용카드 현장 결제, 계좌이체, 소득공제용 현금영수증, 사업자 전자세금계산서 모두 동일가로 투명하게 100% 발행해 드립니다.
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p><strong>1.</strong> 오랜 기간 동안 청소를 하지 않아서 플라스틱 부품이나 냉각핀에 냄새가 깊이 배어서 나는 경우가 있습니다.</p>
+              <p><strong>2.</strong> 하수구와 직접 연결되어 있는 드레인 호스에서 하수구 냄새가 역류하여 냄새가 나는 경우가 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">청소 후 하자 발생 A/S는 어떻게 되나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-2">
+              <p><strong class="text-brand-navy">청소 미흡, 청소 후 즉시 전원 불능, 청소 진행 중 파손되는 경우</strong>에만 A/S를 진행하고 있습니다.</p>
+              <p class="text-slate-600">그 외의 기계 자체 결함 및 노후 고장 사항은 제조사에 문의해 보시면 됩니다.</p>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 청소 작업시간은 얼마나 걸리나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-2.5">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200">
+                  <span class="font-bold text-brand-navy block">벽걸이 에어컨</span>
+                  <span class="text-brand-ice font-extrabold text-lg">40분 ~ 1시간</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200">
+                  <span class="font-bold text-brand-navy block">스탠드 에어컨</span>
+                  <span class="text-brand-ice font-extrabold text-lg">1시간 ~ 1시간 30분</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200">
+                  <span class="font-bold text-brand-navy block">투인원 (2in1) 에어컨</span>
+                  <span class="text-brand-ice font-extrabold text-lg">2시간 ~ 3시간</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200">
+                  <span class="font-bold text-brand-navy block">천정형 (시스템) 에어컨</span>
+                  <span class="text-brand-ice font-extrabold text-lg">1시간 ~ 2시간</span>
+                </div>
+              </div>
+              <p class="text-sm text-slate-500 pt-2">※ 현장 오염도 상황 및 담당 기사님에 따라 작업시간 차이가 있을 수 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 청소는 어떤 주기로 진행하는 것이 좋나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>에어컨의 청소 주기는 사용 환경과 빈도에 따라 달라질 수 있습니다.<br />
+              <strong>일반 가정의 경우 연 1회</strong>, <strong>상업공간은 연 2회 정도</strong>의 정기적인 청소를 권장드립니다.</p>
+              
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-2">
+                <p class="font-bold text-brand-navy">※ 특히 다음과 같은 경우에는 더욱 자주 청소가 필요합니다:</p>
+                <ul class="space-y-1 text-slate-700 list-disc list-inside">
+                  <li>반려동물과 함께 생활하는 공간</li>
+                  <li>미세먼지가 심한 지역</li>
+                  <li>하루 8시간 이상 장시간 사용하는 경우</li>
+                  <li>주방 근처에 설치된 에어컨</li>
+                </ul>
+              </div>
+              <p class="text-sm text-slate-600">정기적인 청소를 통해 에어컨의 성능을 최적으로 유지하고, 실내 공기 질을 개선할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨에서 냄새가 나는 이유가 무엇인가요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>에어컨의 이상한 냄새는 주로 다음과 같은 원인들로 인해 발생합니다:</p>
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-1.5 font-medium">
+                <p>1. 내부에 쌓인 먼지와 이물질</p>
+                <p>2. 습기로 인한 곰팡이 번식</p>
+                <p>3. 배수관에 물이 고여 있는 경우</p>
+                <p>4. 필터의 오염</p>
+              </div>
+              <p>특히 장마철이나 습도가 높은 계절에는 냄새가 더 심해질 수 있으며, 이는 에어컨 내부의 습도 관리가 제대로 되지 않아 발생하는 현상입니다.<br />
+              전문적인 청소를 통해 에어컨 내부의 오염물질을 깨끗이 제거하면 냄새 문제를 근본적으로 해결할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- Q11 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">셀프 청소와 전문 청소는 어떤 차이가 있나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="p-5 rounded-2xl bg-slate-100/80 border border-slate-200 space-y-2">
+                  <p class="font-extrabold text-slate-800 text-lg">셀프 청소의 경우:</p>
+                  <ul class="space-y-1 text-slate-600 list-disc list-inside">
+                    <li>필터 세척과 외관 청소만 가능</li>
+                    <li>깊숙한 내부 청소의 한계</li>
+                    <li>2차 오염 및 부품 파손 위험성</li>
+                  </ul>
+                </div>
+                <div class="p-5 rounded-2xl bg-brand-iceSoft border border-brand-ice/40 space-y-2">
+                  <p class="font-extrabold text-brand-navy text-lg">전문 청소의 경우:</p>
+                  <ul class="space-y-1 text-brand-navy font-medium list-disc list-inside">
+                    <li>분해 청소를 통한 완벽한 내부 세정</li>
+                    <li>전문 장비와 세정제 사용</li>
+                    <li>부품 점검 및 전문가의 안전한 시공</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="text-sm text-slate-600">에어컨의 수명 연장과 효율적인 관리를 위해서는 정기적인 전문 청소를 권장드립니다.</p>
+            </div>
+          </div>
+
+          <!-- Q12 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">청소 후 에너지 효율이 실제로 좋아지나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>네, 전문적인 에어컨 청소는 에너지 효율 개선에 실질적인 도움이 됩니다.</p>
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-1.5 font-medium">
+                <p>1. <strong>냉방 효율 15-20% 상승</strong></p>
+                <p>2. <strong>전기 사용량 감소</strong> (전기요금 절감)</p>
+                <p>3. <strong>냉방 속도 향상</strong></p>
+                <p>4. <strong>실내기 소음 감소</strong></p>
+              </div>
+              <p>에어컨 내부의 먼지와 이물질이 제거되면 공기 순환이 원활해져 같은 전력으로도 더 효과적인 냉방이 가능해집니다.</p>
+            </div>
+          </div>
+
+          <!-- Q13 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">실외기 청소도 필요한가요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>실외기 청소는 에어컨의 전반적인 성능 유지를 위해 매우 중요합니다.</p>
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-1.5 font-medium">
+                <p>1. <strong>냉방 효율 향상</strong></p>
+                <p>2. <strong>과열 방지 및 화재 위험 예방</strong></p>
+                <p>3. <strong>에너지 소비 효율 개선</strong></p>
+                <p>4. <strong>수명 연장</strong></p>
+              </div>
+              <p>실외기는 외부 환경에 직접 노출되어 있어 먼지, 이물질이 쌓이기 쉽습니다. 특히 황사나 미세먼지가 심한 시기 이후에는 정기적인 점검과 청소가 권장됩니다.</p>
+            </div>
+          </div>
+
+          <!-- Q14 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">청소 후 바로 에어컨을 사용해도 되나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>전문 청소 후에는 다음과 같은 사용 가이드를 따르시는 것이 좋습니다:</p>
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-1.5 font-medium">
+                <p>1. 청소 직후 <strong>30분 정도 자연 건조</strong></p>
+                <p>2. 처음 가동 시 <strong>선풍기(송풍) 모드로 10분 정도 운전</strong></p>
+                <p>3. 이후 <strong>냉방 모드로 전환하여 정상 사용</strong></p>
+              </div>
+              <p>충분한 건조 시간을 가지는 것이 중요합니다. 이를 통해 청소 효과를 극대화하고 에어컨의 수명도 연장할 수 있습니다.</p>
+            </div>
+          </div>
+
+          <!-- Q15 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">청소하지 않으면 어떤 문제가 생길 수 있나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-3">
+              <p>정기적인 청소를 하지 않으면 다음과 같은 문제들이 발생할 수 있습니다:</p>
+              <div class="p-5 rounded-2xl bg-brand-slateBg border border-slate-200 space-y-1.5 font-medium">
+                <p>1. <strong>냉방 효율 저하</strong>로 인한 전기요금 증가</p>
+                <p>2. <strong>곰팡이와 세균 번식</strong>으로 인한 건강 문제</p>
+                <p>3. <strong>불쾌한 냄새 발생</strong></p>
+                <p>4. <strong>에어컨 수명 단축</strong></p>
+                <p>5. <strong>실내 공기 질 악화</strong></p>
+              </div>
+              <p>특히 알레르기나 호흡기 질환이 있는 분들의 경우, 정기적인 에어컨 청소 관리가 더욱 중요합니다.</p>
             </div>
           </div>
 
@@ -374,6 +627,18 @@
   </footer>
   <!-- JAVASCRIPT -->
   <script>
+    // FAQ Accordion Toggle Function
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const chevron = btn.querySelector('.faq-chevron');
+      const isHidden = content.classList.contains('hidden');
+      
+      content.classList.toggle('hidden', !isHidden);
+      if (chevron) {
+        chevron.classList.toggle('rotate-180', isHidden);
+      }
+    }
+
     // Mobile Menu Toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
