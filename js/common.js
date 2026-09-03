@@ -3,17 +3,21 @@
  */
 
 // -------------------------------------------------------------
-// Universal Phone Call Handler (Desktop Modal vs Mobile Dialer)
+// Universal Mobile Device Detection (Strict Mobile OS Check)
 // -------------------------------------------------------------
 window.isMobileDevice = function() {
-  return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-         (window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+  return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
+// -------------------------------------------------------------
+// Universal Phone Call Handler (Desktop Alert vs Mobile Dialer)
+// -------------------------------------------------------------
 window.handlePhoneCall = function(phoneNum, e) {
   if (!window.isMobileDevice()) {
-    if (e && e.preventDefault) e.preventDefault();
-    if (e && e.stopPropagation) e.stopPropagation();
+    if (e) {
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+    }
     alert('📞 에어랩 (AirLab) 전화 상담 안내\n\n• 대표번호: 1522-0000\n• 담당 직통: 010-2678-4477\n• 운영시간: 09:00 ~ 19:00 (연중무휴)\n\n※ 모바일 기기에서는 터치 시 기본 전화 앱으로 바로 연결됩니다.');
     return false;
   }
