@@ -116,11 +116,7 @@
       <!-- Right CTA Button -->
                         <!-- Header Right: Phone & CTA Button -->
       <div class="hidden md:flex items-center gap-3.5">
-        <a href="tel:1522-0000" onclick="if(!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))){ alert('📞 에어랩 대표 전화 상담
-
-• 대표번호: 1522-0000
-• 담당 직통: 010-2678-4477
-• 운영시간: 09:00 ~ 19:00 (연중무휴)'); return false; }" class="flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-slateBg hover:bg-slate-100 border border-slate-200 shadow-sm transition-all group">
+        <a href="tel:1522-0000" onclick="return handlePhoneCall('1522-0000', event);" class="flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-slateBg hover:bg-slate-100 border border-slate-200 shadow-sm transition-all group">
           <div class="w-8 h-8 rounded-full bg-brand-navy group-hover:bg-brand-ice text-white flex items-center justify-center transition-colors">
             <svg class="w-4 h-4 text-brand-ice group-hover:text-brand-navy transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
           </div>
@@ -710,11 +706,7 @@
       </a>
 
       <!-- 4. 전화 상담 -->
-      <a href="tel:1522-0000" onclick="if(!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))){ alert('📞 에어랩 대표 전화 상담
-
-• 대표번호: 1522-0000
-• 담당 직통: 010-2678-4477
-• 운영시간: 09:00 ~ 19:00 (연중무휴)'); return false; }" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
+      <a href="tel:1522-0000" onclick="return handlePhoneCall('1522-0000', event);" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
         <!-- Hover Left Tooltip 4 (다른 3개와 100% 동일한 가로 1줄 캡슐 규격으로 통일) -->
         <div class="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-4 py-2 rounded-2xl bg-brand-navy text-white text-sm font-extrabold whitespace-nowrap shadow-2xl border border-slate-700 flex items-center gap-2">

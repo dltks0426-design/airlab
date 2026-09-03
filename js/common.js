@@ -2,7 +2,40 @@
  * AirLab Premium Engineering Care — Common Clean Scripts
  */
 
+// -------------------------------------------------------------
+// Universal Phone Call Handler (Desktop Modal vs Mobile Dialer)
+// -------------------------------------------------------------
+window.isMobileDevice = function() {
+  return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+         (window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+};
+
+window.handlePhoneCall = function(phoneNum, e) {
+  if (!window.isMobileDevice()) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (e && e.stopPropagation) e.stopPropagation();
+    alert('📞 에어랩 (AirLab) 전화 상담 안내\n\n• 대표번호: 1522-0000\n• 담당 직통: 010-2678-4477\n• 운영시간: 09:00 ~ 19:00 (연중무휴)\n\n※ 모바일 기기에서는 터치 시 기본 전화 앱으로 바로 연결됩니다.');
+    return false;
+  }
+  return true;
+};
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Global Event Delegation: Capture any tel: link click across the entire page
+  document.addEventListener('click', function(e) {
+    const telLink = e.target.closest('a[href^="tel:"]');
+    if (telLink) {
+      if (!window.isMobileDevice()) {
+        e.preventDefault();
+        e.stopPropagation();
+        const href = telLink.getAttribute('href') || 'tel:1522-0000';
+        const num = href.replace('tel:', '');
+        window.handlePhoneCall(num, e);
+        return false;
+      }
+    }
+  }, true);
+
   // 1. Mobile Menu Toggle
   const mobileBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
