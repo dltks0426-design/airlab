@@ -1,5 +1,5 @@
 /**
- * AirLab Premium Engineering Care — Node.js Express Backend Server
+ * AirLab Premium Engineering Care — Full-Stack Express Server for Vercel
  */
 
 const express = require('express');
@@ -16,19 +16,22 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// Static Frontend Serving
+// Static Assets Serving
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use(express.static(path.join(__dirname)));
 
-// Data File Paths
+// Data Directory
 const DATA_DIR = path.join(__dirname, 'data');
 const PORTFOLIO_FILE = path.join(DATA_DIR, 'portfolio.json');
 const QUOTES_FILE = path.join(DATA_DIR, 'quotes.json');
 
 if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  } catch(e) {}
 }
 
-// Helpers
 function readJson(filePath, defaultValue) {
   try {
     if (fs.existsSync(filePath)) {
@@ -59,7 +62,6 @@ function hashPassword(pw) {
   return crypto.createHash('sha256').update(pw).digest('hex');
 }
 
-// Authentication Middleware
 function requireAdmin(req, res, next) {
   const token = req.headers['authorization'] || req.headers['x-admin-token'];
   if (token && ACTIVE_TOKENS.has(token.replace('Bearer ', ''))) {
@@ -96,15 +98,13 @@ app.post('/api/admin/logout', (req, res) => {
 });
 
 // ==============================================================================
-// 2. WORK PORTFOLIO API (Real-time Cloud Sync)
+// 2. WORK PORTFOLIO API
 // ==============================================================================
-// Public: Get all portfolio cases
 app.get('/api/work/list', (req, res) => {
   const list = readJson(PORTFOLIO_FILE, []);
   res.json({ success: true, data: list });
 });
 
-// Admin Only: Add new case
 app.post('/api/work/add', requireAdmin, (req, res) => {
   const { title, location, date, scale, photos } = req.body;
   if (!title) {
@@ -127,7 +127,6 @@ app.post('/api/work/add', requireAdmin, (req, res) => {
   res.json({ success: true, data: newItem, message: '시공사례가 성공적으로 등록되었습니다.' });
 });
 
-// Admin Only: Edit case
 app.put('/api/work/edit/:id', requireAdmin, (req, res) => {
   const { id } = req.params;
   const { title, location, date, scale, photos } = req.body;
@@ -149,7 +148,6 @@ app.put('/api/work/edit/:id', requireAdmin, (req, res) => {
   res.json({ success: true, data: item, message: '시공사례가 수정되었습니다.' });
 });
 
-// Admin Only: Delete case
 app.delete('/api/work/delete/:id', requireAdmin, (req, res) => {
   const { id } = req.params;
   let list = readJson(PORTFOLIO_FILE, []);
@@ -159,7 +157,7 @@ app.delete('/api/work/delete/:id', requireAdmin, (req, res) => {
 });
 
 // ==============================================================================
-// 3. QUOTE SUBMISSION API (Backup DB + FormSubmit Relay)
+// 3. QUOTE API
 // ==============================================================================
 app.post('/api/quote/submit', (req, res) => {
   const quoteData = req.body;
@@ -177,16 +175,39 @@ app.post('/api/quote/submit', (req, res) => {
   res.json({ success: true, message: '견적 문의가 정상 접수되었습니다.' });
 });
 
-// Admin Only: Get submitted quotes
-app.get('/api/quote/list', requireAdmin, (req, res) => {
-  const quotes = readJson(QUOTES_FILE, []);
-  res.json({ success: true, data: quotes });
+// ==============================================================================
+// 4. HTML PAGE ROUTING (Guarantees 0% 404 on Vercel)
+// ==============================================================================
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+app.get('/index.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+app.get('/about.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+app.get('/service.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'service.html'));
+});
+app.get('/work.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'work.html'));
+});
+app.get('/faq.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'faq.html'));
+});
+app.get('/contact.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
 });
 
-// Start Server
+// Fallback for any other route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
-    console.log(`[AirLab Full-stack Server] Running at http://localhost:${PORT}`);
+    console.log(`[AirLab Fullstack Server] Running at http://localhost:${PORT}`);
   });
 }
 
