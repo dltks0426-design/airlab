@@ -710,20 +710,21 @@
   <script src="js/common.js"></script>
   <script src="js/work.js"></script>
   
-  <!-- AOS SCRIPT & INITIALIZATION -->
+  <!-- SAMSUNG STYLE CLEAN & SOLID MOTION (1회성 젠틀 안착, 무한재생 완전 삭제) -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       if (typeof AOS !== 'undefined') {
         AOS.init({
-          duration: 700,
-          once: false,
-          mirror: false,
-          offset: 40,
-          easing: 'ease-out-cubic'
+          duration: 550,       // 빠르고 젠틀한 삼성식 안착
+          once: true,          // 무한 재생 완전 삭제! 처음 1회만 단정하게 재생되고 영구 고정!
+          mirror: false,       // 올릴 때 절대 깜빡이지 않음
+          offset: 30,
+          easing: 'ease-out'
         });
       }
     });
   </script>
+</body>
 </body>
 </html>
