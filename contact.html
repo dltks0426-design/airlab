@@ -547,11 +547,16 @@
         <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">블로그</span>
       </a>
 
-      <!-- 4. 전화 상담 -->
-      <a href="tel:010-2678-4477" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
+            <!-- 4. 전화 상담 (PC 클릭 시 번호 안내 팝업, 모바일 터치 시 즉시 다이얼) -->
+      <a href="tel:1522-0000" onclick="if(!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))){ alert('📞 에어랩 대표 전화 상담
+
+• 대표번호: 1522-0000
+• 담당 직통: 010-2678-4477
+• 운영시간: 09:00 ~ 19:00 (연중무휴)'); return false; }" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
-            전화 상담
+          <div class="px-3.5 py-2 rounded-2xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80 text-left space-y-0.5">
+            <div class="text-[10px] text-brand-ice font-extrabold">에어랩 전화 상담</div>
+            <div class="text-sm font-black font-mono">1522-0000</div>
           </div>
         </div>
 

@@ -109,7 +109,18 @@
       </nav>
 
       <!-- Right CTA Button -->
+            <!-- Header Right: Phone & CTA Button (PC에서 1522-0000 상시 눈에 띄게 노출) -->
       <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-slateBg border border-slate-200">
+          <div class="w-7 h-7 rounded-full bg-brand-navy text-white flex items-center justify-center shadow-sm">
+            <svg class="w-3.5 h-3.5 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="text-[10px] font-bold text-slate-400 leading-none">빠른 전화 상담</span>
+            <a href="tel:1522-0000" class="text-sm font-black text-brand-navy leading-tight hover:text-brand-ice transition-colors font-mono">1522-0000</a>
+          </div>
+        </div>
+
         <a href="contact.html" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-bold text-white bg-brand-navy hover:bg-brand-navyLight active:scale-95 transition-all shadow-soft hover:shadow-card">
           온라인 견적 신청
           <svg class="w-4 h-4 ml-1.5 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -655,11 +666,16 @@
         <span class="text-[9px] font-medium text-slate-300 tracking-tighter mt-1">블로그</span>
       </a>
 
-      <!-- 4. 전화 상담 -->
-      <a href="tel:010-2678-4477" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
+            <!-- 4. 전화 상담 (PC 클릭 시 번호 안내 팝업, 모바일 터치 시 즉시 다이얼) -->
+      <a href="tel:1522-0000" onclick="if(!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))){ alert('📞 에어랩 대표 전화 상담
+
+• 대표번호: 1522-0000
+• 담당 직통: 010-2678-4477
+• 운영시간: 09:00 ~ 19:00 (연중무휴)'); return false; }" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
-          <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
-            전화 상담
+          <div class="px-3.5 py-2 rounded-2xl bg-brand-navy text-white text-xs font-bold whitespace-nowrap shadow-xl border border-slate-700/80 text-left space-y-0.5">
+            <div class="text-[10px] text-brand-ice font-extrabold">에어랩 전화 상담</div>
+            <div class="text-sm font-black font-mono">1522-0000</div>
           </div>
         </div>
 
