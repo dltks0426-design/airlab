@@ -18,7 +18,8 @@ window.handlePhoneCall = function(phoneNum, e) {
       if (e.preventDefault) e.preventDefault();
       if (e.stopPropagation) e.stopPropagation();
     }
-    alert('📞 에어랩 (AirLab) 전화 상담 안내\n\n• 대표번호: 1522-0000\n• 담당 직통: 010-2678-4477\n• 운영시간: 09:00 ~ 19:00 (연중무휴)\n\n※ 모바일 기기에서는 터치 시 기본 전화 앱으로 바로 연결됩니다.');
+    const targetNum = phoneNum || '1522-0000';
+    alert('📞 에어랩 (AirLab) 전화 상담 안내\n\n• 대표번호: 1522-0000\n• 운영시간: 09:00 ~ 19:00 (연중무휴)\n\n※ 모바일 기기에서는 터치 시 기본 전화 앱으로 바로 연결됩니다.');
     return false;
   }
   return true;
