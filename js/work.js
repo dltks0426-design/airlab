@@ -763,8 +763,16 @@ tailwind.config = {
       renderPortfolio();
     }
 
-    // 3. Admin State Management (비밀번호: AirLab!2026#)
-    const ADMIN_PW = 'AirLab!2026#';
+    // 3. Admin Security & Irreversible SHA-256 Authentication
+    const ADMIN_HASH = 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037';
+
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+    
 
     // Secret Keybind: Ctrl + Shift + A to open Admin Login
     document.addEventListener('keydown', function(e) {
@@ -801,9 +809,10 @@ tailwind.config = {
       document.getElementById('adminLoginModal').classList.add('hidden');
     }
 
-    function verifyAdminPassword() {
+    async function verifyAdminPassword() {
       const pw = document.getElementById('adminPasswordInput').value;
-      if (pw === ADMIN_PW) {
+      const inputHash = await sha256(pw);
+      if (inputHash === ADMIN_HASH) {
         sessionStorage.setItem('airlab_admin_logged', 'true');
         closeAdminLoginModal();
         updateAdminUI();
