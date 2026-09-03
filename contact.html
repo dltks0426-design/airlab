@@ -62,6 +62,10 @@
       margin: 0;
     }
   </style>
+  
+  
+  <!-- AOS Global Standard Apple Motion Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="bg-white text-slate-800 antialiased flex flex-col min-h-screen">
 
@@ -643,5 +647,21 @@
     <!-- MODULAR JAVASCRIPT -->
   <script src="js/common.js"></script>
   <script src="js/contact.js"></script>
+  
+  <!-- AOS SCRIPT & INITIALIZATION -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 700,
+          once: false,
+          mirror: false,
+          offset: 40,
+          easing: 'ease-out-cubic'
+        });
+      }
+    });
+  </script>
 </body>
 </html>

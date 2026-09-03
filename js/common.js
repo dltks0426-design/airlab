@@ -1,5 +1,5 @@
 /**
- * AirLab Premium Engineering Care — Common Scripts
+ * AirLab Premium Engineering Care — Common Clean Scripts
  */
 
 document.addEventListener('DOMContentLoaded', function() {

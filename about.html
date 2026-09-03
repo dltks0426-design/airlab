@@ -64,6 +64,10 @@
     .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); }
     p, span, li, button, input, textarea, select { letter-spacing: -0.015em; }
   </style>
+  
+  
+  <!-- AOS Global Standard Apple Motion Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-brand-ice selection:text-white flex flex-col min-h-screen">
 
@@ -362,7 +366,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Step 1 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="100" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 01</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">01</span>
@@ -374,7 +378,7 @@
           </div>
 
           <!-- Step 2 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="200" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 02</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">02</span>
@@ -386,7 +390,7 @@
           </div>
 
           <!-- Step 3 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="300" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 03</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">03</span>
@@ -398,7 +402,7 @@
           </div>
 
           <!-- Step 4 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="400" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 04</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">04</span>
@@ -410,7 +414,7 @@
           </div>
 
           <!-- Step 5 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="500" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 05</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">05</span>
@@ -422,7 +426,7 @@
           </div>
 
           <!-- Step 6 -->
-          <div class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
+          <div data-aos="fade-up" data-aos-delay="600" class="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-soft space-y-4 hover:shadow-card transition-all">
             <div class="flex items-center justify-between">
               <span class="text-xs font-black text-brand-ice tracking-wider uppercase">STEP 06</span>
               <span class="w-7 h-7 rounded-lg bg-brand-slateBg text-brand-navy font-bold flex items-center justify-center text-xs">06</span>
@@ -709,5 +713,21 @@
 
     <!-- MODULAR JAVASCRIPT -->
   <script src="js/common.js"></script>
+  
+  <!-- AOS SCRIPT & INITIALIZATION -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 700,
+          once: false,
+          mirror: false,
+          offset: 40,
+          easing: 'ease-out-cubic'
+        });
+      }
+    });
+  </script>
 </body>
 </html>
