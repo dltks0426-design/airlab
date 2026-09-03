@@ -482,20 +482,18 @@
             
             <!-- Layer 1: AFTER (Background full) -->
             <img id="baAfterImg" src="images/wall_ac_fin_after.jpg" alt="세척 후 상태 (After)" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
-            <div class="absolute bottom-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none whitespace-nowrap">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-              AFTER (세척 후)
+            <div class="absolute bottom-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none w-max max-w-none whitespace-nowrap shrink-0">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+              <span>AFTER (세척 후)</span>
             </div>
 
-            <!-- Layer 2: BEFORE (Clipped width container with perfectly fixed image) -->
+            <!-- Layer 2: BEFORE (Clipped width container with perfectly fixed image & clipped intrinsic label) -->
             <div id="baBeforeLayer" class="absolute inset-y-0 left-0 overflow-hidden z-20 pointer-events-none" style="width: 50%;">
               <img id="baBeforeImg" src="images/wall_ac_fin_before.jpg" alt="세척 전 상태 (Before)" class="absolute inset-0 h-full object-cover object-center max-w-none" style="width: 100%;" />
-            </div>
-
-            <!-- Layer 3: BEFORE Label (Independent Container Overlay - 0~100% position stable) -->
-            <div class="absolute bottom-4 left-4 z-20 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none whitespace-nowrap">
-              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
-              BEFORE (세척 전)
+              <div class="absolute bottom-4 left-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none w-max max-w-none whitespace-nowrap shrink-0">
+                <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
+                <span>BEFORE (세척 전)</span>
+              </div>
             </div>
 
             <!-- Handle Divider -->
