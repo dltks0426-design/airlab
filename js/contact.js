@@ -1,5 +1,17 @@
 
 // -------------------------------------------------------------
+// Lock Past Dates on Datepicker (과거 날짜 선택 불가 잠금)
+// -------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  const dateInput = document.getElementById('preferredDate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  }
+});
+
+
+// -------------------------------------------------------------
 // Flexible Korean Phone Formatter & Validator (010, 02, 031, 070, 1588 등)
 // -------------------------------------------------------------
 window.formatPhoneNumber = function(input) {
