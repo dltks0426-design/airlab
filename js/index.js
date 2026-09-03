@@ -83,17 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     system: {
       category: '시스템',
-      badge: '시스템 에어컨 드레인판',
-      beforeImg: 'images/compare_part_before.jpg',
-      afterImg: 'images/compare_part_after.jpg',
-      beforeDesc: '물받이 바닥 고착 물때 및 오염 슬러지',
-      afterDesc: '완전 분해 정밀 고압 세척으로 본연의 깨끗한 상태 복원'
+      badge: '시스템 에어컨 냉각핀',
+      beforeImg: 'images/system_ac_fin_before.jpg',
+      afterImg: 'images/system_ac_fin_after.jpg',
+      beforeDesc: '천장형 시스템 에어컨 냉각핀 먼지 및 곰팡이 오염',
+      afterDesc: '전용 가대 결속 및 정밀 고압 관통 세척으로 은빛 광택 복원'
     },
     outdoor: {
       category: '실외기',
       badge: '실외기 열교환기 냉각핀',
-      beforeImg: 'images/compare_fin_before.jpg',
-      afterImg: 'images/compare_fin_after.jpg',
+      beforeImg: 'images/outdoor_ac_fin_before.jpg',
+      afterImg: 'images/outdoor_ac_fin_after.jpg',
       beforeDesc: '실외 먼지 및 이물질로 막힌 열교환기 냉각핀',
       afterDesc: '외관 이물질 제거 및 냉각핀 틈새 정밀 고압 세척'
     }
