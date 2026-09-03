@@ -4,13 +4,25 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  // 1. Before / After Interactive Split-View Comparison Slider
+  // 1. Before / After Interactive Split-View Comparison Slider (완전 고정형 0-Zoom 렌더링)
   const baContainer = document.getElementById('baSliderContainer');
   const baBeforeLayer = document.getElementById('baBeforeLayer');
+  const baBeforeImg = document.getElementById('baBeforeImg');
   const baHandle = document.getElementById('baHandle');
   
-  if (baContainer && baBeforeLayer && baHandle) {
+  function syncBeforeImgWidth() {
+    if (baContainer && baBeforeImg) {
+      baBeforeImg.style.width = baContainer.offsetWidth + 'px';
+      baBeforeImg.style.maxWidth = 'none';
+    }
+  }
+
+  if (baContainer && baBeforeLayer && baHandle && baBeforeImg) {
     let isDragging = false;
+
+    // 초기 너비 동기화
+    syncBeforeImgWidth();
+    window.addEventListener('resize', syncBeforeImgWidth);
 
     function updateSplit(x) {
       const rect = baContainer.getBoundingClientRect();
@@ -20,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       baBeforeLayer.style.width = pos + '%';
       baHandle.style.left = pos + '%';
+      syncBeforeImgWidth();
     }
 
     // Mouse Events
@@ -50,36 +63,47 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 2. Before/After Case Tab Switcher
-  const baCases = {
-    stand: {
-      beforeImg: 'images/stand_eva_back_dirty.jpg',
-      afterImg: 'images/stand_eva_back_clean.jpg',
-      badge: '스탠드 에어컨 에바 뒷면',
-      beforeDesc: '공기 흡입구 뒷면 찌든 진흙 슬러지 및 곰팡이 고착',
-      afterDesc: '친환경 약품 + 정밀 고압 관통 세척으로 은빛 광택 복원'
-    },
-    drain: {
-      beforeImg: 'images/compare_part_before.jpg',
-      afterImg: 'images/compare_part_after.jpg',
-      badge: '4Way 시스템 드레인판',
-      beforeDesc: '물받이 바닥 쉰내 악취 유발 물때 및 젤리 슬러지',
-      afterDesc: '100% 완전 분해 고압 살균 세척으로 백색 본연 상태 복원'
-    },
+  // 2. Before/After Case Tab Switcher (에어컨 유형 4대 카테고리 데이터 구조)
+  const baCategories = {
     wall: {
+      category: '벽걸이',
+      badge: '벽걸이 에어컨 냉각핀',
       beforeImg: 'images/wall_ac_fin_before.jpg',
       afterImg: 'images/wall_ac_fin_after.jpg',
-      badge: '벽걸이 에어컨 냉각핀',
-      beforeDesc: '알루미늄 핀 틈새 꽉 찬 검은 곰팡이 및 먼지',
-      afterDesc: '전용 가대 결속 초고압 세척으로 핀 사이 완벽 관통 세척'
+      beforeDesc: '알루미늄 핀 틈새 먼지 및 곰팡이 오염',
+      afterDesc: '전용 세정제 도포 및 정밀 고압 관통 세척으로 은빛 광택 복원'
+    },
+    stand: {
+      category: '스탠드',
+      badge: '스탠드 에어컨 내부 냉각핀',
+      beforeImg: 'images/stand_eva_back_dirty.jpg',
+      afterImg: 'images/stand_eva_back_clean.jpg',
+      beforeDesc: '공기 흡입구 뒷면 찌든 슬러지 및 오염물 고착',
+      afterDesc: '앞뒤 양면 고압 관통 세척으로 냉각핀 오염 부위 정밀 세척'
+    },
+    system: {
+      category: '시스템',
+      badge: '시스템 에어컨 드레인판',
+      beforeImg: 'images/compare_part_before.jpg',
+      afterImg: 'images/compare_part_after.jpg',
+      beforeDesc: '물받이 바닥 고착 물때 및 오염 슬러지',
+      afterDesc: '완전 분해 정밀 고압 세척으로 본연의 깨끗한 상태 복원'
+    },
+    outdoor: {
+      category: '실외기',
+      badge: '실외기 열교환기 냉각핀',
+      beforeImg: 'images/compare_fin_before.jpg',
+      afterImg: 'images/compare_fin_after.jpg',
+      beforeDesc: '실외 먼지 및 이물질로 막힌 열교환기 냉각핀',
+      afterDesc: '외관 이물질 제거 및 냉각핀 틈새 정밀 고압 세척'
     }
   };
 
-  window.switchBACase = function(caseKey, btnEl) {
-    const data = baCases[caseKey];
+  window.switchBACase = function(categoryKey, btnEl) {
+    const data = baCategories[categoryKey];
     if (!data) return;
 
-    // Update active tab button
+    // Update active tab button style
     document.querySelectorAll('.ba-case-btn').forEach(btn => {
       btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-md');
       btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
@@ -105,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (baBeforeLayer && baHandle) {
       baBeforeLayer.style.width = '50%';
       baHandle.style.left = '50%';
+      syncBeforeImgWidth();
     }
   };
 

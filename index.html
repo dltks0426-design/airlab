@@ -5,7 +5,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="에어랩 (AirLab)" />
   <meta property="og:title" content="에어랩 (AirLab) — 보이지 않는 곳까지 분해하는 프리미엄 에어컨 클리닝" />
-  <meta property="og:description" content="에어컨 주요 핵심 부품 100% 완전 분해 고압 관통 세척. 친환경 약품과 체계적인 6단계 정석 세척 프로세스." />
+  <meta property="og:description" content="에어컨 주요 핵심 부품 100% 완전 분해 고압 관통 세척. 전용 세정제와 체계적인 6단계 정석 세척 프로세스." />
   <meta property="og:image" content="images/hero_wash_bg.jpg" />
   <meta property="og:locale" content="ko_KR" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -243,7 +243,7 @@
             </div>
             <div class="space-y-0.5">
               <h4 class="font-extrabold text-sm sm:text-base text-brand-navy">체계적 6단계 공정</h4>
-              <p class="text-xs text-slate-500 leading-snug">사전 진단부터 보양, 살균, 완료 검수까지</p>
+              <p class="text-xs text-slate-500 leading-snug">사전 진단부터 보양, 고압 세척, 완료 검수까지</p>
             </div>
           </div>
 
@@ -263,7 +263,7 @@
             </div>
             <div class="space-y-0.5">
               <h4 class="font-extrabold text-sm sm:text-base text-brand-navy">전문 장비 기반 세척</h4>
-              <p class="text-xs text-slate-500 leading-snug">친환경 전용 약품과 특수 고압 분사 시스템</p>
+              <p class="text-xs text-slate-500 leading-snug">에어컨 전용 세정제와 특수 고압 분사 시스템</p>
             </div>
           </div>
 
@@ -341,7 +341,7 @@
                   에어컨 바람을 쐴 때 실내 공기가 답답하게 느껴진다면, 내부 필터와 열교환기에 흡착된 미세먼지 정리가 필요합니다.
                 </p>
               </div>
-              <span class="text-[11px] font-bold text-brand-navy bg-brand-iceLight px-2.5 py-1 rounded-lg self-start">권장: 친환경 약품 종합 살균</span>
+              <span class="text-[11px] font-bold text-brand-navy bg-brand-iceLight px-2.5 py-1 rounded-lg self-start">권장: 전용 세정제 정밀 세척</span>
             </div>
 
           </div>
@@ -458,16 +458,19 @@
           </p>
         </div>
 
-        <!-- Case Selection Tabs -->
+        <!-- Case Selection Tabs (에어컨 유형 4대 대표 카테고리) -->
         <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto">
-          <button type="button" onclick="switchBACase('stand', this)" class="ba-case-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-navy text-white shadow-md transition-all cursor-pointer">
-            사례 1: 스탠드 에바 뒷면
+          <button type="button" onclick="switchBACase('wall', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-navy text-white shadow-md transition-all cursor-pointer">
+            벽걸이
           </button>
-          <button type="button" onclick="switchBACase('drain', this)" class="ba-case-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
-            사례 2: 시스템 드레인판
+          <button type="button" onclick="switchBACase('stand', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
+            스탠드
           </button>
-          <button type="button" onclick="switchBACase('wall', this)" class="ba-case-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
-            사례 3: 벽걸이 냉각핀
+          <button type="button" onclick="switchBACase('system', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
+            시스템
+          </button>
+          <button type="button" onclick="switchBACase('outdoor', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
+            실외기
           </button>
         </div>
 
@@ -476,14 +479,14 @@
           <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden bg-slate-900 border border-slate-300/80 shadow-card select-none touch-pan-y" id="baSliderContainer">
             
             <!-- Layer 1: AFTER (Background full) -->
-            <img id="baAfterImg" src="images/stand_eva_back_clean.jpg" alt="세척 후 상태 (After)" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
+            <img id="baAfterImg" src="images/wall_ac_fin_after.jpg" alt="세척 후 상태 (After)" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
             <div class="absolute bottom-4 right-4 z-10 px-3 py-1 rounded-xl bg-emerald-600/90 backdrop-blur-md text-white text-xs font-black shadow-md pointer-events-none">
               AFTER (세척 완료)
             </div>
 
-            <!-- Layer 2: BEFORE (Clipped width container) -->
+            <!-- Layer 2: BEFORE (Clipped width container with perfectly fixed image) -->
             <div id="baBeforeLayer" class="absolute inset-y-0 left-0 overflow-hidden z-20 pointer-events-none" style="width: 50%;">
-              <img id="baBeforeImg" src="images/stand_eva_back_dirty.jpg" alt="세척 전 상태 (Before)" class="absolute inset-0 w-full h-full object-cover object-center max-w-none" style="width: 100%;" />
+              <img id="baBeforeImg" src="images/wall_ac_fin_before.jpg" alt="세척 전 상태 (Before)" class="absolute inset-0 h-full object-cover object-center max-w-none" style="width: 100%;" />
               <div class="absolute bottom-4 left-4 z-10 px-3 py-1 rounded-xl bg-rose-600/90 backdrop-blur-md text-white text-xs font-black shadow-md">
                 BEFORE (세척 전)
               </div>
@@ -501,7 +504,7 @@
 
             <!-- Top Case Badge -->
             <div class="absolute top-4 left-4 z-30 px-3.5 py-1.5 rounded-xl bg-brand-navy/90 backdrop-blur-md text-brand-ice text-xs font-bold border border-white/20 shadow-md pointer-events-none" id="baCaseBadge">
-              스탠드 에어컨 에바 뒷면
+              벽걸이 에어컨 냉각핀
             </div>
 
           </div>
@@ -510,11 +513,11 @@
           <div class="grid sm:grid-cols-2 gap-4 mt-4 text-xs sm:text-sm">
             <div class="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-soft">
               <span class="font-bold text-rose-600 block mb-0.5">● 세척 전 오염 상태</span>
-              <p class="text-slate-600" id="baBeforeDesc">공기 흡입구 뒷면 찌든 진흙 슬러지 및 곰팡이 고착</p>
+              <p class="text-slate-600" id="baBeforeDesc">알루미늄 핀 틈새 먼지 및 곰팡이 오염</p>
             </div>
             <div class="p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-soft">
               <span class="font-bold text-emerald-600 block mb-0.5">● 에어랩 정밀 고압 세척 후</span>
-              <p class="text-slate-600" id="baAfterDesc">친환경 약품 + 정밀 고압 관통 세척으로 은빛 광택 복원</p>
+              <p class="text-slate-600" id="baAfterDesc">전용 세정제 도포 및 정밀 고압 관통 세척으로 은빛 광택 복원</p>
             </div>
           </div>
 
@@ -556,7 +559,7 @@
             </div>
             <h3 class="text-lg font-extrabold text-brand-navy">초미세 프리 필터</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              공기 흡입구의 큰 먼지와 유해 입자를 세척하고 고온 살균하여 공기 흐름을 원활하게 만듭니다.
+              공기 흡입구의 큰 먼지와 유해 입자를 꼼꼼히 세척하여 공기 흐름을 원활하게 만듭니다.
             </p>
           </div>
 
@@ -568,7 +571,7 @@
             </div>
             <h3 class="text-lg font-extrabold text-brand-navy">프론트 패널 및 송풍 날개</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              바람의 방향을 조절하는 날개 틈새의 묵은 때와 외관 먼지를 친환경 세정제로 깨끗하게 닦아냅니다.
+              바람의 방향을 조절하는 날개 틈새의 묵은 때와 외관 먼지를 전용 세정제로 깨끗하게 닦아냅니다.
             </p>
           </div>
 
@@ -592,7 +595,7 @@
             </div>
             <h3 class="text-lg font-extrabold text-brand-navy">드레인판 (물받이) 100% 탈거</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              에어컨 바닥에 고이는 응축수 슬러지와 물때를 완전히 탈거하여 별도 세척실에서 고압 살균합니다.
+              에어컨 바닥에 고이는 응축수 슬러지와 물때를 완전히 탈거하여 별도 세척 공간에서 고압 세척합니다.
             </p>
           </div>
 
@@ -604,7 +607,7 @@
             </div>
             <h3 class="text-lg font-extrabold text-brand-navy">알루미늄 냉각핀 양면 관통</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              친환경 에바브라이트 도포 후 초고압수로 앞면과 뒷면을 완벽하게 관통하여 냉방 열효율을 극대화합니다.
+              Evap-Brite 전용 세정제 도포 후 초고압수로 앞면과 뒷면을 정밀 관통하여 냉각핀의 오염 부위를 깨끗하게 세척합니다.
             </p>
           </div>
 
@@ -717,7 +720,7 @@
                     <span>✔</span> 에어랩 양면 정밀 관통 방식
                   </div>
                   <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                    에어랩은 <strong>에바 뒷면까지 직접 접근</strong>하여 친환경 전용 약품 도포 후, <strong>정밀 고압수로 앞뒤 양면을 관통 세척</strong>하여 깊숙한 먼지까지 깨끗하게 씻어냅니다.
+                    에어랩은 <strong>에바 뒷면까지 직접 접근</strong>하여 Evap-Brite 전용 세정제 도포 후, <strong>정밀 고압수로 앞뒤 양면을 관통 세척</strong>하여 깊숙한 먼지까지 깨끗하게 씻어냅니다.
                   </p>
                 </div>
               </div>
@@ -832,7 +835,7 @@
             에어랩의 체계적인 6단계 정석 세척 프로세스
           </h2>
           <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-            사전 상태 진단부터 완전 분해, 고압 살균, 최종 작동 검수까지 한 단계도 건너뛰지 않습니다.
+            사전 상태 진단부터 완전 분해, 정밀 고압 세척, 최종 작동 검수까지 한 단계도 건너뛰지 않습니다.
           </p>
         </div>
 
@@ -896,9 +899,9 @@
                 <span class="w-8 h-8 rounded-xl bg-brand-ice text-brand-navy text-xs font-mono font-black flex items-center justify-center">04</span>
                 <span class="text-xs font-bold text-brand-ice">핵심 세척</span>
               </div>
-              <h3 class="font-extrabold text-brand-navy text-base">친환경 약품 & 정밀 고압 세척</h3>
+              <h3 class="font-extrabold text-brand-navy text-base">전용 세정제 & 정밀 고압 세척</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
-                전용 가대 결속 후 친환경 에바브라이트를 도포하고 초고압수로 냉각핀을 관통 세척합니다.
+                전용 가대 결속 후 Evap-Brite 전용 세정제를 도포하고 초고압수로 냉각핀을 관통 세척합니다.
               </p>
             </div>
             <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200">
@@ -915,7 +918,7 @@
               </div>
               <h3 class="font-extrabold text-brand-navy text-base">부품 송풍 건조 & 정밀 재조립</h3>
               <p class="text-xs text-slate-600 leading-relaxed">
-                살균 세척된 부품을 송풍 건조하여 물기를 완벽 제거한 뒤, 규격에 맞춰 정밀 재조립합니다.
+                고압 세척된 부품을 송풍 건조하여 물기를 꼼꼼히 건조한 뒤, 규격에 맞춰 정밀 재조립합니다.
               </p>
             </div>
             <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200">
@@ -978,7 +981,7 @@
               <div>
                 <h3 class="font-bold text-brand-navy text-base sm:text-lg">벽걸이 에어컨</h3>
                 <p class="text-xs text-slate-500 mt-0.5">작업 범위: 전면판넬·필터·냉각핀·송풍팬</p>
-                <p class="text-xs text-brand-ice font-semibold mt-1">예상 소요 시간: 약 1시간</p>
+                <p class="text-xs text-brand-ice font-semibold mt-1">예상 시간: 기종 및 설치 환경에 따라 상이</p>
               </div>
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">정찰 단가</span>
@@ -997,7 +1000,7 @@
               <div>
                 <h3 class="font-bold text-brand-navy text-base sm:text-lg">천장형 1WAY</h3>
                 <p class="text-xs text-slate-500 mt-0.5">작업 범위: 드레인판·송풍팬·냉각핀 관통</p>
-                <p class="text-xs text-brand-ice font-semibold mt-1">예상 소요 시간: 약 1시간 20분</p>
+                <p class="text-xs text-brand-ice font-semibold mt-1">예상 시간: 기종 및 설치 환경에 따라 상이</p>
               </div>
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">정찰 단가</span>
@@ -1016,7 +1019,7 @@
               <div>
                 <h3 class="font-bold text-brand-navy text-base sm:text-lg">천장형 4WAY</h3>
                 <p class="text-xs text-slate-500 mt-0.5">작업 범위: 드레인판 100% 탈거·가대 세척</p>
-                <p class="text-xs text-brand-ice font-semibold mt-1">예상 소요 시간: 약 1시간 30분</p>
+                <p class="text-xs text-brand-ice font-semibold mt-1">예상 시간: 기종 및 설치 환경에 따라 상이</p>
               </div>
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">정찰 단가</span>
@@ -1035,7 +1038,7 @@
               <div>
                 <h3 class="font-bold text-brand-navy text-base sm:text-lg">스탠드 에어컨</h3>
                 <p class="text-xs text-slate-500 mt-0.5">작업 범위: 에바 뒷면 접근·양면 고압 관통</p>
-                <p class="text-xs text-brand-ice font-semibold mt-1">예상 소요 시간: 약 1시간 30분</p>
+                <p class="text-xs text-brand-ice font-semibold mt-1">예상 시간: 기종 및 설치 환경에 따라 상이</p>
               </div>
               <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                 <span class="text-xs text-slate-400 font-medium">정찰 단가</span>
@@ -1104,7 +1107,7 @@
               <span class="text-[11px] text-emerald-600 font-bold">시공 완료</span>
             </div>
             <h3 class="text-lg font-bold text-brand-navy">천장형 1Way 슬림 시스템 에어컨 클리닝</h3>
-            <p class="text-xs text-slate-500">영업 전 사전 일정 조율 후 매장 인테리어 손상 없이 드레인판 분해 및 친환경 약품 정밀 살균 세척 완료.</p>
+            <p class="text-xs text-slate-500">영업 전 사전 일정 조율 후 매장 인테리어 손상 없이 드레인판 분해 및 전용 세정제 정밀 고압 세척 완료.</p>
             <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs text-slate-400">
               <span>작업 기종: 천장형 1Way</span>
               <span class="font-medium text-brand-navy">시공 완료</span>
