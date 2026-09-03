@@ -1,0 +1,76 @@
+[
+  {
+    "id": "case-1",
+    "title": "[상가 매장] 대형 영업용 스탠드 에어컨 에바 뒷면 찌든 슬러지 정밀 관통 세척",
+    "location": "서울 강남구 상업시설 매장",
+    "date": "2026.04 시공",
+    "scale": "대형 영업용 스탠드 (냉각핀 앞뒤 양면 관통)",
+    "photos": [
+      "images/stand_eva_back_dirty.jpg",
+      "images/stand_eva_back_clean.jpg",
+      "images/stand_eva_front.jpg",
+      "images/stand_eva_clean_full.jpg"
+    ]
+  },
+  {
+    "id": "case-2",
+    "title": "[아파트·오피스텔] 천장형 1WAY 완전 분해 & 마루바닥 방수 보양 세척",
+    "location": "서울 송파구 신축 아파트 주거공간",
+    "date": "2026.04 시공",
+    "scale": "천장형 1Way 3대 (바닥 방수 매트 및 집수 보양)",
+    "photos": [
+      "images/home_1way_setup1.jpg",
+      "images/home_1way_setup2.jpg",
+      "images/compare_part_after.jpg",
+      "images/compare_fin_after.jpg"
+    ]
+  },
+  {
+    "id": "case-3",
+    "title": "소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균",
+    "location": "서울 강남구 도곡동 메디컬센터",
+    "date": "2026.04 시공",
+    "scale": "1Way 12대 + 4Way 6대",
+    "photos": [
+      "images/equip_evap.jpg",
+      "images/compare_fin_after.jpg",
+      "images/equip_shroud.jpg"
+    ]
+  },
+  {
+    "id": "case-4",
+    "title": "홍대 3층 대형 베이커리 플래그십 360 원형 & 스탠드 탈지 케어",
+    "location": "서울 마포구 서교동",
+    "date": "2026.05 시공",
+    "scale": "360 원형 8대 + 영업용 38평 스탠드 2대",
+    "photos": [
+      "images/compare_part_before.jpg",
+      "images/compare_part_after.jpg",
+      "images/hero_wash_bg.jpg"
+    ]
+  },
+  {
+    "id": "case-5",
+    "title": "한남동 고급 펜트하우스 1Way 7대 프리미엄 전층 케어",
+    "location": "서울 용산구 한남동",
+    "date": "2026.04 시공",
+    "scale": "천장형 1Way 7대",
+    "photos": [
+      "images/compare_fin_before.jpg",
+      "images/compare_fin_after.jpg",
+      "images/hero_ambient.jpg"
+    ]
+  },
+  {
+    "id": "case-6",
+    "title": "대형 피트니스 & 필라테스 센터 4Way 14대 땀냄새·곰팡이 멸균",
+    "location": "서울 영등포구 여의도동",
+    "date": "2026.05 시공",
+    "scale": "4Way 시스템 14대 + 송풍팬 올분해",
+    "photos": [
+      "images/about_action_wash.jpg",
+      "images/compare_part_before.jpg",
+      "images/compare_part_after.jpg"
+    ]
+  }
+]

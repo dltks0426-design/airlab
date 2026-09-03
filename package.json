@@ -1,0 +1,22 @@
+{
+  "name": "airlab-fullstack",
+  "version": "1.0.0",
+  "description": "AirLab Premium Air Conditioner Cleaning Engineering Care Full-Stack Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  },
+  "keywords": [
+    "airlab",
+    "air-conditioner-cleaning",
+    "express",
+    "node"
+  ],
+  "author": "AirLab Engineering Team",
+  "license": "ISC"
+}

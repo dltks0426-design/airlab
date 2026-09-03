@@ -1,115 +1,122 @@
 /**
- * AirLab — Work Portfolio & SHA-256 Secure Admin Engine
+ * AirLab — Full-Stack Real-time Work Portfolio & Admin Engine
  */
 
-// 1. Initial Default Portfolio Data
-const DEFAULT_PORTFOLIO = [
-  {
-    id: "case-1",
-    title: "[상가 매장] 대형 영업용 스탠드 에어컨 에바 뒷면 찌든 슬러지 정밀 관통 세척",
-    location: "서울 강남구 상업시설 매장",
-    date: "2026.04 시공",
-    scale: "대형 영업용 스탠드 (냉각핀 앞뒤 양면 관통)",
-    photos: [
-      "images/stand_eva_back_dirty.jpg",
-      "images/stand_eva_back_clean.jpg",
-      "images/stand_eva_front.jpg",
-      "images/stand_eva_clean_full.jpg"
-    ]
-  },
-  {
-    id: "case-2",
-    title: "[아파트·오피스텔] 천장형 1WAY 완전 분해 & 마루바닥 방수 보양 세척",
-    location: "서울 송파구 신축 아파트 주거공간",
-    date: "2026.04 시공",
-    scale: "천장형 1Way 3대 (바닥 방수 매트 및 집수 보양)",
-    photos: [
-      "images/home_1way_setup1.jpg",
-      "images/home_1way_setup2.jpg",
-      "images/compare_part_after.jpg",
-      "images/compare_fin_after.jpg"
-    ]
-  },
-  {
-    id: "case-3",
-    title: "소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균",
-    location: "서울 강남구 도곡동 메디컬센터",
-    date: "2026.04 시공",
-    scale: "1Way 12대 + 4Way 6대",
-    photos: [
-      "images/equip_evap.jpg",
-      "images/compare_fin_after.jpg",
-      "images/equip_shroud.jpg"
-    ]
-  },
-  {
-    id: "case-4",
-    title: "홍대 3층 대형 베이커리 플래그십 360 원형 & 스탠드 탈지 케어",
-    location: "서울 마포구 서교동",
-    date: "2026.05 시공",
-    scale: "360 원형 8대 + 영업용 38평 스탠드 2대",
-    photos: [
-      "images/compare_part_before.jpg",
-      "images/compare_part_after.jpg",
-      "images/hero_wash_bg.jpg"
-    ]
-  },
-  {
-    id: "case-5",
-    title: "한남동 고급 펜트하우스 1Way 7대 프리미엄 전층 케어",
-    location: "서울 용산구 한남동",
-    date: "2026.04 시공",
-    scale: "천장형 1Way 7대",
-    photos: [
-      "images/compare_fin_before.jpg",
-      "images/compare_fin_after.jpg",
-      "images/hero_ambient.jpg"
-    ]
-  },
-  {
-    id: "case-6",
-    title: "대형 피트니스 & 필라테스 센터 4Way 14대 땀냄새·곰팡이 멸균",
-    location: "서울 영등포구 여의도동",
-    date: "2026.05 시공",
-    scale: "4Way 시스템 14대 + 송풍팬 올분해",
-    photos: [
-      "images/about_action_wash.jpg",
-      "images/compare_part_before.jpg",
-      "images/compare_part_after.jpg"
-    ]
-  }
-];
+let portfolioList = [];
+let currentPage = 1;
+const itemsPerPage = 6;
 
-// 2. Data Storage Helpers
-function getPortfolioList() {
+// 1. Fetch Real-time Portfolio from Backend Server (with Fallback)
+async function loadPortfolioData() {
+  try {
+    const res = await fetch('/api/work/list');
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+        portfolioList = json.data;
+        renderGallery();
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn('Backend offline, using local storage fallback');
+  }
+
+  // Fallback to local storage or defaults
   const custom = localStorage.getItem('airlab_custom_portfolio');
   if (custom) {
     try {
-      const parsed = JSON.parse(custom);
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-    } catch(e) {
-      console.error(e);
-    }
+      portfolioList = JSON.parse(custom);
+    } catch(e) {}
   }
-  return DEFAULT_PORTFOLIO;
+  if (!portfolioList || portfolioList.length === 0) {
+    portfolioList = [
+      {
+        id: "case-1",
+        title: "[상가 매장] 대형 영업용 스탠드 에어컨 에바 뒷면 찌든 슬러지 정밀 관통 세척",
+        location: "서울 강남구 상업시설 매장",
+        date: "2026.04 시공",
+        scale: "대형 영업용 스탠드 (냉각핀 앞뒤 양면 관통)",
+        photos: [
+          "images/stand_eva_back_dirty.jpg",
+          "images/stand_eva_back_clean.jpg",
+          "images/stand_eva_front.jpg",
+          "images/stand_eva_clean_full.jpg"
+        ]
+      },
+      {
+        id: "case-2",
+        title: "[아파트·오피스텔] 천장형 1WAY 완전 분해 & 마루바닥 방수 보양 세척",
+        location: "서울 송파구 신축 아파트 주거공간",
+        date: "2026.04 시공",
+        scale: "천장형 1Way 3대 (바닥 방수 매트 및 집수 보양)",
+        photos: [
+          "images/home_1way_setup1.jpg",
+          "images/home_1way_setup2.jpg",
+          "images/compare_part_after.jpg",
+          "images/compare_fin_after.jpg"
+        ]
+      },
+      {
+        id: "case-3",
+        title: "소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균",
+        location: "서울 강남구 도곡동 메디컬센터",
+        date: "2026.04 시공",
+        scale: "1Way 12대 + 4Way 6대",
+        photos: [
+          "images/equip_evap.jpg",
+          "images/compare_fin_after.jpg",
+          "images/equip_shroud.jpg"
+        ]
+      },
+      {
+        id: "case-4",
+        title: "홍대 3층 대형 베이커리 플래그십 360 원형 & 스탠드 탈지 케어",
+        location: "서울 마포구 서교동",
+        date: "2026.05 시공",
+        scale: "360 원형 8대 + 영업용 38평 스탠드 2대",
+        photos: [
+          "images/compare_part_before.jpg",
+          "images/compare_part_after.jpg",
+          "images/hero_wash_bg.jpg"
+        ]
+      },
+      {
+        id: "case-5",
+        title: "한남동 고급 펜트하우스 1Way 7대 프리미엄 전층 케어",
+        location: "서울 용산구 한남동",
+        date: "2026.04 시공",
+        scale: "천장형 1Way 7대",
+        photos: [
+          "images/compare_fin_before.jpg",
+          "images/compare_fin_after.jpg",
+          "images/hero_ambient.jpg"
+        ]
+      },
+      {
+        id: "case-6",
+        title: "대형 피트니스 & 필라테스 센터 4Way 14대 땀냄새·곰팡이 멸균",
+        location: "서울 영등포구 여의도동",
+        date: "2026.05 시공",
+        scale: "4Way 시스템 14대 + 송풍팬 올분해",
+        photos: [
+          "images/about_action_wash.jpg",
+          "images/compare_part_before.jpg",
+          "images/compare_part_after.jpg"
+        ]
+      }
+    ];
+  }
+  renderGallery();
 }
 
-function savePortfolioList(list) {
-  localStorage.setItem('airlab_custom_portfolio', JSON.stringify(list));
-}
-
-// 3. Admin Security & Irreversible SHA-256 Hash Authentication (F12 완벽 보안)
-const ADMIN_HASH = 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037';
-
-async function sha256(message) {
-  const msgBuffer = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+// 2. Admin Security & Token Management
+function getAdminToken() {
+  return sessionStorage.getItem('airlab_admin_token');
 }
 
 function isAdmin() {
-  return sessionStorage.getItem('airlab_admin_logged') === 'true';
+  return !!getAdminToken();
 }
 
 function updateAdminUI() {
@@ -124,7 +131,6 @@ function updateAdminUI() {
   }
 }
 
-// Global scope exposed functions
 window.openAdminLoginModal = function() {
   const pwInput = document.getElementById('adminPasswordInput');
   const errText = document.getElementById('adminLoginError');
@@ -142,32 +148,67 @@ window.closeAdminLoginModal = function() {
   if (modal) modal.classList.add('hidden');
 };
 
+// Server-side Authentication
 window.verifyAdminPassword = async function() {
   const pwInput = document.getElementById('adminPasswordInput');
   const errText = document.getElementById('adminLoginError');
   if (!pwInput) return;
-  const pw = pwInput.value;
-  const inputHash = await sha256(pw);
+  const password = pwInput.value;
 
-  if (inputHash === ADMIN_HASH) {
-    sessionStorage.setItem('airlab_admin_logged', 'true');
-    closeAdminLoginModal();
-    updateAdminUI();
-    renderGallery();
-    alert('관리자 모드로 로그인되었습니다. 시공사례를 자유롭게 등록/수정/삭제하실 수 있습니다.');
-  } else {
-    if (errText) errText.classList.remove('hidden');
+  try {
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await res.json();
+    if (data.success && data.token) {
+      sessionStorage.setItem('airlab_admin_token', data.token);
+      closeAdminLoginModal();
+      updateAdminUI();
+      renderGallery();
+      alert('관리자 모드로 로그인되었습니다. 서버와 실시간으로 시공사례가 동기화됩니다.');
+      return;
+    }
+  } catch (err) {
+    // Local fallback for offline testing
+    const ADMIN_HASH = 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037';
+    const msgBuffer = new TextEncoder().encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const inputHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    if (inputHash === ADMIN_HASH) {
+      sessionStorage.setItem('airlab_admin_token', 'local_authenticated');
+      closeAdminLoginModal();
+      updateAdminUI();
+      renderGallery();
+      alert('관리자 모드로 로그인되었습니다.');
+      return;
+    }
   }
+
+  if (errText) errText.classList.remove('hidden');
 };
 
-window.logoutAdmin = function() {
-  sessionStorage.removeItem('airlab_admin_logged');
+window.logoutAdmin = async function() {
+  const token = getAdminToken();
+  if (token) {
+    try {
+      await fetch('/api/admin/logout', {
+        method: 'POST',
+        headers: { 'x-admin-token': token }
+      });
+    } catch(e) {}
+  }
+  sessionStorage.removeItem('airlab_admin_token');
   updateAdminUI();
   renderGallery();
   alert('관리자 모드에서 로그아웃되었습니다.');
 };
 
-// 4. Secret Keybinding (Ctrl + Shift + A)
+// 3. Secret Keybind (Ctrl + Shift + A)
 document.addEventListener('keydown', function(e) {
   if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
     e.preventDefault();
@@ -175,30 +216,26 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// 5. Pagination & Gallery Rendering
-let currentPage = 1;
-const itemsPerPage = 6;
-
+// 4. Render Gallery & Pagination
 window.renderGallery = function() {
-  const list = getPortfolioList();
   const container = document.getElementById('galleryContainer');
   const totalBadge = document.getElementById('totalCountBadge');
   const totalAdminCount = document.getElementById('totalAdminCount');
 
-  if (totalBadge) totalBadge.innerText = list.length;
-  if (totalAdminCount) totalAdminCount.innerText = list.length;
+  if (totalBadge) totalBadge.innerText = portfolioList.length;
+  if (totalAdminCount) totalAdminCount.innerText = portfolioList.length;
 
   if (!container) return;
 
-  const totalPages = Math.ceil(list.length / itemsPerPage) || 1;
+  const totalPages = Math.ceil(portfolioList.length / itemsPerPage) || 1;
   if (currentPage > totalPages) currentPage = totalPages;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const pageItems = list.slice(startIndex, startIndex + itemsPerPage);
+  const pageItems = portfolioList.slice(startIndex, startIndex + itemsPerPage);
   const adminLogged = isAdmin();
 
   let html = '';
-  pageItems.forEach((item, idx) => {
+  pageItems.forEach((item) => {
     const mainPhoto = item.photos && item.photos.length > 0 ? item.photos[0] : 'images/compare_fin_after.jpg';
     const photoCount = item.photos ? item.photos.length : 1;
 
@@ -292,13 +329,12 @@ window.changePage = function(p) {
   }
 };
 
-// 6. Photo Viewer Modal
+// 5. Photo Viewer Modal
 let activePhotos = [];
 let currentPhotoIdx = 0;
 
 window.openPhotoModal = function(id) {
-  const list = getPortfolioList();
-  const item = list.find(x => x.id === id);
+  const item = portfolioList.find(x => x.id === id);
   if (!item || !item.photos || item.photos.length === 0) return;
 
   activePhotos = item.photos;
@@ -350,7 +386,7 @@ window.nextModalPhoto = function() {
   updateModalPhoto();
 };
 
-// 7. Case Study CRUD Management (Admin Only)
+// 6. Server CRUD Sync (Admin Only)
 let editingCaseId = null;
 let uploadedPhotoUrls = [];
 
@@ -405,7 +441,7 @@ window.removeUploadedPhoto = function(idx) {
   renderUploadedPhotoPreviews();
 };
 
-window.saveCaseItem = function() {
+window.saveCaseItem = async function() {
   const title = document.getElementById('caseTitleInput').value.trim();
   const location = document.getElementById('caseLocationInput').value.trim();
   const date = document.getElementById('caseDateInput').value.trim();
@@ -416,42 +452,50 @@ window.saveCaseItem = function() {
     return;
   }
 
-  let list = getPortfolioList();
+  const token = getAdminToken();
+  const payload = {
+    title,
+    location,
+    date,
+    scale,
+    photos: uploadedPhotoUrls.length > 0 ? uploadedPhotoUrls : ['images/compare_fin_after.jpg']
+  };
 
-  if (editingCaseId) {
-    // Edit existing
-    const item = list.find(x => x.id === editingCaseId);
-    if (item) {
-      item.title = title;
-      item.location = location;
-      item.date = date;
-      item.scale = scale;
-      if (uploadedPhotoUrls.length > 0) {
-        item.photos = uploadedPhotoUrls;
-      }
+  try {
+    if (editingCaseId) {
+      // Edit
+      await fetch(`/api/work/edit/${editingCaseId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': token },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      // Create
+      await fetch('/api/work/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': token },
+        body: JSON.stringify(payload)
+      });
     }
-  } else {
-    // Create new
-    const newItem = {
-      id: 'case-' + Date.now(),
-      title,
-      location,
-      date,
-      scale,
-      photos: uploadedPhotoUrls.length > 0 ? uploadedPhotoUrls : ['images/compare_fin_after.jpg']
-    };
-    list.unshift(newItem);
+    await loadPortfolioData();
+  } catch(err) {
+    // Local fallback
+    if (editingCaseId) {
+      const item = portfolioList.find(x => x.id === editingCaseId);
+      if (item) Object.assign(item, payload);
+    } else {
+      portfolioList.unshift({ id: 'case-' + Date.now(), ...payload });
+    }
+    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
+    renderGallery();
   }
 
-  savePortfolioList(list);
   closeCaseModal();
-  renderGallery();
   alert('시공사례가 성공적으로 저장되었습니다.');
 };
 
 window.editCase = function(id) {
-  const list = getPortfolioList();
-  const item = list.find(x => x.id === id);
+  const item = portfolioList.find(x => x.id === id);
   if (!item) return;
 
   editingCaseId = id;
@@ -465,23 +509,32 @@ window.editCase = function(id) {
   document.getElementById('caseEditorModal').classList.remove('hidden');
 };
 
-window.deleteCase = function(id) {
+window.deleteCase = async function(id) {
   if (!confirm('정말 이 시공사례를 삭제하시겠습니까?')) return;
-  let list = getPortfolioList();
-  list = list.filter(x => x.id !== id);
-  savePortfolioList(list);
-  renderGallery();
+  const token = getAdminToken();
+
+  try {
+    await fetch(`/api/work/delete/${id}`, {
+      method: 'DELETE',
+      headers: { 'x-admin-token': token }
+    });
+    await loadPortfolioData();
+  } catch(err) {
+    portfolioList = portfolioList.filter(x => x.id !== id);
+    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
+    renderGallery();
+  }
 };
 
 window.resetPortfolioToDefault = function() {
-  if (!confirm('모든 커스텀 등록 데이터를 초기화하고 기본 예시 데이터로 복원하시겠습니까?')) return;
+  if (!confirm('모든 커스텀 등록 데이터를 초기화하시겠습니까?')) return;
   localStorage.removeItem('airlab_custom_portfolio');
-  renderGallery();
-  alert('기본 데이터로 초기화되었습니다.');
+  loadPortfolioData();
+  alert('초기화되었습니다.');
 };
 
-// Initial Load
+// Initial Start
 document.addEventListener('DOMContentLoaded', function() {
   updateAdminUI();
-  renderGallery();
+  loadPortfolioData();
 });
