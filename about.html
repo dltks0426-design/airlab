@@ -72,7 +72,7 @@
 <body class="bg-white text-slate-800 antialiased selection:bg-brand-ice selection:text-white flex flex-col min-h-screen">
 
   <!-- NAVIGATION BAR -->
-  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 glass-header border-b border-slate-100">
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md glass-header border-b border-slate-100 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
@@ -124,41 +124,53 @@
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="flex-grow pt-24 pb-20">
+  <main class="flex-grow">
     
-    <!-- Hero Header (표준 통일 규격) -->
-    <section class="py-16 md:py-20 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-100">
-      <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-5">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-iceSoft border border-brand-ice/20 text-brand-navy text-sm font-bold uppercase tracking-wider">
+            <!-- Hero Header (모던 하이엔드 테크 랩 빌딩 배경 & 프리텐다드 황금 비율) -->
+    <section class="relative pt-32 pb-28 md:py-36 min-h-[85vh] overflow-hidden bg-brand-navy flex items-center justify-center">
+      
+      <!-- High-Tech Corporate Building Background -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img src="images/about_building_bg.jpg" alt="에어랩 연구소 테크 센터 전경" class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/85 to-slate-950/90"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 relative z-10 text-center space-y-6">
+        
+        <!-- Step 1: Top Micro Badge (Fade Down 100ms) -->
+        <div data-aos="fade-down" data-aos-duration="850" data-aos-once="true" data-aos-delay="100" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-brand-ice text-xs sm:text-sm font-extrabold uppercase tracking-wide shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
           About AirLab Laboratory
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.2]">
-          공기의 질을 연구하고 엔지니어링합니다.<br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-navy to-brand-ice">
-            프리미엄 에어컨 클리닝 랩, 에어랩
-          </span>
+
+        <!-- Step 2: Main Big Title (Fade Up 200ms) -->
+        <h1 data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="200" class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-snug sm:leading-normal">
+          <span class="block">공기의 질을 연구하고 엔지니어링합니다.</span>
+          <span class="block text-brand-ice mt-2.5 sm:mt-3.5">프리미엄 에어컨 클리닝 랩, 에어랩</span>
         </h1>
-        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed pt-2">
+
+        <!-- Step 3: Subtitle (Fade Up 350ms) -->
+        <p data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="350" class="text-slate-200 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-normal">
           에어랩은 단순한 청소 대행을 넘어, 에어컨의 기계 공학적 메커니즘을 정확히 분석하고 가장 안전하고 쾌적한 실내 공기를 구현하는 전문 엔지니어링 케어 브랜드입니다.
         </p>
 
-        <!-- 4 Key Credibility Badges (단정하고 균형잡힌 서브 통계) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 max-w-3xl mx-auto">
-          <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200/80 shadow-soft">
-            <p class="text-xl sm:text-2xl font-black text-brand-navy">12,000대+</p>
-            <p class="text-xs text-slate-500 font-semibold mt-0.5">누적 정밀 시공</p>
+        <!-- Step 4: 4 Key Credibility Badges (Clean Pure Pretendard Cards) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4 pt-4 max-w-3xl mx-auto">
+          <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="500" class="p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-md flex flex-col items-center justify-center">
+            <p class="text-xl sm:text-2xl font-black text-white">12,000대+</p>
+            <p class="text-xs text-brand-ice font-semibold mt-1">누적 정밀 시공</p>
           </div>
-          <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200/80 shadow-soft">
+          <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="600" class="p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-md flex flex-col items-center justify-center">
             <p class="text-xl sm:text-2xl font-black text-brand-ice">99.4%</p>
-            <p class="text-xs text-slate-500 font-semibold mt-0.5">고객 만족도</p>
+            <p class="text-xs text-slate-300 font-medium mt-1">고객 만족도</p>
           </div>
-          <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200/80 shadow-soft">
-            <p class="text-xl sm:text-2xl font-black text-emerald-600">3억원</p>
-            <p class="text-xs text-slate-500 font-semibold mt-0.5">배상책임보험</p>
+          <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="700" class="p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-md flex flex-col items-center justify-center">
+            <p class="text-xl sm:text-2xl font-black text-emerald-400">3억원</p>
+            <p class="text-xs text-slate-300 font-medium mt-1">배상책임보험</p>
           </div>
-          <div class="p-4 rounded-2xl bg-brand-slateBg border border-slate-200/80 shadow-soft">
-            <p class="text-xl sm:text-2xl font-black text-brand-navy">100%</p>
-            <p class="text-xs text-slate-500 font-semibold mt-0.5">직영 실명제</p>
+          <div data-aos="fade-up" data-aos-duration="900" data-aos-once="true" data-aos-delay="800" class="p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-md flex flex-col items-center justify-center">
+            <p class="text-xl sm:text-2xl font-black text-sky-300">100%</p>
+            <p class="text-xs text-slate-300 font-medium mt-1">직영 실명제</p>
           </div>
         </div>
 
@@ -172,7 +184,7 @@
         <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           <!-- Left: Brand Story Narrative (7 cols) -->
-          <div class="lg:col-span-7 space-y-6 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-offset="180" class="lg:col-span-7 space-y-6 flex flex-col justify-between">
             <div class="space-y-4">
               <span class="text-xs sm:text-sm font-extrabold text-brand-ice uppercase tracking-wider bg-brand-iceSoft border border-brand-ice/20 px-3.5 py-1 rounded-full inline-block">
                 Our Origin & Mission
@@ -219,7 +231,7 @@
               <img src="images/about_action_wash.jpg" alt="에어랩 정석 고압 관통 세척 현장" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
               
-              <div class="relative z-10 p-6 sm:p-7 text-white space-y-2">
+              <div data-aos="fade-up" data-aos-delay="150" data-aos-offset="180" class="relative z-10 p-6 sm:p-7 text-white space-y-2">
                 <span class="px-3 py-1 rounded-full bg-brand-ice text-brand-navy text-xs font-black shadow-md inline-block">
                   AirLab Field Engineering
                 </span>
@@ -259,7 +271,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Principle 1 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="100" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">01</span>
               <h3 class="text-lg font-extrabold text-white">기종별 표준 정석 분해 공정 준수</h3>
@@ -273,7 +285,7 @@
           </div>
 
           <!-- Principle 2 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="200" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">02</span>
               <h3 class="text-lg font-extrabold text-white">EPA 인증 친환경 생분해 약품</h3>
@@ -287,7 +299,7 @@
           </div>
 
           <!-- Principle 3 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="300" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">03</span>
               <h3 class="text-lg font-extrabold text-white">현장 3중 완벽 방수 보양</h3>
@@ -301,7 +313,7 @@
           </div>
 
           <!-- Principle 4 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="100" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">04</span>
               <h3 class="text-lg font-extrabold text-white">직영 테크니션 책임 실명제</h3>
@@ -315,7 +327,7 @@
           </div>
 
           <!-- Principle 5 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="200" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">05</span>
               <h3 class="text-lg font-extrabold text-white">3억원 보험 & 2주 무상 AS</h3>
@@ -329,7 +341,7 @@
           </div>
 
           <!-- Principle 6: 정찰제 -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
+          <div data-aos="fade-up" data-aos-delay="300" class="p-6 sm:p-7 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-ice/50 hover:bg-white/10 transition-all space-y-3 flex flex-col justify-between">
             <div class="space-y-3">
               <span class="w-10 h-10 rounded-2xl bg-brand-ice/20 text-brand-ice font-black flex items-center justify-center text-base">06</span>
               <h3 class="text-lg font-extrabold text-white">100% 투명 사전 정찰제</h3>
@@ -462,7 +474,7 @@
         <div class="grid md:grid-cols-3 gap-8">
           
           <!-- Equip 1: Evap-Brite -->
-          <div class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
+          <div data-aos="fade-up" data-aos-delay="100" class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
             <div class="aspect-[4/3] bg-white overflow-hidden relative">
               <img src="images/equip_evap.jpg" alt="친환경 전용 세정제 에바브라이트" class="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
               <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-sm">EPA 친환경 인증</span>
@@ -479,7 +491,7 @@
           </div>
 
           <!-- Equip 2: Pressure Washer -->
-          <div class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
+          <div data-aos="fade-up" data-aos-delay="250" class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
             <div class="aspect-[4/3] bg-white overflow-hidden relative">
               <img src="images/equip_washer.jpg" alt="에어컨 전용 고압 세척기" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-lg bg-brand-navy text-white text-xs font-bold shadow-sm">정밀 수압 제어</span>
@@ -496,7 +508,7 @@
           </div>
 
           <!-- Equip 3: Waterproof Shroud -->
-          <div class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
+          <div data-aos="fade-up" data-aos-delay="400" class="rounded-3xl bg-brand-slateBg border border-slate-200/90 shadow-soft hover:shadow-card flex flex-col overflow-hidden transition-all group">
             <div class="aspect-[4/3] bg-white overflow-hidden relative">
               <img src="images/equip_shroud.jpg" alt="기종별 전용 방수 가대" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-lg bg-brand-ice text-brand-navy font-black text-xs shadow-sm">실내 오염 100% 차단</span>
@@ -521,7 +533,7 @@
     <section class="py-20 bg-slate-50/80 border-t border-slate-200/80">
       <div class="max-w-7xl mx-auto px-5 sm:px-8 space-y-12">
         <div class="rounded-3xl bg-brand-navy p-8 sm:p-12 text-white shadow-card grid lg:grid-cols-2 gap-8 items-center">
-          <div class="space-y-4">
+          <div data-aos="fade-up" class="space-y-4">
             <span class="px-3.5 py-1 rounded-full bg-brand-ice/20 text-brand-ice font-bold text-xs border border-brand-ice/30 inline-block">
               B2B Enterprise Solution
             </span>
@@ -538,7 +550,7 @@
               <span class="px-3 py-1 rounded-lg bg-white/10 text-white">☕ 프랜차이즈 카페 직영 25개 지점</span>
             </div>
           </div>
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4">
+          <div data-aos="fade-up" data-aos-delay="150" class="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4">
             <a href="contact.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-ice hover:bg-brand-iceHover text-brand-navy font-bold text-base text-center shadow-lg transition-all">
               B2B 대량 시공 견적 문의 →
             </a>
@@ -592,7 +604,7 @@
       </a>
 
       <!-- 2. 카카오톡 상담 -->
-      <a href="https://pf.kakao.com/_CxbxhJX" target="_blank" rel="noopener noreferrer" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="카카오톡 1:1 상담">
+      <a href="http://pf.kakao.com/_CxbxhJX/chat" target="_blank" rel="noopener noreferrer" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="카카오톡 1:1 상담">
         <!-- Hover Left Tooltip 2 -->
         <div class="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-4 py-2 rounded-2xl bg-brand-navy text-white text-sm font-extrabold whitespace-nowrap shadow-2xl border border-slate-700 flex items-center gap-2">
