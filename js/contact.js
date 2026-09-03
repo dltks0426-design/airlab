@@ -1,3 +1,55 @@
+
+// -------------------------------------------------------------
+// Flexible Korean Phone Formatter & Validator (010, 02, 031, 070, 1588 등)
+// -------------------------------------------------------------
+window.formatPhoneNumber = function(input) {
+  let val = input.value.replace(/[^0-9]/g, '');
+  let formatted = '';
+
+  if (val.startsWith('02')) {
+    // 서울 지역번호 02
+    if (val.length <= 2) {
+      formatted = val;
+    } else if (val.length <= 5) {
+      formatted = val.slice(0, 2) + '-' + val.slice(2);
+    } else if (val.length <= 9) {
+      formatted = val.slice(0, 2) + '-' + val.slice(2, 5) + '-' + val.slice(5);
+    } else {
+      formatted = val.slice(0, 2) + '-' + val.slice(2, 6) + '-' + val.slice(6, 10);
+    }
+  } else if (val.startsWith('15') || val.startsWith('16') || val.startsWith('18')) {
+    // 전국 대표번호 1588, 1600 등
+    if (val.length <= 4) {
+      formatted = val;
+    } else {
+      formatted = val.slice(0, 4) + '-' + val.slice(4, 8);
+    }
+  } else {
+    // 휴대폰(010) 및 경기/지방(031, 032, 051 등) 및 070
+    if (val.length <= 3) {
+      formatted = val;
+    } else if (val.length <= 6) {
+      formatted = val.slice(0, 3) + '-' + val.slice(3);
+    } else if (val.length <= 10) {
+      formatted = val.slice(0, 3) + '-' + val.slice(3, 6) + '-' + val.slice(6);
+    } else {
+      formatted = val.slice(0, 3) + '-' + val.slice(3, 7) + '-' + val.slice(7, 11);
+    }
+  }
+  input.value = formatted;
+};
+
+function isValidKoreanPhone(phoneStr) {
+  const clean = phoneStr.replace(/[^0-9]/g, '');
+  // 서울 일반전화(02): 9~10자리
+  if (clean.startsWith('02') && (clean.length === 9 || clean.length === 10)) return true;
+  // 핸드폰(010,011등) / 지방(031,032등) / 인터넷전화(070): 10~11자리
+  if (/^(01[016789]|0[3-6][1-5]|070)/.test(clean) && (clean.length === 10 || clean.length === 11)) return true;
+  // 대표번호(1588,1600등): 8자리
+  if (/^(15|16|18)/.test(clean) && clean.length === 8) return true;
+  return false;
+}
+
 /**
  * AirLab — Contact & Quote Dispatch Engine
  */
@@ -74,6 +126,18 @@ window.handleQuoteSubmit = async function(e) {
 
   const name = document.getElementById('name').value.trim();
   const phone = document.getElementById('phone').value.trim();
+
+  if (!name) {
+    alert('성함 또는 상호명을 입력해 주세요.');
+    document.getElementById('name').focus();
+    return;
+  }
+
+  if (!phone || !isValidKoreanPhone(phone)) {
+    alert('담당 엔지니어가 연락드릴 전화번호(휴대폰 또는 지역 일반전화)를 올바르게 입력해 주세요.');
+    document.getElementById('phone').focus();
+    return;
+  }
   const email = document.getElementById('email').value.trim();
   const facilityType = document.getElementById('facilityType').value;
   const address = document.getElementById('address').value.trim();
