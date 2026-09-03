@@ -634,14 +634,13 @@
     </section>
 
   </main>
-  <!-- FLOATING QUICK DOCK (AirLab 프리미엄 슬림 플로팅 캡슐) -->
-  <aside class="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center select-none" aria-label="빠른 상담 독">
+    <!-- FLOATING QUICK DOCK (PC 전용: md 이상에서만 노출하여 모바일 본문 가림 100% 해소) -->
+  <aside class="hidden md:flex fixed right-4 lg:right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center select-none" aria-label="빠른 상담 독">
     
     <div class="w-[62px] sm:w-[66px] rounded-[36px] bg-brand-navy/95 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(15,43,72,0.3)] py-3.5 px-1.5 flex flex-col items-center gap-3 text-white transition-all">
       
       <!-- 1. 1분 견적 (메인 시그니처 뱃지) -->
       <a href="contact.html" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="실시간 맞춤 견적 문의">
-        <!-- Hover Left Tooltip -->
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-brand-ice animate-pulse"></span>
@@ -655,7 +654,7 @@
         <span class="text-[9px] font-extrabold text-brand-ice tracking-tighter mt-1">맞춤견적</span>
       </a>
 
-            <!-- 2. 카카오톡 상담 -->
+      <!-- 2. 카카오톡 상담 -->
       <a href="#" onclick="alert('에어랩 카카오톡 1:1 상담 채널로 연결됩니다.'); return false;" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="카카오톡 1:1 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
@@ -687,7 +686,7 @@
       <a href="tel:010-0000-0000" class="group relative flex flex-col items-center transition-transform active:scale-95" aria-label="전화 상담">
         <div class="absolute right-full mr-3 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center pointer-events-none z-50">
           <div class="px-3 py-1.5 rounded-xl bg-brand-navy text-white text-sm font-bold whitespace-nowrap shadow-xl border border-slate-700/80">
-            전화 상담 (1588-0000)
+            전화 상담
           </div>
         </div>
 
@@ -711,6 +710,13 @@
 
     </div>
 
+  </aside>
+
+  <!-- MOBILE ONLY MINIMAL FLOATING TOP BUTTON (모바일 화면 본문 100% 확보) -->
+  <aside class="md:hidden fixed right-4 bottom-5 z-40" aria-label="모바일 맨 위로 이동">
+    <button type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-11 h-11 rounded-full bg-brand-navy/90 text-white backdrop-blur-md flex items-center justify-center shadow-lg border border-white/20 active:scale-90 transition-transform">
+      <svg class="w-5 h-5 text-brand-ice" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+    </button>
   </aside>
 
   <!-- FOOTER -->
