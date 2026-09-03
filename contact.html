@@ -46,15 +46,27 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
   <style>
-    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; }
-    .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); }
-    .service-chip input[type="checkbox"]:checked + label {
-      background-color: #0F2B48;
-      border-color: #0F2B48;
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(15, 43, 72, 0.22);
+    html {
+      font-size: 17px;
     }
-    .service-chip input[type="checkbox"]:checked + label .check-icon { opacity: 1; transform: scale(1); }
+    @media (min-width: 640px) {
+      html {
+        font-size: 17.5px;
+      }
+    }
+    @media (min-width: 1024px) {
+      html {
+        font-size: 18px;
+      }
+    }
+    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; line-height: 1.65; }
+    .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); }
+    @keyframes float-gentle { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    .animate-float { animation: float-gentle 4s ease-in-out infinite; }
+    /* Extra readability tweaks */
+    p, span, li, button, input, textarea, select {
+      letter-spacing: -0.015em;
+    }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-brand-ice selection:text-white flex flex-col min-h-screen">

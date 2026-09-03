@@ -46,8 +46,27 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
   <style>
-    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; }
+    html {
+      font-size: 17px;
+    }
+    @media (min-width: 640px) {
+      html {
+        font-size: 17.5px;
+      }
+    }
+    @media (min-width: 1024px) {
+      html {
+        font-size: 18px;
+      }
+    }
+    body { font-family: 'Pretendard', sans-serif; word-break: keep-all; line-height: 1.65; }
     .glass-header { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(16px); }
+    @keyframes float-gentle { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    .animate-float { animation: float-gentle 4s ease-in-out infinite; }
+    /* Extra readability tweaks */
+    p, span, li, button, input, textarea, select {
+      letter-spacing: -0.015em;
+    }
   </style>
 </head>
 <body class="bg-white text-slate-800 antialiased selection:bg-brand-ice selection:text-white flex flex-col min-h-screen">
@@ -120,7 +139,7 @@
     <!-- Hero Header -->
     <section class="py-16 md:py-20 bg-gradient-to-b from-slate-50 via-white to-white border-b border-slate-100">
       <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-5">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-iceSoft border border-brand-ice/20 text-brand-navy text-xs font-bold uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-iceSoft border border-brand-ice/20 text-brand-navy text-sm font-bold uppercase tracking-wider">
           Frequently Asked Questions
         </div>
         <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-navy tracking-tight leading-[1.2]">
@@ -134,11 +153,81 @@
         </p>
       </div>
     </section>
-    <!-- FAQ Accordion List -->
+<!-- FAQ Accordion List -->
+
     <section class="py-16 sm:py-20 bg-brand-slateBg">
       <div class="max-w-4xl mx-auto px-5 sm:px-8">
         
         <div class="space-y-5" id="faqAccordionContainer">
+          <!-- Top FAQ 1: 물튐/보양 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">세척 시 벽지나 바닥, 주변 가구/가전에 물이나 땟물이 튀지 않나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-4">
+              <p><strong>전혀 걱정하지 않으셔도 됩니다.</strong></p>
+              <p>현장 도착 후 담당 엔지니어가 주변 컴퓨터, 사무 집기, 가구, 벽지 등을 먼저 확인하고 <strong>3중 방수 비닐 보양 작업</strong>을 철저히 진행합니다. 또한 에어컨 기종별 전용 <strong>투명 방수 가대를 단단히 결속</strong>하여 고압 세척수가 외부 집수통으로만 100% 배출되므로 물 한 방울 튀지 않습니다.</p>
+              <div class="grid sm:grid-cols-2 gap-3 pt-2">
+                <div class="rounded-2xl overflow-hidden border border-slate-200 aspect-[16/10] bg-slate-900 relative">
+                  <img src="images/masking_protection_real.jpg" alt="실제 사무실 PC 및 서류 완벽 보양" class="w-full h-full object-cover" />
+                  <div class="absolute bottom-2 left-2 right-2 p-1.5 rounded-lg bg-black/70 text-white text-xs font-bold text-center">
+                    🛡️ 실제 사무실 PC·집기 완벽 보양
+                  </div>
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-200 aspect-[16/10] bg-slate-900 relative">
+                  <img src="images/shroud_cleaning_real.jpg" alt="전용 투명 방수 가대 결속 세척" class="w-full h-full object-cover" />
+                  <div class="absolute bottom-2 left-2 right-2 p-1.5 rounded-lg bg-black/70 text-white text-xs font-bold text-center">
+                    🛡️ 전용 방수 가대 무오염 세척
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top FAQ 2: 소요 시간 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">에어컨 1대당 세척 소요 시간은 얼마나 걸리나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-2">
+              <p>기종과 오염도에 따라 정밀하게 진행됩니다:</p>
+              <ul class="list-disc list-inside space-y-1 pl-1 text-slate-600">
+                <li><strong>벽걸이 에어컨</strong>: 1대당 약 40분 ~ 50분</li>
+                <li><strong>천장형 시스템 (1Way / 4Way)</strong>: 1대당 약 50분 ~ 1시간</li>
+                <li><strong>스탠드 에어컨</strong>: 1대당 약 50분 ~ 1시간 10분</li>
+              </ul>
+              <p class="text-xs sm:text-sm text-slate-500 pt-1">※ 100% 완전 분해 및 약품 잔여물 없는 맑은 물 고압 세척, 송풍 건조 및 정상 가동 테스트 시간까지 포함된 기준입니다.</p>
+            </div>
+          </div>
+
+          <!-- Top FAQ 3: 청소 후 바로 사용 여부 -->
+          <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
+            <button type="button" onclick="toggleFaq(this)" class="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none group">
+              <div class="flex items-center gap-3.5 sm:gap-4">
+                <span class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-brand-iceSoft text-brand-navy font-black text-lg sm:text-xl shrink-0 border border-brand-ice/30 group-hover:bg-brand-ice group-hover:text-white transition-all">Q</span>
+                <span class="text-lg sm:text-xl font-extrabold text-brand-navy group-hover:text-brand-ice transition-colors leading-snug">청소 직후 에어컨을 바로 틀어도 되나요? 약품 냄새는 안 나나요?</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0 transition-transform duration-300 icon-box">
+                <svg class="w-5 h-5 text-slate-600 transition-transform duration-300 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </button>
+            <div class="faq-content hidden px-6 sm:px-8 pb-7 text-slate-700 text-base sm:text-lg leading-relaxed border-t border-slate-100 pt-5 space-y-2">
+              <p><strong>시공 직후 바로 상쾌하게 가동하실 수 있습니다.</strong></p>
+              <p>에어랩은 미국 환경청(EPA) 인증 친환경 에바브라이트 정품 세정제를 사용하며, 맑은 물로 맑은 물이 나올 때까지 깨끗한 고압 세척과 송풍 건조를 완벽히 마칩니다. 락스나 독성 케미컬 냄새가 전혀 남지 않으며, 테크니션이 최종 가동 테스트를 확인 후 철수합니다.</p>
+            </div>
+          </div>
           
           <!-- Q1 -->
           <div class="faq-item rounded-3xl bg-white border border-slate-200/90 shadow-soft overflow-hidden transition-all">
