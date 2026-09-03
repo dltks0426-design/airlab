@@ -302,12 +302,9 @@
             <span class="px-2.5 py-0.5 rounded-full bg-brand-navy text-white text-xs font-bold font-mono" id="totalCountBadge">0</span>
           </div>
 
-          <!-- Admin Mode Toggle Trigger -->
-          <div>
-            <button id="adminLoginBtn" type="button" onclick="openAdminLoginModal()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-500 hover:text-brand-navy hover:bg-white border border-slate-200 transition-all flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-              <span>관리자 모드</span>
-            </button>
+          <!-- Admin Mode Hidden from Normal Public View -->
+          <div class="hidden">
+            <button id="adminLoginBtn" type="button" onclick="openAdminLoginModal()" class="hidden"></button>
           </div>
         </div>
 
@@ -674,7 +671,7 @@
         </div>
         <div class="md:text-right space-y-2">
           <p class="text-slate-400">운영시간: 평일·주말 09:00 - 19:00 (공휴일 및 야간 시공은 사전 상담 후 조율 가능)</p>
-          <p class="text-slate-500">Copyright © 2026 에어랩 (AirLab). All rights reserved.</p>
+          <p class="text-slate-500"><span ondblclick="openAdminLoginModal()" class="cursor-default select-none" title="">Copyright © 2026 에어랩 (AirLab). All rights reserved.</span></p>
         </div>
       </div>
     </div>
@@ -778,8 +775,16 @@
       renderPortfolio();
     }
 
-    // 3. Admin State Management
-    const ADMIN_PW = 'airlab0426';
+    // 3. Admin State Management (비밀번호: AirLab!2026#)
+    const ADMIN_PW = 'AirLab!2026#';
+
+    // Secret Keybind: Ctrl + Shift + A to open Admin Login
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        openAdminLoginModal();
+      }
+    });
 
     function isAdmin() {
       return sessionStorage.getItem('airlab_admin_logged') === 'true';
