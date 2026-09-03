@@ -24,7 +24,61 @@ window.handlePhoneCall = function(phoneNum, e) {
   return true;
 };
 
+// -------------------------------------------------------------
+// Universal Mobile Menu Toggle Controller
+// -------------------------------------------------------------
+function initMobileMenu() {
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const openIco = document.getElementById('menuOpenIcon');
+  const closeIco = document.getElementById('menuCloseIcon');
+  
+  if (mobileBtn && mobileMenu) {
+    // Reset to closed state on initial load / page transition
+    mobileMenu.classList.add('hidden');
+    if (openIco) openIco.classList.remove('hidden');
+    if (closeIco) closeIco.classList.add('hidden');
+
+    // Attach direct onclick handler (idempotent, prevents duplicate event listeners)
+    mobileBtn.onclick = function(e) {
+      e.stopPropagation();
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        if (openIco) openIco.classList.add('hidden');
+        if (closeIco) closeIco.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        if (openIco) openIco.classList.remove('hidden');
+        if (closeIco) closeIco.classList.add('hidden');
+      }
+    };
+  }
+}
+
+// -------------------------------------------------------------
+// Header Scroll Shadow Controller
+// -------------------------------------------------------------
+function initHeaderScroll() {
+  const header = document.querySelector('header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  }
+}
+
+// -------------------------------------------------------------
+// Lifecycle Listeners
+// -------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
+  initMobileMenu();
+  initHeaderScroll();
+
   // Global Event Delegation: Capture any tel: link click across the entire page
   document.addEventListener('click', function(e) {
     const telLink = e.target.closest('a[href^="tel:"]');
@@ -39,31 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }, true);
+});
 
-  // 1. Mobile Menu Toggle
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const openIco = document.getElementById('menuOpenIcon');
-  const closeIco = document.getElementById('menuCloseIcon');
-  
-  if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener('click', () => {
-      const isHidden = mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden', !isHidden);
-      if (openIco) openIco.classList.toggle('hidden', isHidden);
-      if (closeIco) closeIco.classList.toggle('hidden', !isHidden);
-    });
-  }
-
-  // 2. Header Shadow on Scroll
-  const header = document.querySelector('header');
-  if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.classList.add('shadow-md');
-      } else {
-        header.classList.remove('shadow-md');
-      }
-    });
-  }
+// Support back/forward cache navigation (bfcache)
+window.addEventListener('pageshow', function() {
+  initMobileMenu();
 });
