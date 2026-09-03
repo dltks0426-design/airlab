@@ -230,9 +230,10 @@
                     <h3 class="font-extrabold text-brand-navy text-sm sm:text-base">벽걸이 에어컨</h3>
                     <p class="text-xs text-slate-500 mt-0.5">가정집 원룸/방, 소형 매장</p>
                   </div>
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-2">
                     <button type="button" onclick="changeQty('wall', -1)" class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-brand-navy font-black hover:bg-slate-100 flex items-center justify-center active:scale-95 transition-all">-</button>
-                    <span id="qty-wall" class="w-8 text-center font-black text-brand-navy text-base">0</span>
+                    <input type="number" id="qty-wall" min="0" max="999" value="0" oninput="handleManualQtyChange()"
+                      class="w-14 py-1 text-center font-black text-brand-navy text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-navy" />
                     <button type="button" onclick="changeQty('wall', 1)" class="w-8 h-8 rounded-xl bg-brand-navy text-white font-black hover:bg-brand-navyLight flex items-center justify-center active:scale-95 transition-all">+</button>
                   </div>
                 </div>
@@ -243,9 +244,10 @@
                     <h3 class="font-extrabold text-brand-navy text-sm sm:text-base">1Way / 2Way 천장형</h3>
                     <p class="text-xs text-slate-500 mt-0.5">아파트 거실, 오피스텔 시스템</p>
                   </div>
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-2">
                     <button type="button" onclick="changeQty('system1w', -1)" class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-brand-navy font-black hover:bg-slate-100 flex items-center justify-center active:scale-95 transition-all">-</button>
-                    <span id="qty-system1w" class="w-8 text-center font-black text-brand-navy text-base">0</span>
+                    <input type="number" id="qty-system1w" min="0" max="999" value="0" oninput="handleManualQtyChange()"
+                      class="w-14 py-1 text-center font-black text-brand-navy text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-navy" />
                     <button type="button" onclick="changeQty('system1w', 1)" class="w-8 h-8 rounded-xl bg-brand-navy text-white font-black hover:bg-brand-navyLight flex items-center justify-center active:scale-95 transition-all">+</button>
                   </div>
                 </div>
@@ -256,9 +258,10 @@
                     <h3 class="font-extrabold text-brand-navy text-sm sm:text-base">4Way 천장형 시스템</h3>
                     <p class="text-xs text-slate-500 mt-0.5">사무실, 병원, 상가 매장</p>
                   </div>
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-2">
                     <button type="button" onclick="changeQty('system4w', -1)" class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-brand-navy font-black hover:bg-slate-100 flex items-center justify-center active:scale-95 transition-all">-</button>
-                    <span id="qty-system4w" class="w-8 text-center font-black text-brand-navy text-base">0</span>
+                    <input type="number" id="qty-system4w" min="0" max="999" value="0" oninput="handleManualQtyChange()"
+                      class="w-14 py-1 text-center font-black text-brand-navy text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-navy" />
                     <button type="button" onclick="changeQty('system4w', 1)" class="w-8 h-8 rounded-xl bg-brand-navy text-white font-black hover:bg-brand-navyLight flex items-center justify-center active:scale-95 transition-all">+</button>
                   </div>
                 </div>
@@ -269,9 +272,10 @@
                     <h3 class="font-extrabold text-brand-navy text-sm sm:text-base">스탠드 / 업소용 스탠드</h3>
                     <p class="text-xs text-slate-500 mt-0.5">가정집 거실, 식당 대형 스탠드</p>
                   </div>
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-2">
                     <button type="button" onclick="changeQty('stand', -1)" class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-brand-navy font-black hover:bg-slate-100 flex items-center justify-center active:scale-95 transition-all">-</button>
-                    <span id="qty-stand" class="w-8 text-center font-black text-brand-navy text-base">0</span>
+                    <input type="number" id="qty-stand" min="0" max="999" value="0" oninput="handleManualQtyChange()"
+                      class="w-14 py-1 text-center font-black text-brand-navy text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-navy" />
                     <button type="button" onclick="changeQty('stand', 1)" class="w-8 h-8 rounded-xl bg-brand-navy text-white font-black hover:bg-brand-navyLight flex items-center justify-center active:scale-95 transition-all">+</button>
                   </div>
                 </div>
@@ -282,9 +286,10 @@
                     <h3 class="font-extrabold text-brand-navy text-sm sm:text-base">실외기 고압 세척 추가</h3>
                     <p class="text-xs text-slate-500 mt-0.5">실외기 냉각핀 먼지 및 과열 방지 고압 세척</p>
                   </div>
-                  <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-2">
                     <button type="button" onclick="changeQty('outdoor', -1)" class="w-8 h-8 rounded-xl bg-white border border-slate-200 text-brand-navy font-black hover:bg-slate-100 flex items-center justify-center active:scale-95 transition-all">-</button>
-                    <span id="qty-outdoor" class="w-8 text-center font-black text-brand-navy text-base">0</span>
+                    <input type="number" id="qty-outdoor" min="0" max="999" value="0" oninput="handleManualQtyChange()"
+                      class="w-14 py-1 text-center font-black text-brand-navy text-base bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-navy" />
                     <button type="button" onclick="changeQty('outdoor', 1)" class="w-8 h-8 rounded-xl bg-brand-navy text-white font-black hover:bg-brand-navyLight flex items-center justify-center active:scale-95 transition-all">+</button>
                   </div>
                 </div>
@@ -512,23 +517,38 @@
 
   <!-- JAVASCRIPT & EMAIL DISPATCH LOGIC -->
   <script>
-    // Quantities state
-    const quantities = {
-      wall: 0,
-      system1w: 0,
-      system4w: 0,
-      stand: 0,
-      outdoor: 0
-    };
+    // Quantities state & Handlers
+    const qtyKeys = ['wall', 'system1w', 'system4w', 'stand', 'outdoor'];
+
+    function getQty(key) {
+      const el = document.getElementById('qty-' + key);
+      return el ? Math.max(0, parseInt(el.value, 10) || 0) : 0;
+    }
 
     function changeQty(type, delta) {
-      quantities[type] = Math.max(0, quantities[type] + delta);
-      document.getElementById('qty-' + type).innerText = quantities[type];
+      const el = document.getElementById('qty-' + type);
+      if (el) {
+        let current = Math.max(0, parseInt(el.value, 10) || 0);
+        current = Math.max(0, current + delta);
+        el.value = current;
+        updateTotalCount();
+      }
+    }
+
+    function handleManualQtyChange() {
+      qtyKeys.forEach(k => {
+        const el = document.getElementById('qty-' + k);
+        if (el && el.value < 0) el.value = 0;
+      });
       updateTotalCount();
     }
 
     function updateTotalCount() {
-      const total = Object.values(quantities).reduce((a, b) => a + b, 0);
+      let total = 0;
+      qtyKeys.forEach(k => {
+        total += getQty(k);
+      });
+
       const badge = document.getElementById('totalQtyBadge');
       if (badge) {
         badge.innerText = '총 신청 대수: ' + total + '대';
@@ -568,11 +588,17 @@
       
       // Build AC Breakdown String
       const breakdown = [];
-      if (quantities.wall > 0) breakdown.push('벽걸이 ' + quantities.wall + '대');
-      if (quantities.system1w > 0) breakdown.push('1Way/2Way 천장형 ' + quantities.system1w + '대');
-      if (quantities.system4w > 0) breakdown.push('4Way 천장형 ' + quantities.system4w + '대');
-      if (quantities.stand > 0) breakdown.push('스탠드 ' + quantities.stand + '대');
-      if (quantities.outdoor > 0) breakdown.push('실외기 ' + quantities.outdoor + '대');
+      const qWall = getQty('wall');
+      const q1w = getQty('system1w');
+      const q4w = getQty('system4w');
+      const qStand = getQty('stand');
+      const qOutdoor = getQty('outdoor');
+
+      if (qWall > 0) breakdown.push('벽걸이 ' + qWall + '대');
+      if (q1w > 0) breakdown.push('1Way/2Way 천장형 ' + q1w + '대');
+      if (q4w > 0) breakdown.push('4Way 천장형 ' + q4w + '대');
+      if (qStand > 0) breakdown.push('스탠드 ' + qStand + '대');
+      if (qOutdoor > 0) breakdown.push('실외기 ' + qOutdoor + '대');
       const acDetails = breakdown.join(', ') + ' (총 ' + totalQty + '대)';
 
       // Parking
@@ -651,11 +677,10 @@
       const form = document.getElementById('quoteForm');
       if (form) {
         form.reset();
-        for (let k in quantities) {
-          quantities[k] = 0;
+        qtyKeys.forEach(k => {
           const el = document.getElementById('qty-' + k);
-          if (el) el.innerText = '0';
-        }
+          if (el) el.value = 0;
+        });
         updateTotalCount();
       }
     }
