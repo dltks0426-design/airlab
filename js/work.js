@@ -49,7 +49,7 @@ async function loadPortfolioData() {
           "⚠️ [오염 상태] 스탠드 에바 뒷면 찌든 슬러지",
           "✨ [완전 세척] 알루미늄 냉각핀 고압 관통 세척 후",
           "🔧 [부품 분해] 송풍팬 및 프레임 완전 탈거",
-          "🛡️ [최종 조립] 100% 살균 멸균 및 정상 가동 테스트"
+          "🛡️ [최종 조립] 고압 관통 세척 완료 및 정상 가동 테스트"
         ]
       },
       {
@@ -73,7 +73,7 @@ async function loadPortfolioData() {
       },
       {
         id: "case-3",
-        title: "소아청소년과 & 이비인후과 1Way/4Way 18대 무독성 살균",
+        title: "[의료 시설] 시스템 1Way / 4Way 친환경 정밀 케어",
         location: "서울 강남구 도곡동 메디컬센터",
         date: "2026.04 시공",
         scale: "1Way 12대 + 4Way 6대",
@@ -90,7 +90,7 @@ async function loadPortfolioData() {
       },
       {
         id: "case-4",
-        title: "홍대 3층 대형 베이커리 플래그십 360 원형 & 스탠드 탈지 케어",
+        title: "[베이커리 매장] 360 원형 카세트 & 스탠드 유증기 정밀 세척",
         location: "서울 마포구 서교동",
         date: "2026.05 시공",
         scale: "360 원형 8대 + 영업용 38평 스탠드 2대",
@@ -107,7 +107,7 @@ async function loadPortfolioData() {
       },
       {
         id: "case-5",
-        title: "한남동 고급 펜트하우스 1Way 7대 프리미엄 전층 케어",
+        title: "[주거 공간] 천장형 1Way 다수 기종 정밀 분해 세척",
         location: "서울 용산구 한남동",
         date: "2026.04 시공",
         scale: "천장형 1Way 7대",
@@ -124,7 +124,7 @@ async function loadPortfolioData() {
       },
       {
         id: "case-6",
-        title: "대형 피트니스 & 필라테스 센터 4Way 14대 땀냄새·곰팡이 멸균",
+        title: "[운동 시설] 천장형 4Way 시스템 에어컨 드레인판 분해 세척",
         location: "서울 영등포구 여의도동",
         date: "2026.05 시공",
         scale: "4Way 시스템 14대 + 송풍팬 올분해",
@@ -135,8 +135,8 @@ async function loadPortfolioData() {
         ],
         captions: [
           "💦 [정밀 고압 세척] 천장형 4Way 열교환기 관통 세척",
-          "⚠️ [드레인판 분해] 썩은 물때 슬러지 오염 확인",
-          "✨ [살균 세척 후] 신품급 청결도 100% 멸균 완료"
+          "⚠️ [드레인판 분해] 물받이 바닥 슬러지 오염 확인",
+          "✨ [살균 세척 후] 고압 살균 세척으로 백색 상태 복원"
         ]
       }
     ];
