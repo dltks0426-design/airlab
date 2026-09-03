@@ -738,22 +738,8 @@
       </div>
     </div>
   </footer>
-  <!-- JAVASCRIPT -->
-  <script>
-    // Mobile Menu Toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const openIco = document.getElementById('menuOpenIcon');
-    const closeIco = document.getElementById('menuCloseIcon');
-    if (mobileBtn && mobileMenu) {
-      mobileBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden', !isHidden);
-        if (openIco) openIco.classList.toggle('hidden', isHidden);
-        if (closeIco) closeIco.classList.toggle('hidden', !isHidden);
-      });
-    }
-  </script>
-
+    <!-- MODULAR JAVASCRIPT -->
+  <script src="js/common.js"></script>
+  <script src="js/service.js"></script>
 </body>
 </html>

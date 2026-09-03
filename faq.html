@@ -711,34 +711,8 @@
       </div>
     </div>
   </footer>
-  <!-- JAVASCRIPT -->
-  <script>
-    // FAQ Accordion Toggle Function
-    function toggleFaq(btn) {
-      const content = btn.nextElementSibling;
-      const chevron = btn.querySelector('.faq-chevron');
-      const isHidden = content.classList.contains('hidden');
-      
-      content.classList.toggle('hidden', !isHidden);
-      if (chevron) {
-        chevron.classList.toggle('rotate-180', isHidden);
-      }
-    }
-
-    // Mobile Menu Toggle
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const openIco = document.getElementById('menuOpenIcon');
-    const closeIco = document.getElementById('menuCloseIcon');
-    if (mobileBtn && mobileMenu) {
-      mobileBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden', !isHidden);
-        if (openIco) openIco.classList.toggle('hidden', isHidden);
-        if (closeIco) closeIco.classList.toggle('hidden', !isHidden);
-      });
-    }
-  </script>
-
+    <!-- MODULAR JAVASCRIPT -->
+  <script src="js/common.js"></script>
+  <script src="js/faq.js"></script>
 </body>
 </html>
