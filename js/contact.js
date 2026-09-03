@@ -50,6 +50,16 @@ function updateTotalCount() {
 window.handleQuoteSubmit = async function(e) {
   e.preventDefault();
 
+  // Red Team Anti-Bot Honeypot Defense
+  const hp = document.getElementById('website_hp');
+  if (hp && hp.value.trim() !== '') {
+    // Bot detected: Silent discard
+    console.warn('Bot submission blocked by honeypot.');
+    const modal = document.getElementById('successModal');
+    if (modal) modal.classList.remove('hidden');
+    return;
+  }
+
   const totalQty = updateTotalCount();
   if (totalQty === 0) {
     alert('신청하실 에어컨 기종의 수량을 최소 1대 이상 [+] 버튼으로 설정해 주세요.');
@@ -152,4 +162,15 @@ window.closeSuccessModal = function() {
     });
     updateTotalCount();
   }
+};
+
+// Privacy Modal Handlers
+window.openPrivacyModal = function() {
+  const modal = document.getElementById('privacyModal');
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.closePrivacyModal = function() {
+  const modal = document.getElementById('privacyModal');
+  if (modal) modal.classList.add('hidden');
 };
