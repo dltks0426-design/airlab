@@ -458,20 +458,22 @@
           </p>
         </div>
 
-        <!-- Case Selection Tabs (에어컨 유형 4대 대표 카테고리) -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto">
-          <button type="button" onclick="switchBACase('wall', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-navy text-white shadow-md transition-all cursor-pointer">
-            벽걸이
-          </button>
-          <button type="button" onclick="switchBACase('stand', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
-            스탠드
-          </button>
-          <button type="button" onclick="switchBACase('system', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
-            시스템
-          </button>
-          <button type="button" onclick="switchBACase('outdoor', this)" class="ba-case-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all cursor-pointer">
-            실외기
-          </button>
+        <!-- Case Selection Tabs (에어컨 유형 4대 대표 카테고리 세그먼트 컨트롤) -->
+        <div class="flex justify-center">
+          <div class="inline-flex p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft max-w-md w-full sm:w-auto gap-1">
+            <button type="button" onclick="switchBACase('wall', this)" class="ba-case-btn flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-navy text-white shadow-sm transition-all duration-200 cursor-pointer text-center">
+              벽걸이
+            </button>
+            <button type="button" onclick="switchBACase('stand', this)" class="ba-case-btn flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-100/80 transition-all duration-200 cursor-pointer text-center">
+              스탠드
+            </button>
+            <button type="button" onclick="switchBACase('system', this)" class="ba-case-btn flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-100/80 transition-all duration-200 cursor-pointer text-center">
+              시스템
+            </button>
+            <button type="button" onclick="switchBACase('outdoor', this)" class="ba-case-btn flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-100/80 transition-all duration-200 cursor-pointer text-center">
+              실외기
+            </button>
+          </div>
         </div>
 
         <!-- Interactive Split-View Box -->
@@ -480,22 +482,24 @@
             
             <!-- Layer 1: AFTER (Background full) -->
             <img id="baAfterImg" src="images/wall_ac_fin_after.jpg" alt="세척 후 상태 (After)" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none" />
-            <div class="absolute bottom-4 right-4 z-10 px-3 py-1 rounded-xl bg-emerald-600/90 backdrop-blur-md text-white text-xs font-black shadow-md pointer-events-none">
-              AFTER (세척 완료)
+            <div class="absolute bottom-4 right-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              AFTER (세척 후)
             </div>
 
             <!-- Layer 2: BEFORE (Clipped width container with perfectly fixed image) -->
             <div id="baBeforeLayer" class="absolute inset-y-0 left-0 overflow-hidden z-20 pointer-events-none" style="width: 50%;">
               <img id="baBeforeImg" src="images/wall_ac_fin_before.jpg" alt="세척 전 상태 (Before)" class="absolute inset-0 h-full object-cover object-center max-w-none" style="width: 100%;" />
-              <div class="absolute bottom-4 left-4 z-10 px-3 py-1 rounded-xl bg-rose-600/90 backdrop-blur-md text-white text-xs font-black shadow-md">
+              <div class="absolute bottom-4 left-4 z-10 px-3.5 py-1.5 rounded-xl bg-slate-950/80 backdrop-blur-md text-white text-xs font-bold border border-white/10 shadow-md flex items-center gap-1.5 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-rose-500"></span>
                 BEFORE (세척 전)
               </div>
             </div>
 
             <!-- Handle Divider -->
             <div id="baHandle" class="absolute inset-y-0 z-30 flex items-center justify-center pointer-events-none" style="left: 50%;">
-              <div class="w-1 bg-white h-full shadow-[0_0_10px_rgba(0,0,0,0.8)]"></div>
-              <div class="absolute w-10 h-10 rounded-full bg-white text-brand-navy flex items-center justify-center shadow-xl border-2 border-brand-ice cursor-ew-resize pointer-events-auto active:scale-110 transition-transform">
+              <div class="w-0.5 sm:w-1 bg-white h-full shadow-[0_0_8px_rgba(0,0,0,0.6)]"></div>
+              <div class="absolute w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white text-brand-navy flex items-center justify-center shadow-2xl border-2 border-slate-200 cursor-ew-resize pointer-events-auto active:scale-105 transition-transform">
                 <svg class="w-5 h-5 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-3 3 3 3m8-6l3 3-3 3"></path>
                 </svg>
@@ -521,10 +525,13 @@
             </div>
           </div>
 
-          <!-- Contextual CTA -->
-          <div class="text-center pt-6">
-            <a href="contact.html" class="inline-flex items-center justify-center px-8 py-3.5 rounded-2xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-soft transition-all active:scale-95">
-              내 에어컨 세척 견적 확인하기 →
+          <!-- Contextual Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-6">
+            <a href="work.html" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-brand-navy font-bold text-sm shadow-soft transition-all active:scale-95">
+              실제 작업 사례 더 보기 →
+            </a>
+            <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-2xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-sm shadow-soft transition-all active:scale-95">
+              내 에어컨 맞춤 견적 확인하기 →
             </a>
           </div>
         </div>

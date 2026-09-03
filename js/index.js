@@ -105,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update active tab button style
     document.querySelectorAll('.ba-case-btn').forEach(btn => {
-      btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-md');
-      btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+      btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-sm', 'font-bold');
+      btn.classList.add('text-slate-600', 'font-medium');
     });
     if (btnEl) {
-      btnEl.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
-      btnEl.classList.add('bg-brand-navy', 'text-white', 'shadow-md');
+      btnEl.classList.remove('text-slate-600', 'font-medium');
+      btnEl.classList.add('bg-brand-navy', 'text-white', 'shadow-sm', 'font-bold');
     }
 
     const beforeImgEl = document.getElementById('baBeforeImg');
