@@ -76,6 +76,12 @@ window.closeAdminLoginModal = function() {
   if (modal) modal.classList.add('hidden');
 };
 
+// Helper: SHA-256 Hash for Client Verification (정적 호스팅 환경 지원)
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 window.verifyAdminPassword = async function() {
   const pwInput = document.getElementById('adminPasswordInput');
   const errText = document.getElementById('adminLoginError');
@@ -83,26 +89,40 @@ window.verifyAdminPassword = async function() {
 
   if (!pw) return;
 
+  // 1. Try Backend API first if available
   try {
     const res = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password: pw })
     });
-    const json = await res.json();
-    if (json.success && json.token) {
-      sessionStorage.setItem('airlab_admin_token', json.token);
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.token) {
+        sessionStorage.setItem('airlab_admin_token', json.token);
+        closeAdminLoginModal();
+        updateAdminUI();
+        renderGallery();
+        alert('관리자 모드로 로그인되었습니다.');
+        return;
+      }
+    }
+  } catch(e) {}
+
+  // 2. Client-side SHA-256 Hash Verification (정적 호스팅 및 오프라인 환경 안전 지원)
+  try {
+    const hashed = await sha256(pw);
+    if (hashed === 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037') {
+      sessionStorage.setItem('airlab_admin_token', 'airlab-auth-token-valid');
       closeAdminLoginModal();
       updateAdminUI();
       renderGallery();
       alert('관리자 모드로 로그인되었습니다.');
       return;
-    } else {
-      if (errText) errText.classList.remove('hidden');
     }
-  } catch(e) {
-    if (errText) errText.classList.remove('hidden');
-  }
+  } catch(e) {}
+
+  if (errText) errText.classList.remove('hidden');
 };
 
 window.adminLogout = async function() {
