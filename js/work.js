@@ -11,13 +11,13 @@ const cardSlideIndices = {};
 // Temporary storage for photos being uploaded in editor modal
 let editorUploadedPhotos = [];
 
-// 1. Fetch Real-time Portfolio from Backend Server (with Local Storage Fallback)
+// 1. Fetch Real-time Portfolio from the persistent server store
 async function loadPortfolioData() {
   try {
     const res = await fetch('/api/work/list');
     if (res.ok) {
       const json = await res.json();
-      if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+      if (json.success && Array.isArray(json.data)) {
         portfolioList = json.data;
         renderGallery();
         return;
@@ -25,19 +25,6 @@ async function loadPortfolioData() {
     }
   } catch (err) {
     // Backend offline
-  }
-
-  // Fallback to local storage (for static / offline environments)
-  const custom = localStorage.getItem('airlab_custom_portfolio');
-  if (custom) {
-    try {
-      const parsed = JSON.parse(custom);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        portfolioList = parsed;
-        renderGallery();
-        return;
-      }
-    } catch(e) {}
   }
 
   portfolioList = [];
@@ -65,12 +52,6 @@ function updateAdminUI() {
   }
 }
 
-// Helper: SHA-256 Hash for Client Verification
-async function sha256(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
 window.openAdminLoginModal = function() {
   const pwInput = document.getElementById('adminPasswordInput');
   const errText = document.getElementById('adminLoginError');
@@ -95,36 +76,20 @@ window.verifyAdminPassword = async function() {
 
   if (!pw) return;
 
-  // 1. Try Backend API first if available
   try {
     const res = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password: pw })
     });
-    if (res.ok) {
-      const json = await res.json();
-      if (json.success && json.token) {
+    const json = await res.json();
+    if (res.ok && json.success && json.token) {
         sessionStorage.setItem('airlab_admin_token', json.token);
         closeAdminLoginModal();
         updateAdminUI();
         renderGallery();
         alert('관리자 모드로 로그인되었습니다.');
         return;
-      }
-    }
-  } catch(e) {}
-
-  // 2. Client-side SHA-256 Hash Verification (정적 호스팅 및 오프라인 환경 안전 지원)
-  try {
-    const hashed = await sha256(pw);
-    if (hashed === 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037') {
-      sessionStorage.setItem('airlab_admin_token', 'airlab_token_' + Date.now());
-      closeAdminLoginModal();
-      updateAdminUI();
-      renderGallery();
-      alert('관리자 모드로 로그인되었습니다.');
-      return;
     }
   } catch(e) {}
 
@@ -548,9 +513,6 @@ window.handleCaseSubmit = async function(event) {
     photos: [...editorUploadedPhotos]
   };
 
-  let savedItem = null;
-
-  // 1. Try Backend API
   try {
     const url = editId ? `/api/work/edit/${editId}` : '/api/work/add';
     const method = editId ? 'PUT' : 'POST';
@@ -565,57 +527,18 @@ window.handleCaseSubmit = async function(event) {
       body: JSON.stringify(payload)
     });
 
-    if (res.ok) {
-      const json = await res.json();
-      if (json.success && json.data) {
-        savedItem = json.data;
-      }
-    }
-  } catch (err) {
-    // API failed or static hosting
-  }
-
-  // 2. Local State & Storage Update
-  if (!savedItem) {
-    if (editId) {
-      const existing = portfolioList.find(c => c.id === editId);
-      if (existing) {
-        existing.title = title;
-        existing.location = location;
-        existing.date = date;
-        existing.scale = scale;
-        existing.photos = [...editorUploadedPhotos];
-        savedItem = existing;
-      }
-    } else {
-      savedItem = {
-        id: 'case-' + Date.now(),
-        title,
-        location,
-        date,
-        scale,
-        photos: [...editorUploadedPhotos],
-        createdAt: new Date().toISOString()
-      };
-      portfolioList.unshift(savedItem);
-    }
-  } else {
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.success || !json.data) throw new Error(json.message || '시공사례 저장에 실패했습니다.');
     if (editId) {
       const idx = portfolioList.findIndex(c => c.id === editId);
-      if (idx >= 0) {
-        portfolioList[idx] = savedItem;
-      }
+      if (idx >= 0) portfolioList[idx] = json.data;
     } else {
-      const alreadyInList = portfolioList.some(c => c.id === savedItem.id);
-      if (!alreadyInList) {
-        portfolioList.unshift(savedItem);
-      }
+      portfolioList.unshift(json.data);
     }
+  } catch (err) {
+    alert(err.message || '시공사례 등록에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+    return;
   }
-
-  try {
-    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
-  } catch(e) {}
 
   closeCaseEditor();
   renderGallery();
@@ -653,22 +576,22 @@ window.deleteCase = async function(caseId) {
 
   const token = getAdminToken() || '';
 
-  // 1. Try Backend API
   try {
-    await fetch(`/api/work/delete/${caseId}`, {
+    const res = await fetch(`/api/work/delete/${caseId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
         'x-admin-token': token
       }
     });
-  } catch(e) {}
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.success) throw new Error(json.message || '시공사례 삭제에 실패했습니다.');
+  } catch(e) {
+    alert(e.message || '시공사례 삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+    return;
+  }
 
-  // 2. Local State & Storage Update
   portfolioList = portfolioList.filter(c => c.id !== caseId);
-  try {
-    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
-  } catch(e) {}
 
   renderGallery();
   alert('시공사례가 삭제되었습니다.');
