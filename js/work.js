@@ -1,5 +1,5 @@
 /**
- * AirLab — Full-Stack Real-time Work Portfolio & Interactive Card Slider Engine
+ * AirLab — Real-time Work Portfolio & Interactive Card Slider Engine
  */
 
 let portfolioList = [];
@@ -8,7 +8,10 @@ const itemsPerPage = 6;
 // Track current slide index per card: { [caseId]: index }
 const cardSlideIndices = {};
 
-// 1. Fetch Real-time Portfolio from Backend Server (with Fallback)
+// Temporary storage for photos being uploaded in editor modal
+let editorUploadedPhotos = [];
+
+// 1. Fetch Real-time Portfolio from Backend Server (with Local Storage Fallback)
 async function loadPortfolioData() {
   try {
     const res = await fetch('/api/work/list');
@@ -21,20 +24,23 @@ async function loadPortfolioData() {
       }
     }
   } catch (err) {
-    console.warn('Backend offline, using local storage fallback');
+    // Backend offline
   }
 
-  // Fallback to local storage
+  // Fallback to local storage (for static / offline environments)
   const custom = localStorage.getItem('airlab_custom_portfolio');
   if (custom) {
     try {
-      portfolioList = JSON.parse(custom);
-    } catch(e) {
-      portfolioList = [];
-    }
-  } else {
-    portfolioList = [];
+      const parsed = JSON.parse(custom);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        portfolioList = parsed;
+        renderGallery();
+        return;
+      }
+    } catch(e) {}
   }
+
+  portfolioList = [];
   renderGallery();
 }
 
@@ -59,6 +65,12 @@ function updateAdminUI() {
   }
 }
 
+// Helper: SHA-256 Hash for Client Verification
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 window.openAdminLoginModal = function() {
   const pwInput = document.getElementById('adminPasswordInput');
   const errText = document.getElementById('adminLoginError');
@@ -75,12 +87,6 @@ window.closeAdminLoginModal = function() {
   const modal = document.getElementById('adminLoginModal');
   if (modal) modal.classList.add('hidden');
 };
-
-// Helper: SHA-256 Hash for Client Verification (정적 호스팅 환경 지원)
-async function sha256(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
 
 window.verifyAdminPassword = async function() {
   const pwInput = document.getElementById('adminPasswordInput');
@@ -113,7 +119,7 @@ window.verifyAdminPassword = async function() {
   try {
     const hashed = await sha256(pw);
     if (hashed === 'a1017cbe5bb576d1df820c68373a4013371a22f6c62ca410e4b1df295163d037') {
-      sessionStorage.setItem('airlab_admin_token', 'airlab-auth-token-valid');
+      sessionStorage.setItem('airlab_admin_token', 'airlab_token_' + Date.now());
       closeAdminLoginModal();
       updateAdminUI();
       renderGallery();
@@ -125,13 +131,13 @@ window.verifyAdminPassword = async function() {
   if (errText) errText.classList.remove('hidden');
 };
 
-window.adminLogout = async function() {
+window.logoutAdmin = window.adminLogout = async function() {
   const token = getAdminToken();
   if (token) {
     try {
       await fetch('/api/admin/logout', {
         method: 'POST',
-        headers: { 'x-admin-token': token }
+        headers: { 'x-admin-token': token, 'Authorization': `Bearer ${token}` }
       });
     } catch(e) {}
   }
@@ -230,7 +236,7 @@ window.renderGallery = function() {
     html += `
       <div class="rounded-3xl bg-white border border-slate-200/90 shadow-soft hover:shadow-card transition-all duration-300 overflow-hidden flex flex-col group">
         
-        <!-- Interactive Inline Multi-Photo Slider Box (2번 사진 완벽 구현) -->
+        <!-- Interactive Inline Multi-Photo Slider Box -->
         <div class="aspect-[16/11] bg-slate-950 relative overflow-hidden select-none cursor-pointer" onclick="openPhotoModal('${item.id}')">
           
           <!-- Sliding Track -->
@@ -250,7 +256,7 @@ window.renderGallery = function() {
           <!-- Prev/Next Controls -->
           ${arrowsHtml}
 
-          <!-- Bottom Floating Caption Bar (2번 사진과 100% 동일) -->
+          <!-- Bottom Floating Caption Bar -->
           <div class="absolute bottom-2.5 left-2.5 right-2.5 z-20 px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md text-white text-[11px] sm:text-xs font-bold text-center shadow-lg pointer-events-none truncate" id="caption_${item.id}">
             ${currentCaption}
           </div>
@@ -381,7 +387,6 @@ window.openPhotoModal = function(caseId) {
 
   activeModalPhotos = item.photos && item.photos.length > 0 ? item.photos : ['images/compare_fin_after.jpg'];
   activeModalCaptions = item.captions || [];
-  // Use card's current slide as starting photo in modal!
   currentModalPhotoIndex = cardSlideIndices[caseId] || 0;
 
   document.getElementById('modalTitle').innerText = item.title;
@@ -434,7 +439,242 @@ window.closeDetailModal = function() {
   if (modal) modal.classList.add('hidden');
 };
 
-// 7. Initialize
+// 7. Case Editor (Add / Edit / Delete / Photo Upload)
+window.openCaseEditor = function() {
+  const modal = document.getElementById('caseEditorModal');
+  const titleEl = document.getElementById('editorModalTitle');
+  const idInput = document.getElementById('editCaseId');
+  const titleInput = document.getElementById('caseTitle');
+  const locationInput = document.getElementById('caseLocation');
+  const dateInput = document.getElementById('caseDate');
+  const scaleInput = document.getElementById('caseScale');
+  const fileInput = document.getElementById('photoFileInput');
+
+  if (idInput) idInput.value = '';
+  if (titleInput) titleInput.value = '';
+  if (locationInput) locationInput.value = '';
+  if (dateInput) dateInput.value = '';
+  if (scaleInput) scaleInput.value = '';
+  if (fileInput) fileInput.value = '';
+
+  editorUploadedPhotos = [];
+  renderEditorPhotos();
+
+  if (titleEl) titleEl.innerText = '새 시공사례 등록';
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.closeCaseEditor = function() {
+  const modal = document.getElementById('caseEditorModal');
+  if (modal) modal.classList.add('hidden');
+};
+
+window.handleMultiplePhotos = function(event) {
+  const files = event.target.files;
+  if (!files || files.length === 0) return;
+
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      editorUploadedPhotos.push(e.target.result);
+      renderEditorPhotos();
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
+function renderEditorPhotos() {
+  const container = document.getElementById('editorPhotoList');
+  if (!container) return;
+
+  if (editorUploadedPhotos.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  let html = '';
+  editorUploadedPhotos.forEach((src, idx) => {
+    html += `
+      <div class="relative aspect-video rounded-xl overflow-hidden border border-slate-300 group bg-slate-900">
+        <img src="${src}" alt="미리보기 ${idx + 1}" class="w-full h-full object-cover" />
+        <button type="button" onclick="removeEditorPhoto(${idx})" class="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/70 hover:bg-rose-600 text-white flex items-center justify-center text-xs font-bold transition-all shadow" title="사진 삭제">
+          ✕
+        </button>
+        <div class="absolute bottom-1 left-1 px-1.5 py-0.5 rounded bg-black/60 text-white text-[10px] font-mono">
+          ${idx + 1}
+        </div>
+      </div>
+    `;
+  });
+  container.innerHTML = html;
+}
+
+window.removeEditorPhoto = function(index) {
+  editorUploadedPhotos.splice(index, 1);
+  renderEditorPhotos();
+};
+
+window.handleCaseSubmit = async function(event) {
+  event.preventDefault();
+
+  const idInput = document.getElementById('editCaseId');
+  const titleInput = document.getElementById('caseTitle');
+  const locationInput = document.getElementById('caseLocation');
+  const dateInput = document.getElementById('caseDate');
+  const scaleInput = document.getElementById('caseScale');
+
+  const editId = idInput ? idInput.value.trim() : '';
+  const title = titleInput ? titleInput.value.trim() : '';
+  const location = locationInput ? locationInput.value.trim() : '';
+  const date = dateInput ? dateInput.value.trim() : '';
+  const scale = scaleInput ? scaleInput.value.trim() : '';
+
+  if (!title) {
+    alert('시공 사례 제목을 입력해 주세요.');
+    return;
+  }
+
+  if (editorUploadedPhotos.length === 0) {
+    alert('현장 사진을 최소 1장 이상 등록해 주세요.');
+    return;
+  }
+
+  const token = getAdminToken() || '';
+  const payload = {
+    title,
+    location,
+    date,
+    scale,
+    photos: [...editorUploadedPhotos]
+  };
+
+  let savedItem = null;
+
+  // 1. Try Backend API
+  try {
+    const url = editId ? `/api/work/edit/${editId}` : '/api/work/add';
+    const method = editId ? 'PUT' : 'POST';
+
+    const res = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        'x-admin-token': token
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      const json = await res.json();
+      if (json.success && json.data) {
+        savedItem = json.data;
+      }
+    }
+  } catch (err) {
+    // API failed or static hosting
+  }
+
+  // 2. Local State & Storage Update
+  if (!savedItem) {
+    if (editId) {
+      const existing = portfolioList.find(c => c.id === editId);
+      if (existing) {
+        existing.title = title;
+        existing.location = location;
+        existing.date = date;
+        existing.scale = scale;
+        existing.photos = [...editorUploadedPhotos];
+        savedItem = existing;
+      }
+    } else {
+      savedItem = {
+        id: 'case-' + Date.now(),
+        title,
+        location,
+        date,
+        scale,
+        photos: [...editorUploadedPhotos],
+        createdAt: new Date().toISOString()
+      };
+      portfolioList.unshift(savedItem);
+    }
+  } else {
+    if (editId) {
+      const idx = portfolioList.findIndex(c => c.id === editId);
+      if (idx >= 0) {
+        portfolioList[idx] = savedItem;
+      }
+    } else {
+      const alreadyInList = portfolioList.some(c => c.id === savedItem.id);
+      if (!alreadyInList) {
+        portfolioList.unshift(savedItem);
+      }
+    }
+  }
+
+  try {
+    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
+  } catch(e) {}
+
+  closeCaseEditor();
+  renderGallery();
+
+  alert(editId ? '시공사례가 성공적으로 수정되었습니다.' : '시공사례가 성공적으로 등록되었습니다.');
+};
+
+window.editCase = function(caseId) {
+  const item = portfolioList.find(c => c.id === caseId);
+  if (!item) return;
+
+  const modal = document.getElementById('caseEditorModal');
+  const titleEl = document.getElementById('editorModalTitle');
+  const idInput = document.getElementById('editCaseId');
+  const titleInput = document.getElementById('caseTitle');
+  const locationInput = document.getElementById('caseLocation');
+  const dateInput = document.getElementById('caseDate');
+  const scaleInput = document.getElementById('caseScale');
+
+  if (idInput) idInput.value = item.id;
+  if (titleInput) titleInput.value = item.title || '';
+  if (locationInput) locationInput.value = item.location || '';
+  if (dateInput) dateInput.value = item.date || '';
+  if (scaleInput) scaleInput.value = item.scale || '';
+
+  editorUploadedPhotos = item.photos ? [...item.photos] : [];
+  renderEditorPhotos();
+
+  if (titleEl) titleEl.innerText = '시공사례 수정';
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.deleteCase = async function(caseId) {
+  if (!confirm('정말 이 시공사례를 삭제하시겠습니까?')) return;
+
+  const token = getAdminToken() || '';
+
+  // 1. Try Backend API
+  try {
+    await fetch(`/api/work/delete/${caseId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'x-admin-token': token
+      }
+    });
+  } catch(e) {}
+
+  // 2. Local State & Storage Update
+  portfolioList = portfolioList.filter(c => c.id !== caseId);
+  try {
+    localStorage.setItem('airlab_custom_portfolio', JSON.stringify(portfolioList));
+  } catch(e) {}
+
+  renderGallery();
+  alert('시공사례가 삭제되었습니다.');
+};
+
+// 8. Initialize
 document.addEventListener('DOMContentLoaded', function() {
   loadPortfolioData();
   updateAdminUI();
