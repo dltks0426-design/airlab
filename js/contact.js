@@ -170,9 +170,6 @@ window.handleQuoteSubmit = async function(e) {
   const acDetails = breakdown.join(', ') + ' (총 ' + totalQty + '대)';
 
   const parking = document.querySelector('input[name="parking"]:checked')?.value || '주차 가능';
-  const dateVal = document.getElementById('preferredDate').value;
-  const timeVal = document.querySelector('input[name="timeSlot"]:checked')?.value || '시간 협의';
-  const schedule = (dateVal ? dateVal : '날짜 미지정 (협의)') + ' / ' + timeVal;
   const message = document.getElementById('message').value.trim() || '없음';
 
   // UI State
@@ -197,7 +194,6 @@ window.handleQuoteSubmit = async function(e) {
     '서비스': acDetails,
     '공간구분': facilityType,
     '주차가능': parking,
-    '희망일정': schedule,
     '문의내용': message,
     '개인정보동의': '동의함'
   };
@@ -219,7 +215,7 @@ window.handleQuoteSubmit = async function(e) {
     const modal = document.getElementById('successModal');
     if (modal) modal.classList.remove('hidden');
   } finally {
-    btnText.innerText = '실시간 견적 문의 신청하기';
+    btnText.innerText = '간편 맞춤 견적 문의하기';
     btnIcon.classList.remove('hidden');
     btnSpinner.classList.add('hidden');
     submitBtn.disabled = false;
