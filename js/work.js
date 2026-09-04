@@ -24,122 +24,16 @@ async function loadPortfolioData() {
     console.warn('Backend offline, using local storage fallback');
   }
 
-  // Fallback to local storage or defaults
+  // Fallback to local storage
   const custom = localStorage.getItem('airlab_custom_portfolio');
   if (custom) {
     try {
       portfolioList = JSON.parse(custom);
-    } catch(e) {}
-  }
-  if (!portfolioList || portfolioList.length === 0) {
-    portfolioList = [
-      {
-        id: "case-1",
-        title: "[상가 매장] 대형 영업용 스탠드 에어컨 에바 뒷면 찌든 슬러지 정밀 관통 세척",
-        location: "서울 강남구 상업시설 매장",
-        date: "2026.04 시공",
-        scale: "대형 영업용 스탠드 (냉각핀 앞뒤 양면 관통)",
-        photos: [
-          "images/stand_eva_back_dirty.jpg",
-          "images/stand_eva_back_clean.jpg",
-          "images/stand_eva_front.jpg",
-          "images/stand_eva_clean_full.jpg"
-        ],
-        captions: [
-          "⚠️ [오염 상태] 스탠드 에바 뒷면 찌든 슬러지",
-          "✨ [완전 세척] 알루미늄 냉각핀 고압 관통 세척 후",
-          "🔧 [부품 분해] 송풍팬 및 프레임 완전 탈거",
-          "🛡️ [최종 조립] 고압 관통 세척 완료 및 정상 가동 테스트"
-        ]
-      },
-      {
-        id: "case-2",
-        title: "[아파트·오피스텔] 천장형 1WAY 정밀 분해 & 마루바닥 방수 보양 세척",
-        location: "서울 송파구 신축 아파트 주거공간",
-        date: "2026.04 시공",
-        scale: "천장형 1Way 3대 (바닥 방수 매트 및 집수 보양)",
-        photos: [
-          "images/home_1way_setup1.jpg",
-          "images/home_1way_setup2.jpg",
-          "images/compare_part_after.jpg",
-          "images/compare_fin_after.jpg"
-        ],
-        captions: [
-          "🏠 [가정집] 마루바닥 방수 매트 & 1Way 전용 가대 세팅",
-          "🛡️ [3중 보양] 벽지 및 바닥 오염 방지 보양",
-          "✨ [부품 세척] 드레인판 물때 슬러지 고압 세척",
-          "🌟 [냉각핀 케어] 핀 코일 맑은 물 관통 린스 완료"
-        ]
-      },
-      {
-        id: "case-3",
-        title: "[의료 시설] 시스템 1Way / 4Way 맞춤 정밀 세척",
-        location: "서울 강남구 도곡동 메디컬센터",
-        date: "2026.04 시공",
-        scale: "1Way 12대 + 4Way 6대",
-        photos: [
-          "images/equip_evap.jpg",
-          "images/compare_fin_after.jpg",
-          "images/equip_shroud.jpg"
-        ],
-        captions: [
-          "🌿 [전용 세정제] Evap-Brite 전용 세정제 도포",
-          "✨ [정밀 세척] 냉각핀 코일 고압 관통 세척",
-          "🛡️ [전용 가대] 집기 보호 및 전용 방수 가대 결속"
-        ]
-      },
-      {
-        id: "case-4",
-        title: "[베이커리 매장] 360 원형 카세트 & 스탠드 유증기 정밀 세척",
-        location: "서울 마포구 서교동",
-        date: "2026.05 시공",
-        scale: "360 원형 8대 + 영업용 38평 스탠드 2대",
-        photos: [
-          "images/compare_part_before.jpg",
-          "images/compare_part_after.jpg",
-          "images/hero_wash_bg.jpg"
-        ],
-        captions: [
-          "⚠️ [기름때 오염] 주방 및 홀 송풍팬 유증기 고착",
-          "✨ [정밀 분해] 전용 세정제 고압 세척으로 백색 복원",
-          "💦 [고압 세척] 실외기 및 에어컨 라인 올케어"
-        ]
-      },
-      {
-        id: "case-5",
-        title: "[주거 공간] 천장형 1Way 다수 기종 정밀 분해 세척",
-        location: "서울 용산구 한남동",
-        date: "2026.04 시공",
-        scale: "천장형 1Way 7대",
-        photos: [
-          "images/compare_fin_before.jpg",
-          "images/compare_fin_after.jpg",
-          "images/about_action_wash.jpg"
-        ],
-        captions: [
-          "⚠️ [세척 전] 냉각핀 틈새 먼지 및 곰팡이 포자",
-          "✨ [세척 후] 알루미늄 본연의 은빛 광택 복원",
-          "👨‍🔧 [전문 엔지니어] 자체 교육 기술 인력 직접 시공"
-        ]
-      },
-      {
-        id: "case-6",
-        title: "[운동 시설] 천장형 4Way 시스템 에어컨 드레인판 분해 세척",
-        location: "서울 영등포구 여의도동",
-        date: "2026.05 시공",
-        scale: "4Way 시스템 14대 + 송풍팬 올분해",
-        photos: [
-          "images/about_action_wash.jpg",
-          "images/compare_part_before.jpg",
-          "images/compare_part_after.jpg"
-        ],
-        captions: [
-          "💦 [정밀 고압 세척] 천장형 4Way 열교환기 관통 세척",
-          "⚠️ [드레인판 분해] 물받이 바닥 슬러지 오염 확인",
-          "✨ [정밀 세척 후] 전용 고압 세척으로 백색 상태 복원"
-        ]
-      }
-    ];
+    } catch(e) {
+      portfolioList = [];
+    }
+  } else {
+    portfolioList = [];
   }
   renderGallery();
 }
@@ -203,17 +97,10 @@ window.verifyAdminPassword = async function() {
       renderGallery();
       alert('관리자 모드로 로그인되었습니다.');
       return;
+    } else {
+      if (errText) errText.classList.remove('hidden');
     }
-  } catch(e) {}
-
-  // Local fallback password: airlab123!
-  if (pw === 'airlab123!' || pw === 'admin123!') {
-    sessionStorage.setItem('airlab_admin_token', 'local-admin-token');
-    closeAdminLoginModal();
-    updateAdminUI();
-    renderGallery();
-    alert('관리자 모드로 로그인되었습니다.');
-  } else {
+  } catch(e) {
     if (errText) errText.classList.remove('hidden');
   }
 };
@@ -252,6 +139,20 @@ window.renderGallery = function() {
   if (totalAdminCount) totalAdminCount.innerText = portfolioList.length;
 
   if (!container) return;
+
+  if (!portfolioList || portfolioList.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-16 text-center text-slate-500 bg-white rounded-3xl border border-slate-200/90 p-8 shadow-soft">
+        <div class="w-12 h-12 rounded-2xl bg-brand-iceSoft text-brand-navy flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        </div>
+        <p class="text-base sm:text-lg font-bold text-brand-navy">등록된 시공사례가 없습니다.</p>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">현장 시공 데이터가 준비되는 대로 순차적으로 업데이트될 예정입니다.</p>
+      </div>
+    `;
+    renderPagination(0);
+    return;
+  }
 
   const totalPages = Math.ceil(portfolioList.length / itemsPerPage) || 1;
   if (currentPage > totalPages) currentPage = totalPages;
